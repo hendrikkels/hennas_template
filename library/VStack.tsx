@@ -15,20 +15,34 @@ import {
 } from "styled-system";
 import styled from "styled-components";
 
+
+interface SpasieProps {
+  spaceItems?: string | number;
+}
 export interface VStackProps
   extends LayoutProps,
     SpaceProps,
     PositionProps,
     BorderProps,
     ColorProps,
-    FlexboxProps {
+    FlexboxProps,
+    SpasieProps {
   children?: React.ReactNode;
 }
 
-export const VStack = styled.div<VStackProps>(
+const _VStack = styled.div<VStackProps>`
+  gap: ${(props) => {
+    if (typeof props.spaceItems == 'number') {
+      return `${props.spaceItems}px`;
+    }
+    return props.spaceItems;
+  }};
+`;
+
+export const VStack = styled(_VStack)<VStackProps>(
   {
-    display: "flex",
-    flexDirection: "column",
+    display: 'flex',
+    flexDirection: 'column',
   },
   layout,
   space,

@@ -15,18 +15,31 @@ import {
 } from "styled-system";
 import styled from "styled-components";
 
+
+interface SpasieProps {
+  spaceItems?: string | number;
+}
 export interface HStackProps
   extends LayoutProps,
     SpaceProps,
     PositionProps,
     BorderProps,
     ColorProps,
-    FlexboxProps {
-  space?: string;
+    FlexboxProps,
+    SpasieProps {
   children?: React.ReactNode;
 }
 
-export const HStack = styled.div<HStackProps>(
+const _HStack = styled.div<HStackProps>`
+  gap: ${(props) => {
+    if (typeof props.spaceItems == "number") {
+      return `${props.spaceItems}px`;
+    }
+    return props.spaceItems;
+  }};
+`;
+
+export const HStack = styled(_HStack)<HStackProps>(
   {
     display: "flex",
     flexDirection: "row",

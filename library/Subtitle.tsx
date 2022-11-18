@@ -11,12 +11,14 @@ import {
 import styled from "styled-components";
 import { TextProps } from "./Text";
 
-export const Subtitle = styled.div<TextProps>(
+export const Subtitle = styled.p<TextProps>(
   {
-    display: "flex",
-    flexDirection: "column",
-    fontSize: "20px",
-    fontWeight: "normal",
+    display: 'flex',
+    flexDirection: 'column',
+    fontSize: '20px',
+    fontWeight: 'normal',
+    padding: 0,
+    margin: 0,
   },
   layout,
   space,

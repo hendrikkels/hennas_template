@@ -23,13 +23,15 @@ export interface TextProps
     BorderProps,
     ColorProps,
     TypographyProps {
-  children: string;
+  children?: string;
 }
 
-export const Text = styled.div<TextProps>(
+export const Text = styled.p<TextProps>(
   {
-    display: "flex",
-    flexDirection: "column",
+    display: 'flex',
+    flexDirection: 'column',
+    padding: 0,
+    margin: 0,
   },
   layout,
   space,

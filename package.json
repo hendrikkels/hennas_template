@@ -19,6 +19,7 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^2.0.2",
     "@types/node": "18.7.16",
     "@types/react": "18.0.19",
     "@types/react-dom": "18.0.6",

@@ -11,12 +11,14 @@ import {
 import styled from "styled-components";
 import { TextProps } from "./Text";
 
-export const H3 = styled.div<TextProps>(
+export const H3 = styled.p<TextProps>(
   {
-    display: "flex",
-    flexDirection: "column",
-    fontSize: "14px",
-    fontWeight: "normal",
+    display: 'flex',
+    flexDirection: 'column',
+    fontSize: '14px',
+    fontWeight: 'normal',
+    padding: 0,
+    margin: 0,
   },
   layout,
   space,
