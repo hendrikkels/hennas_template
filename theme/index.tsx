@@ -7,6 +7,7 @@ declare module 'styled-components' {
       secondary: string;
       primaryAccent: string;
       secondaryAccent: string;
+      navbarBackground: string;
     };
   }
 }
@@ -20,6 +21,7 @@ export const light = {
   secondary: '#bdbdbd',
   primaryAccent: '#5677fc',
   secondaryAccent: '#3ba476',
+  navbarBackground: '#e1e1e1',
 };
 
 export const dark = {
@@ -27,4 +29,5 @@ export const dark = {
   secondary: '#2a2a2a',
   primaryAccent: '#5677fc',
   secondaryAccent: '#3ba476',
+  navbarBackground: '#1a1a1a',
 };
