@@ -1,5 +1,4 @@
-import type { NextPage } from "next";
-import { useTheme } from 'styled-components';
+import type { NextPage } from 'next';
 import { NavBar } from '../components/NavBar';
 import { View } from '../library';
 
