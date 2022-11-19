@@ -5,7 +5,7 @@ declare module 'styled-components' {
     colors: {
       primary: string;
       secondary: string;
-      tertiiary: string;
+      tertiary: string;
       success: string;
       error: string;
       info: string;
@@ -44,9 +44,9 @@ export const light = {
   yellow: '#ffee6b',
   green: '#23d18c',
   blue: '#5677fc',
-  purple: '#9927c3',
+  purple: '#a29bfe',
   pink: '#ff5d8f',
-  gray: '#eeeeee',
+  gray: '#cccccc',
   white: '#ffffff',
   black: '#000000',
   primaryBackground: '#ffffff',
@@ -67,12 +67,12 @@ export const dark = {
   yellow: '#ffee6b',
   green: '#23d18c',
   blue: '#5677fc',
-  purple: '#9927c3',
+  purple: '#a29bfe',
   pink: '#ff5d8f',
-  gray: '#a5a5a5',
+  gray: '#cccccc',
   white: '#ffffff',
   black: '#000000',
   primaryBackground: '#000000',
-  secondaryBackground: '#444444',
+  secondaryBackground: '#111111',
   navbarBackground: '#1a1a1a',
 };

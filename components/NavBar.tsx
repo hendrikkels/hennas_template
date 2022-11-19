@@ -1,15 +1,6 @@
 import React from 'react';
 import { DefaultTheme, useTheme } from 'styled-components';
-import {
-  H2,
-  H3,
-  HStack,
-  HStackProps,
-  Link,
-  Title,
-  View,
-  ViewProps,
-} from '../library';
+import { H2, HStack, HStackProps, Title, View } from '../library';
 import { Clickable } from '../library/Clickable';
 
 export interface NavBarProps extends HStackProps {
@@ -19,7 +10,7 @@ export interface NavBarProps extends HStackProps {
 export const NavBar: React.FC<NavBarProps> = (props) => {
   const { title, ...rest } = props;
   const theme = useTheme();
-  console.log(theme);
+  console.log('navbar reloaded with: ', theme.colors.navbarBackground);
 
   return (
     <View backgroundColor={theme.colors.navbarBackground} {...rest}>

@@ -19,7 +19,6 @@ export const Card: React.FC<CardProps> = (props) => {
     ...rest
   } = props;
   const theme = useTheme();
-  console.log(theme);
 
   const renderTitle: ReactNode = useMemo(() => {
     if (_renderTitle) {

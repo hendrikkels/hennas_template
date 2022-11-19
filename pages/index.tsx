@@ -1,16 +1,14 @@
 import type { NextPage } from 'next';
 import { useTheme } from 'styled-components';
-import { Card, NavBar } from '../components';
-import { HStack, Paragraph, ScrollView, Text, View } from '../library';
+import { Card, ColorPalette, NavBar } from '../components';
+import { HStack, Paragraph, ScrollView, Text, View, VStack } from '../library';
 
 const Home: NextPage = () => {
-  const theme = useTheme();
-
   return (
     <View height={'100%'} width={'100%'}>
       <NavBar title={'Hendrikkels'}></NavBar>
       <ScrollView padding={'28px'}>
-        <HStack spaceItems={'28px'} width={'100%'} flex={1}>
+        <VStack spaceItems={'28px'} width={'100%'} flex={1}>
           <Card flex={1} title={'Introduction'}>
             <Paragraph>
               This is a proof-of-concept project that I am building as an
@@ -29,8 +27,10 @@ const Home: NextPage = () => {
               needs.
             </Paragraph>
           </Card>
-          <Card flex={1} title={'Color Palette'}></Card>
-        </HStack>
+          <Card flex={1} title={'Color Palette'}>
+            <ColorPalette></ColorPalette>
+          </Card>
+        </VStack>
       </ScrollView>
     </View>
   );
