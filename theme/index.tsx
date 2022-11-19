@@ -76,3 +76,26 @@ export const dark = {
   secondaryBackground: '#111111',
   navbarBackground: '#1a1a1a',
 };
+
+export const clear = {
+  primary: '#00000000',
+  secondary: '#00000000',
+  tertiary: '#00000000',
+  success: '#00000000',
+  error: '#00000000',
+  info: '#00000000',
+  warning: '#00000000',
+  red: '#00000000',
+  orange: '#00000000',
+  yellow: '#00000000',
+  green: '#00000000',
+  blue: '#00000000',
+  purple: '#00000000',
+  pink: '#00000000',
+  gray: '#00000000',
+  white: '#00000000',
+  black: '#00000000',
+  primaryBackground: '#00000000',
+  secondaryBackground: '#00000000',
+  navbarBackground: '#00000000',
+};

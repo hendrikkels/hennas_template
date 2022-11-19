@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState, useMemo } from "react";
+import React, { useCallback, useEffect, useState, useMemo } from 'react';
 import {
   layout,
   position,
@@ -17,7 +17,7 @@ import {
 } from 'styled-system';
 import styled from 'styled-components';
 
-export interface ViewProps
+export interface DivProps
   extends LayoutProps,
     SpaceProps,
     PositionProps,
@@ -30,7 +30,7 @@ export interface ViewProps
   children?: React.ReactNode;
 }
 
-export const View = styled.div<ViewProps>(
+export const Div = styled.div<DivProps>(
   {
     boxSizing: 'border-box',
     '-moz-box-sizing': 'border-box',

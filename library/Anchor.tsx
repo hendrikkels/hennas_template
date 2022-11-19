@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useState, useMemo } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useState,
+  useMemo,
+  ReactNode,
+} from 'react';
 import {
   layout,
   position,
@@ -8,29 +14,28 @@ import {
   border,
   ColorProps,
   color,
-  FlexboxProps,
   flexbox,
   SpaceProps,
   space,
+  TypographyProps,
+  typography,
 } from 'styled-system';
 import styled from 'styled-components';
 
-export interface ClickableProps
+export interface AnchorProps
   extends LayoutProps,
     SpaceProps,
     PositionProps,
     BorderProps,
     ColorProps,
-    FlexboxProps {
-  children?: React.ReactNode;
+    TypographyProps {
+  children: string | ReactNode;
 }
 
-export const Clickable = styled.a<ClickableProps>(
+export const Anchor = styled.a<AnchorProps>(
   {
-    boxSizing: 'border-box',
-    '-moz-box-sizing': 'border-box',
-    '-webkit-box-sizing': 'border-box',
     display: 'flex',
+    flexDirection: 'column',
     cursor: 'pointer',
   },
   layout,
@@ -38,5 +43,6 @@ export const Clickable = styled.a<ClickableProps>(
   position,
   border,
   color,
-  flexbox
+  flexbox,
+  typography
 );

@@ -1,10 +1,11 @@
 import type { NextPage } from 'next';
+import { useTheme } from 'styled-components';
 import { Card, ColorPalette, NavBar } from '../components';
-import { Input, Paragraph, ScrollView, View, VStack } from '../library';
+import { Input, Paragraph, ScrollView, Div, VStack } from '../library';
 
 const Home: NextPage = () => {
   return (
-    <View height={'100%'} width={'100%'}>
+    <Div height={'100%'} width={'100%'}>
       <NavBar title={'Hendrikkels'}></NavBar>
       <ScrollView padding={'28px'}>
         <VStack spaceItems={'28px'}>
@@ -26,15 +27,12 @@ const Home: NextPage = () => {
               needs.
             </Paragraph>
           </Card>
-          <Card title={'Color Palette'} width={'auto'}>
-            <ColorPalette></ColorPalette>
-          </Card>
-          <Card title={'Components'} width={'auto'}>
-            <Input></Input>
+          <Card title={'Color Palette'}>
+            <ColorPalette />
           </Card>
         </VStack>
       </ScrollView>
-    </View>
+    </Div>
   );
 };
 

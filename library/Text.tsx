@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useState, useMemo } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useState,
+  useMemo,
+  ReactNode,
+} from 'react';
 import {
   layout,
   position,
@@ -26,7 +32,7 @@ export interface TextProps
     ColorProps,
     TypographyProps,
     ShadowProps {
-  children?: string;
+  children?: ReactNode | string;
 }
 
 export const Text = styled.p<TextProps>(

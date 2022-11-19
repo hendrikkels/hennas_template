@@ -1,8 +1,15 @@
 import React, { ReactNode, useMemo } from 'react';
 import { useTheme } from 'styled-components';
-import { HStack, HStackProps, Link, Title, View, ViewProps } from '../library';
+import {
+  HStack,
+  HStackProps,
+  Anchor,
+  Heading1,
+  Div,
+  DivProps,
+} from '../library';
 
-export interface CardProps extends ViewProps {
+export interface CardProps extends DivProps {
   title?: string;
   renderTitle?: ReactNode;
   footer?: string;
@@ -24,26 +31,26 @@ export const Card: React.FC<CardProps> = (props) => {
     if (_renderTitle) {
       return _renderTitle;
     }
-    return <Title marginBottom={'28px'}>{title}</Title>;
+    return <Heading1 marginBottom={'28px'}>{title}</Heading1>;
   }, []);
 
   const renderFooter: ReactNode = useMemo(() => {
     if (_renderFooter) {
       return _renderFooter;
     }
-    return <Title marginTop={'28px'}>{footer}</Title>;
+    return <Heading1 marginTop={'28px'}>{footer}</Heading1>;
   }, []);
 
   return (
-    <View
+    <Div
       backgroundColor={theme.colors.secondaryBackground}
       borderRadius={theme.borderRadius}
       padding={'28px'}
       {...rest}
     >
       {renderTitle}
-      <View minHeight={'42px'}>{children}</View>
+      <Div minHeight={'42px'}>{children}</Div>
       {renderFooter}
-    </View>
+    </Div>
   );
 };

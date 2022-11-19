@@ -2,33 +2,29 @@ import React, { useCallback, useEffect, useState, useMemo } from 'react';
 import {
   layout,
   position,
-  LayoutProps,
-  PositionProps,
-  BorderProps,
   border,
-  ColorProps,
   color,
-  FlexboxProps,
   flexbox,
-  SpaceProps,
   space,
+  typography,
 } from 'styled-system';
 import styled from 'styled-components';
-import { ViewProps } from './View';
+import { TextProps } from './Text';
 
-export const Container = styled.div<ViewProps>(
+export const Heading3 = styled.h3<TextProps>(
   {
-    boxSizing: 'border-box',
-    '-moz-box-sizing': 'border-box',
-    '-webkit-box-sizing': 'border-box',
     display: 'flex',
     flexDirection: 'column',
-    padding: '28px',
+    fontSize: '14px',
+    fontWeight: 'normal',
+    padding: 0,
+    margin: 0,
   },
   layout,
   space,
   position,
   border,
   color,
-  flexbox
+  flexbox,
+  typography
 );

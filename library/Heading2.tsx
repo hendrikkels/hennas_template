@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState, useMemo } from "react";
+import React, { useCallback, useEffect, useState, useMemo } from 'react';
 import {
   layout,
   position,
@@ -7,15 +7,15 @@ import {
   flexbox,
   space,
   typography,
-} from "styled-system";
-import styled from "styled-components";
-import { TextProps } from "./Text";
+} from 'styled-system';
+import styled from 'styled-components';
+import { TextProps } from './Text';
 
-export const H3 = styled.p<TextProps>(
+export const Heading2 = styled.h2<TextProps>(
   {
     display: 'flex',
     flexDirection: 'column',
-    fontSize: '14px',
+    fontSize: '20px',
     fontWeight: 'normal',
     padding: 0,
     margin: 0,

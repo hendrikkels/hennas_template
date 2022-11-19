@@ -1,20 +1,20 @@
 import React, { ReactNode, useMemo } from 'react';
 import { render } from 'react-dom';
 import { useTheme } from 'styled-components';
-import { HStack, HStackProps, Link, Title, View, ViewProps } from '../library';
+import { HStack, HStackProps, Div, DivProps } from '../library';
 
-export const ColorPalette: React.FC<ViewProps> = (props) => {
+export const ColorPalette: React.FC<DivProps> = (props) => {
   const { ...rest } = props;
   const theme = useTheme();
 
   const renderColor = (color: string) => {
     return (
-      <View
+      <Div
         height={'100px'}
         width={'100px'}
         backgroundColor={color}
         {...rest}
-      ></View>
+      ></Div>
     );
   };
 
@@ -40,5 +40,5 @@ export const ColorPalette: React.FC<ViewProps> = (props) => {
     return <></>;
   }, [theme]);
 
-  return <View>{colorsArray}</View>;
+  return <Div>{colorsArray}</Div>;
 };

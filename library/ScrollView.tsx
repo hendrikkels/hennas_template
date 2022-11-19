@@ -14,9 +14,9 @@ import {
   space,
 } from 'styled-system';
 import styled from 'styled-components';
-import { ViewProps } from './View';
+import { DivProps } from './Div';
 
-export const ScrollView = styled.div<ViewProps>(
+export const ScrollView = styled.div<DivProps>(
   {
     boxSizing: 'border-box',
     '-moz-box-sizing': 'border-box',

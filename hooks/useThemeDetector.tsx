@@ -33,6 +33,6 @@ export const useThemeDetector = () => {
         }
       }
     }
-  }, []);
+  }, [isDarkTheme]);
   return isDarkTheme;
 };

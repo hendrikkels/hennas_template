@@ -1,29 +1,34 @@
 import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import Head from 'next/head';
+import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
-import { base, light, dark } from '../theme';
+import { base, light, dark, clear } from '../theme';
 import { useThemeDetector } from '../hooks';
+import { useEffect, useState } from 'react';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const isDarkTheme = useThemeDetector();
 
-  let theme = { ...base, colors: light };
+  const [theme, setTheme] = useState({ ...base, colors: clear });
 
-  if (isDarkTheme) {
-    theme = { ...base, colors: dark };
-  }
+  useEffect(() => {
+    if (isDarkTheme) {
+      setTheme({ ...base, colors: dark });
+    } else {
+      setTheme({ ...base, colors: light });
+    }
+  }, [isDarkTheme]);
 
   return (
-    <ThemeProvider
-      theme={
-        isDarkTheme ? { ...base, colors: dark } : { ...base, colors: light }
-      }
-    >
-      <Component {...pageProps} />
+    <ThemeProvider theme={theme}>
+      <Head>
+        <title>Hennas</title>
+      </Head>
+      <main className="main">
+        <Component {...pageProps} />
+      </main>
     </ThemeProvider>
   );
-
-  // return <Component {...pageProps} />;
 }
 
 export default MyApp

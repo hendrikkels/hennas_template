@@ -1,7 +1,13 @@
 import React from 'react';
 import { DefaultTheme, useTheme } from 'styled-components';
-import { H2, HStack, HStackProps, Title, View } from '../library';
-import { Clickable } from '../library/Clickable';
+import {
+  Heading2,
+  HStack,
+  HStackProps,
+  Heading1,
+  Div,
+  Anchor,
+} from '../library';
 
 export interface NavBarProps extends HStackProps {
   title?: string;
@@ -10,10 +16,9 @@ export interface NavBarProps extends HStackProps {
 export const NavBar: React.FC<NavBarProps> = (props) => {
   const { title, ...rest } = props;
   const theme = useTheme();
-  console.log('navbar reloaded with: ', theme.colors.navbarBackground);
 
   return (
-    <View backgroundColor={theme.colors.navbarBackground} {...rest}>
+    <Div backgroundColor={theme.colors.navbarBackground} {...rest}>
       <HStack
         width={'100%'}
         justifyContent={'space-between'}
@@ -21,31 +26,31 @@ export const NavBar: React.FC<NavBarProps> = (props) => {
         padding={'20px'}
         paddingX={'28px'}
       >
-        <View>
-          <Title fontFamily={'JetBrains Mono'} fontSize={'32px'}>
+        <Div>
+          <Heading1 fontFamily={'JetBrains Mono'} fontSize={'32px'}>
             {title}
-          </Title>
-        </View>
+          </Heading1>
+        </Div>
         <HStack spaceItems={'20px'}>
-          <Clickable href={'http://hendrikkels.github.io'} target={'_blank'}>
-            <H2>Resume</H2>
-          </Clickable>
-          <Clickable
+          <Anchor href={'http://hendrikkels.github.io'} target={'_blank'}>
+            <Heading2>Resume</Heading2>
+          </Anchor>
+          <Anchor
             onClick={() => {
               console.log('clicked portfolio');
             }}
           >
-            <H2>Portfolio</H2>
-          </Clickable>
-          <Clickable
+            <Heading2>Portfolio</Heading2>
+          </Anchor>
+          <Anchor
             onClick={() => {
               console.log('clicked contact');
             }}
           >
-            <H2>Contact</H2>
-          </Clickable>
+            <Heading2>Contact</Heading2>
+          </Anchor>
         </HStack>
       </HStack>
-    </View>
+    </Div>
   );
 };
