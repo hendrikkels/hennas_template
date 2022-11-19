@@ -10,6 +10,7 @@ export const useThemeDetector = () => {
   };
 
   const [isDarkTheme, setIsDarkTheme] = useState(getCurrentTheme());
+
   const mqListener = (e: any) => {
     setIsDarkTheme(e.matches);
   };
@@ -17,8 +18,20 @@ export const useThemeDetector = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)');
-      darkThemeMq.addListener(mqListener);
-      return () => darkThemeMq.removeListener(mqListener);
+      darkThemeMq.addEventListener('change', () => {});
+
+      try {
+        // Chrome & Firefox
+        darkThemeMq.addEventListener('change', mqListener);
+      } catch (e1) {
+        try {
+          // Safari
+          darkThemeMq.addListener(mqListener);
+          return () => darkThemeMq.removeListener(mqListener);
+        } catch (e2) {
+          console.error(e2);
+        }
+      }
     }
   }, []);
   return isDarkTheme;

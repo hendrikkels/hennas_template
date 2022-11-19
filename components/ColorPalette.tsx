@@ -32,7 +32,7 @@ export const ColorPalette: React.FC<ViewProps> = (props) => {
         colors.gray,
       ];
       return (
-        <HStack spaceItems={'10px'}>
+        <HStack spaceItems={'10px'} justifyContent={'center'}>
           {arr.map((item) => renderColor(item))}
         </HStack>
       );
