@@ -1,6 +1,16 @@
 import React from 'react';
 import { DefaultTheme, useTheme } from 'styled-components';
-import { HStack, HStackProps, Link, Title, View, ViewProps } from '../library';
+import {
+  H2,
+  H3,
+  HStack,
+  HStackProps,
+  Link,
+  Title,
+  View,
+  ViewProps,
+} from '../library';
+import { Clickable } from '../library/Clickable';
 
 export interface NavBarProps extends HStackProps {
   title?: string;
@@ -12,7 +22,7 @@ export const NavBar: React.FC<NavBarProps> = (props) => {
   console.log(theme);
 
   return (
-    <View backgroundColor={theme.colors.navbarBackground}>
+    <View backgroundColor={theme.colors.navbarBackground} {...rest}>
       <HStack
         width={'100%'}
         justifyContent={'space-between'}
@@ -21,14 +31,28 @@ export const NavBar: React.FC<NavBarProps> = (props) => {
         paddingX={'28px'}
       >
         <View>
-          <Title>{title}</Title>
+          <Title fontFamily={'JetBrains Mono'} fontSize={'32px'}>
+            {title}
+          </Title>
         </View>
         <HStack spaceItems={'20px'}>
-          <Link href={'http://hendrikkels.github.io'} target={'_blank'}>
-            Resume
-          </Link>
-          <Link>Portfolio</Link>
-          <Link>Contact</Link>
+          <Clickable href={'http://hendrikkels.github.io'} target={'_blank'}>
+            <H2>Resume</H2>
+          </Clickable>
+          <Clickable
+            onClick={() => {
+              console.log('clicked portfolio');
+            }}
+          >
+            <H2>Portfolio</H2>
+          </Clickable>
+          <Clickable
+            onClick={() => {
+              console.log('clicked contact');
+            }}
+          >
+            <H2>Contact</H2>
+          </Clickable>
         </HStack>
       </HStack>
     </View>

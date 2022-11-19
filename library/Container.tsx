@@ -14,24 +14,16 @@ import {
   space,
 } from 'styled-system';
 import styled from 'styled-components';
+import { ViewProps } from './View';
 
-export interface ViewProps
-  extends LayoutProps,
-    SpaceProps,
-    PositionProps,
-    BorderProps,
-    ColorProps,
-    FlexboxProps {
-  children?: React.ReactNode;
-}
-
-export const View = styled.div<ViewProps>(
+export const Container = styled.div<ViewProps>(
   {
     boxSizing: 'border-box',
     '-moz-box-sizing': 'border-box',
     '-webkit-box-sizing': 'border-box',
     display: 'flex',
     flexDirection: 'column',
+    padding: '28px',
   },
   layout,
   space,

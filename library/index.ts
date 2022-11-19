@@ -1,4 +1,6 @@
 export * from './View';
+export * from './ScrollView';
+export * from './Container';
 export * from './HStack';
 export * from './VStack';
 export * from './Title';
@@ -7,4 +9,5 @@ export * from './H1';
 export * from './H2';
 export * from './H3';
 export * from './Text';
+export * from './Paragraph';
 export * from './Link';

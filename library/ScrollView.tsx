@@ -14,24 +14,18 @@ import {
   space,
 } from 'styled-system';
 import styled from 'styled-components';
+import { ViewProps } from './View';
 
-export interface ClickableProps
-  extends LayoutProps,
-    SpaceProps,
-    PositionProps,
-    BorderProps,
-    ColorProps,
-    FlexboxProps {
-  children?: React.ReactNode;
-}
-
-export const Clickable = styled.a<ClickableProps>(
+export const ScrollView = styled.div<ViewProps>(
   {
     boxSizing: 'border-box',
     '-moz-box-sizing': 'border-box',
     '-webkit-box-sizing': 'border-box',
     display: 'flex',
-    cursor: 'pointer',
+    flexDirection: 'column',
+    'overflow-x': 'hidden',
+    'overflow-y': 'auto',
+    'text-align': 'justify',
   },
   layout,
   space,

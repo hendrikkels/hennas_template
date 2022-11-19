@@ -16,7 +16,7 @@ import {
 import styled from "styled-components";
 
 
-interface SpasieProps {
+interface SpaceItemsProps {
   spaceItems?: string | number;
 }
 export interface VStackProps
@@ -26,7 +26,9 @@ export interface VStackProps
     BorderProps,
     ColorProps,
     FlexboxProps,
-    SpasieProps {
+    SpaceItemsProps,
+    Omit<React.HTMLAttributes<HTMLElement>, 'color'> {
+  as?: React.ElementType;
   children?: React.ReactNode;
 }
 

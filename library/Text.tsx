@@ -13,8 +13,10 @@ import {
   space,
   TypographyProps,
   typography,
-} from "styled-system";
-import styled from "styled-components";
+  ShadowProps,
+  shadow,
+} from 'styled-system';
+import styled from 'styled-components';
 
 export interface TextProps
   extends LayoutProps,
@@ -22,7 +24,8 @@ export interface TextProps
     PositionProps,
     BorderProps,
     ColorProps,
-    TypographyProps {
+    TypographyProps,
+    ShadowProps {
   children?: string;
 }
 
@@ -39,5 +42,6 @@ export const Text = styled.p<TextProps>(
   border,
   color,
   flexbox,
-  typography
+  typography,
+  shadow
 );
