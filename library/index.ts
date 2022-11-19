@@ -11,3 +11,4 @@ export * from './H3';
 export * from './Text';
 export * from './Paragraph';
 export * from './Link';
+export * from './Input';
