@@ -9,13 +9,13 @@ import {
   typography,
 } from 'styled-system';
 import styled from 'styled-components';
-import { TextProps } from './Text';
+import { ParagraphProps } from './.';
 
-export const Heading2 = styled.h2<TextProps>(
+export const Heading2 = styled.h2<ParagraphProps>(
   {
     display: 'flex',
     flexDirection: 'column',
-    fontSize: '20px',
+    fontSize: '28px',
     fontWeight: 'normal',
     padding: 0,
     margin: 0,

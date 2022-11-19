@@ -1,4 +1,3 @@
-import React, { useCallback, useEffect, useState, useMemo } from 'react';
 import {
   layout,
   position,
@@ -14,6 +13,8 @@ import {
   space,
   ShadowProps,
   shadow,
+  typography,
+  TypographyProps,
 } from 'styled-system';
 import styled from 'styled-components';
 
@@ -25,6 +26,7 @@ export interface DivProps
     FlexboxProps,
     ColorProps,
     ShadowProps,
+    TypographyProps,
     Omit<React.HTMLAttributes<HTMLElement>, 'color'> {
   as?: React.ElementType;
   children?: React.ReactNode;
@@ -44,5 +46,6 @@ export const Div = styled.div<DivProps>(
   position,
   border,
   color,
-  shadow
+  shadow,
+  typography
 );

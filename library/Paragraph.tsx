@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useState, useMemo } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useState,
+  useMemo,
+  ReactNode,
+} from 'react';
 import {
   layout,
   position,
@@ -7,19 +13,35 @@ import {
   flexbox,
   space,
   typography,
+  LayoutProps,
+  SpaceProps,
+  PositionProps,
+  BorderProps,
+  ColorProps,
+  TypographyProps,
+  ShadowProps,
 } from 'styled-system';
 import styled from 'styled-components';
-import { TextProps } from './Text';
 
-export const Paragraph = styled.p<TextProps>(
+export interface ParagraphProps
+  extends LayoutProps,
+    SpaceProps,
+    PositionProps,
+    BorderProps,
+    ColorProps,
+    TypographyProps,
+    ShadowProps,
+    Omit<React.HTMLAttributes<HTMLElement>, 'color'> {
+  as?: React.ElementType;
+  children?: React.ReactNode;
+}
+export const Paragraph = styled.p<ParagraphProps>(
   {
-    display: 'flex',
     flexDirection: 'column',
-    fontSize: '14px',
+    fontSize: '16px',
     fontWeight: 'normal',
     padding: 0,
     margin: 0,
-    marginBottom: '10px',
   },
   layout,
   space,

@@ -1,13 +1,6 @@
 import React, { ReactNode, useMemo } from 'react';
 import { useTheme } from 'styled-components';
-import {
-  HStack,
-  HStackProps,
-  Anchor,
-  Heading1,
-  Div,
-  DivProps,
-} from '../library';
+import { Heading1, Div, DivProps } from '../library';
 
 export interface CardProps extends DivProps {
   title?: string;

@@ -1,7 +1,20 @@
 declare module 'styled-components' {
   export interface DefaultTheme {
     borderRadius: string;
-
+    fontFamily: string;
+    inputHeight: string;
+    inputPaddingX: string;
+    inputPaddingY: string;
+    inputBorderWidth: string;
+    inputBorderRadius: string;
+    inputLabelFontSize: string;
+    inputLabelFontFamily: string;
+    inputLabelHeight: string;
+    inputLabelPaddingLeft: string;
+    inputErrorFontSize: string;
+    inputErrorFontFamily: string;
+    inputErrorHeight: string;
+    inputErrorPaddingLeft: string;
     colors: {
       primary: string;
       secondary: string;
@@ -23,12 +36,30 @@ declare module 'styled-components' {
       primaryBackground: string;
       secondaryBackground: string;
       navbarBackground: string;
+      inputBackground: string;
+      inputBorder: string;
+      inputCaret: string;
+      inputLabel: string;
+      inputError: string;
     };
   }
 }
 
 export const base = {
   borderRadius: '4px',
+  inputHeight: '42px',
+  inputPaddingX: '8px',
+  inputPaddingY: '2px',
+  inputBorderWidth: '2px',
+  inputBorderRadius: '4px',
+  inputLabelFontSize: '14px',
+  inputLabelFontFamily: '',
+  inputLabelHeight: '20px',
+  inputLabelPaddingLeft: '2px',
+  inputErrorFontSize: '10px',
+  inputErrorFontFamily: '',
+  inputErrorHeight: '18px',
+  inputErrorPaddingLeft: '4px',
 };
 
 export const light = {
@@ -46,12 +77,17 @@ export const light = {
   blue: '#5677fc',
   purple: '#a29bfe',
   pink: '#ff5d8f',
-  gray: '#cccccc',
+  gray: '#888888',
   white: '#ffffff',
   black: '#000000',
   primaryBackground: '#ffffff',
   secondaryBackground: '#eeeeee',
   navbarBackground: '#e1e1e1',
+  inputBackground: '#dddddd',
+  inputBorder: '#dddddd',
+  inputCaret: '#5677fc',
+  inputLabel: '#888888',
+  inputError: '#ff5a5a',
 };
 
 export const dark = {
@@ -75,27 +111,11 @@ export const dark = {
   primaryBackground: '#000000',
   secondaryBackground: '#111111',
   navbarBackground: '#1a1a1a',
+  inputBackground: '#cccccc',
+  inputBorder: '#cccccc',
+  inputCaret: '#5677fc',
+  inputLabel: '#cccccc',
+  inputError: '#ff5a5a',
 };
 
-export const clear = {
-  primary: '#00000000',
-  secondary: '#00000000',
-  tertiary: '#00000000',
-  success: '#00000000',
-  error: '#00000000',
-  info: '#00000000',
-  warning: '#00000000',
-  red: '#00000000',
-  orange: '#00000000',
-  yellow: '#00000000',
-  green: '#00000000',
-  blue: '#00000000',
-  purple: '#00000000',
-  pink: '#00000000',
-  gray: '#00000000',
-  white: '#00000000',
-  black: '#00000000',
-  primaryBackground: '#00000000',
-  secondaryBackground: '#00000000',
-  navbarBackground: '#00000000',
-};
+export const clear = {};

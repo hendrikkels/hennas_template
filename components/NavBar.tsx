@@ -1,15 +1,17 @@
 import React from 'react';
 import { DefaultTheme, useTheme } from 'styled-components';
+import { HStack } from '.';
 import {
   Heading2,
-  HStack,
-  HStackProps,
   Heading1,
   Div,
   Anchor,
+  DivProps,
+  Heading3,
+  Paragraph,
 } from '../library';
 
-export interface NavBarProps extends HStackProps {
+export interface NavBarProps extends DivProps {
   title?: string;
 }
 
@@ -31,23 +33,23 @@ export const NavBar: React.FC<NavBarProps> = (props) => {
             {title}
           </Heading1>
         </Div>
-        <HStack spaceItems={'20px'}>
+        <HStack space={'20px'}>
           <Anchor href={'http://hendrikkels.github.io'} target={'_blank'}>
-            <Heading2>Resume</Heading2>
+            <Paragraph>Resume</Paragraph>
           </Anchor>
           <Anchor
             onClick={() => {
               console.log('clicked portfolio');
             }}
           >
-            <Heading2>Portfolio</Heading2>
+            <Paragraph>Portfolio</Paragraph>
           </Anchor>
           <Anchor
             onClick={() => {
               console.log('clicked contact');
             }}
           >
-            <Heading2>Contact</Heading2>
+            <Paragraph>Contact</Paragraph>
           </Anchor>
         </HStack>
       </HStack>

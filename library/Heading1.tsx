@@ -8,13 +8,13 @@ import {
   typography,
 } from 'styled-system';
 import styled from 'styled-components';
-import { TextProps } from './Text';
+import { ParagraphProps } from './.';
 
-export const Heading1 = styled.h1<TextProps>(
+export const Heading1 = styled.h1<ParagraphProps>(
   {
     display: 'flex',
     flexDirection: 'column',
-    fontSize: '30px',
+    fontSize: '36px',
     fontWeight: 'bold',
     padding: 0,
     margin: 0,

@@ -1,7 +1,8 @@
 import React, { ReactNode, useMemo } from 'react';
 import { render } from 'react-dom';
 import { useTheme } from 'styled-components';
-import { HStack, HStackProps, Div, DivProps } from '../library';
+import { DivProps, Div } from '../library';
+import { HStack } from './HStack';
 
 export const ColorPalette: React.FC<DivProps> = (props) => {
   const { ...rest } = props;
@@ -32,7 +33,7 @@ export const ColorPalette: React.FC<DivProps> = (props) => {
         colors.gray,
       ];
       return (
-        <HStack spaceItems={'10px'} justifyContent={'center'}>
+        <HStack space={'10px'} justifyContent={'center'}>
           {arr.map((item) => renderColor(item))}
         </HStack>
       );
