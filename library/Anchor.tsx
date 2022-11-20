@@ -34,8 +34,6 @@ export interface AnchorProps
 
 export const Anchor = styled.a<AnchorProps>(
   {
-    display: 'flex',
-    flexDirection: 'column',
     cursor: 'pointer',
   },
   layout,

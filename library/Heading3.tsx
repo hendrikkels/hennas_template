@@ -13,7 +13,6 @@ import { ParagraphProps } from './.';
 
 export const Heading3 = styled.h3<ParagraphProps>(
   {
-    flexDirection: 'column',
     fontSize: '22px',
     fontWeight: 'normal',
     padding: 0,

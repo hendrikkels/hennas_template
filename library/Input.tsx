@@ -35,15 +35,8 @@ export interface InputProps
 
 export const Input = styled.input<InputProps>(
   {
-    boxSizing: 'border-box',
-    '-moz-box-sizing': 'border-box',
-    '-webkit-box-sizing': 'border-box',
-    display: 'flex',
-    flexDirection: 'column',
-    width: '200px',
-    height: '28px',
+    width: 'fit-content',
     fontSize: '18px',
-    border: 0,
   },
   layout,
   space,

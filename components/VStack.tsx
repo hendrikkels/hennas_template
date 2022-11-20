@@ -13,7 +13,7 @@ export const VStack: React.FC<VStackProps> = (props) => {
   return (
     <Div
       style={space && { gap: space }}
-      display={'flex'}
+      display={'inline-flex'}
       flexDirection={'column'}
       {...rest}
     >

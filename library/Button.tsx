@@ -18,7 +18,7 @@ import {
 } from 'styled-system';
 import styled from 'styled-components';
 
-export interface DivProps
+export interface ButtonProps
   extends LayoutProps,
     SpaceProps,
     PositionProps,
@@ -32,11 +32,8 @@ export interface DivProps
   children?: React.ReactNode;
 }
 
-export const Div = styled.div<DivProps>(
-  {
-    width: 'fit-content',
-    flexDirection: 'column',
-  },
+export const Button = styled.button<ButtonProps>(
+  { width: 'fit-content', cursor: 'pointer' },
   layout,
   space,
   flexbox,

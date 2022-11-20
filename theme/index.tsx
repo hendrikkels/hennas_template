@@ -1,12 +1,15 @@
 declare module 'styled-components' {
   export interface DefaultTheme {
-    borderRadius: string;
     fontFamily: string;
+    borderRadius: string;
+    cardPadding: string;
     inputHeight: string;
     inputPaddingX: string;
     inputPaddingY: string;
     inputBorderWidth: string;
     inputBorderRadius: string;
+    inputValueFontSize: string;
+    inputValueFontFamily: string;
     inputLabelFontSize: string;
     inputLabelFontFamily: string;
     inputLabelHeight: string;
@@ -15,6 +18,13 @@ declare module 'styled-components' {
     inputErrorFontFamily: string;
     inputErrorHeight: string;
     inputErrorPaddingLeft: string;
+    buttonHeight: string;
+    buttonPaddingX: string;
+    buttonPaddingY: string;
+    buttonBorderWidth: string;
+    buttonBorderRadius: string;
+    buttonLabelFontSize: string;
+    buttonLabelFontFamily: string;
     colors: {
       primary: string;
       secondary: string;
@@ -36,22 +46,32 @@ declare module 'styled-components' {
       primaryBackground: string;
       secondaryBackground: string;
       navbarBackground: string;
+      inputText: string;
+      inputTextDisabled: string;
       inputBackground: string;
       inputBorder: string;
-      inputCaret: string;
       inputLabel: string;
       inputError: string;
+      buttonForeground: string;
+      buttonBackground: string;
+      buttonBorder: string;
+      buttonHoverMask: string;
+      buttonPressMask: string;
     };
   }
 }
 
 export const base = {
+  fontFamily: 'JetBrains Mono',
   borderRadius: '4px',
+  cardPadding: '40px',
   inputHeight: '42px',
   inputPaddingX: '8px',
   inputPaddingY: '2px',
-  inputBorderWidth: '2px',
+  inputBorderWidth: '0px',
   inputBorderRadius: '4px',
+  inputValueFontSize: '20px',
+  inputValueFontFamily: '',
   inputLabelFontSize: '14px',
   inputLabelFontFamily: '',
   inputLabelHeight: '20px',
@@ -60,6 +80,13 @@ export const base = {
   inputErrorFontFamily: '',
   inputErrorHeight: '18px',
   inputErrorPaddingLeft: '4px',
+  buttonHeight: '42px',
+  buttonPaddingX: '20px',
+  buttonPaddingY: '0px',
+  buttonBorderWidth: '0px',
+  buttonBorderRadius: '4px',
+  buttonLabelFontSize: '20px',
+  buttonLabelFontFamily: '',
 };
 
 export const light = {
@@ -81,13 +108,19 @@ export const light = {
   white: '#ffffff',
   black: '#000000',
   primaryBackground: '#ffffff',
-  secondaryBackground: '#eeeeee',
+  secondaryBackground: '#f8f8f8',
   navbarBackground: '#e1e1e1',
-  inputBackground: '#dddddd',
-  inputBorder: '#dddddd',
-  inputCaret: '#5677fc',
+  inputText: '#000000',
+  inputTextDisabled: '#757575',
+  inputBackground: '#eeeeee',
+  inputBorder: '#5677fc',
   inputLabel: '#888888',
   inputError: '#ff5a5a',
+  buttonForeground: '#ffffff',
+  buttonBackground: '#5677fc',
+  buttonBorder: '#5677fc',
+  buttonHoverMask: '#0000000e',
+  buttonPressMask: '#0000000e',
 };
 
 export const dark = {
@@ -111,11 +144,15 @@ export const dark = {
   primaryBackground: '#000000',
   secondaryBackground: '#111111',
   navbarBackground: '#1a1a1a',
-  inputBackground: '#cccccc',
-  inputBorder: '#cccccc',
-  inputCaret: '#5677fc',
+  inputText: '#ffffff',
+  inputTextDisabled: '#757575',
+  inputBackground: '#222222',
+  inputBorder: '#222222',
   inputLabel: '#cccccc',
   inputError: '#ff5a5a',
+  buttonForeground: '#ffffff',
+  buttonBackground: '#5677fc',
+  buttonBorder: '#5677fc',
+  buttonHoverMask: '#ffffff0e',
+  buttonPressMask: '#ffffff0e',
 };
-
-export const clear = {};

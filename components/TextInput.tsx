@@ -1,4 +1,10 @@
-import React, { ReactNode, useMemo } from 'react';
+import React, {
+  FormEvent,
+  ReactNode,
+  useCallback,
+  useMemo,
+  useState,
+} from 'react';
 import { useTheme } from 'styled-components';
 import {
   Div,
@@ -10,7 +16,13 @@ import {
 } from '../library';
 
 export interface TextInputProps extends InputProps {
-  label?: string | number;
+  label?: string | ReactNode;
+  error?: string | ReactNode;
+  value?: string;
+  onChange?: (arg0: FormEvent<HTMLElement>) => void;
+  required?: boolean;
+  initAsTouched?: boolean;
+  disabled?: boolean;
   _containerStyle?: DivProps;
   _labelContainerStyle?: DivProps;
   _labelStyle?: ParagraphProps;
@@ -21,6 +33,12 @@ export interface TextInputProps extends InputProps {
 export const TextInput: React.FC<TextInputProps> = (props) => {
   const {
     label,
+    error,
+    value: _value,
+    onChange: _onChange,
+    required = false,
+    initAsTouched = false,
+    disabled = false,
     _containerStyle,
     _labelStyle,
     _labelContainerStyle,
@@ -30,8 +48,33 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
   } = props;
   const theme = useTheme();
 
+  const [value, setValue] = useState(_value || '');
+  const [touched, setTouched] = useState(initAsTouched);
+
+  const onChange = useCallback(
+    (event: FormEvent<HTMLInputElement>) => {
+      if (_onChange) {
+        _onChange(event);
+      }
+      setTouched(true);
+      setValue(event.currentTarget.value);
+    },
+    [setValue]
+  );
+
+  const emptyError = useMemo(() => {
+    if (touched && required && value.length <= 0) {
+      return 'Required';
+    }
+  }, [touched, required, value]);
+
   return (
-    <Div display={'flex'} flexDirection={'column'} {..._containerStyle}>
+    <Div
+      display={'flex'}
+      flex={1}
+      flexDirection={'column'}
+      {..._containerStyle}
+    >
       <Div
         height={theme.inputLabelHeight}
         paddingLeft={theme.inputLabelPaddingLeft}
@@ -43,11 +86,17 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
           color={theme.colors.inputLabel}
           {..._labelStyle}
         >
-          Label
+          {required ? `${label} *` : label}
         </Paragraph>
       </Div>
 
       <Input
+        value={value}
+        onChange={onChange}
+        disabled={disabled}
+        color={
+          disabled ? theme.colors.inputTextDisabled : theme.colors.inputText
+        }
         borderWidth={theme.inputBorderWidth}
         borderRadius={theme.inputBorderRadius}
         borderColor={theme.colors.inputBorder}
@@ -55,7 +104,6 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
         paddingX={theme.inputPaddingX}
         paddingY={theme.inputPaddingY}
         backgroundColor={theme.colors.inputBackground}
-        caretColor={theme.colors.inputCaret}
         {...rest}
       ></Input>
       <Div
@@ -70,7 +118,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
           color={theme.colors.inputError}
           {..._errorStyle}
         >
-          Label
+          {error || emptyError}
         </Paragraph>
       </Div>
     </Div>

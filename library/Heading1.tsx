@@ -12,8 +12,6 @@ import { ParagraphProps } from './.';
 
 export const Heading1 = styled.h1<ParagraphProps>(
   {
-    display: 'flex',
-    flexDirection: 'column',
     fontSize: '36px',
     fontWeight: 'bold',
     padding: 0,

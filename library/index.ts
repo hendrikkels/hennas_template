@@ -4,4 +4,5 @@ export * from './Heading2';
 export * from './Heading3';
 export * from './Paragraph';
 export * from './Anchor';
+export * from './Button';
 export * from './Input';

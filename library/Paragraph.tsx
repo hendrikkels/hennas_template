@@ -37,7 +37,6 @@ export interface ParagraphProps
 }
 export const Paragraph = styled.p<ParagraphProps>(
   {
-    flexDirection: 'column',
     fontSize: '16px',
     fontWeight: 'normal',
     padding: 0,

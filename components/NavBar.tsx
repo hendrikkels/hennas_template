@@ -20,7 +20,11 @@ export const NavBar: React.FC<NavBarProps> = (props) => {
   const theme = useTheme();
 
   return (
-    <Div backgroundColor={theme.colors.navbarBackground} {...rest}>
+    <Div
+      width={'100%'}
+      backgroundColor={theme.colors.navbarBackground}
+      {...rest}
+    >
       <HStack
         width={'100%'}
         justifyContent={'space-between'}

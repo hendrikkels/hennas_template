@@ -8,11 +8,13 @@ export const ColorPalette: React.FC<DivProps> = (props) => {
   const { ...rest } = props;
   const theme = useTheme();
 
-  const renderColor = (color: string) => {
+  const renderColor = (color: string, index: number) => {
     return (
       <Div
+        key={index}
         height={'100px'}
         width={'100px'}
+        borderRadius={theme.borderRadius}
         backgroundColor={color}
         {...rest}
       ></Div>
@@ -34,7 +36,7 @@ export const ColorPalette: React.FC<DivProps> = (props) => {
       ];
       return (
         <HStack space={'10px'} justifyContent={'center'}>
-          {arr.map((item) => renderColor(item))}
+          {arr.map((item, index) => renderColor(item, index))}
         </HStack>
       );
     }

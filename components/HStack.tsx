@@ -13,7 +13,7 @@ export const HStack: React.FC<HStackProps> = (props) => {
   return (
     <Div
       style={space && { gap: space }}
-      display={'flex'}
+      display={'inline-flex'}
       flexDirection={'row'}
       {...rest}
     >
