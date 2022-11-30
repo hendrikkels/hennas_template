@@ -4,8 +4,8 @@ import { Div, Button, ButtonProps, Paragraph } from '../library';
 
 export interface SolidButtonProps extends ButtonProps {
   label?: string;
-  animateHover?: string;
-  animatePress?: string;
+  animateHover?: boolean;
+  animatePress?: boolean;
 }
 
 export const SolidButton: React.FC<SolidButtonProps> = (props) => {
@@ -42,6 +42,7 @@ export const SolidButton: React.FC<SolidButtonProps> = (props) => {
           color={theme.colors.buttonForeground}
           fontFamily={theme.buttonLabelFontFamily}
           fontSize={theme.buttonLabelFontSize}
+          lineHeight={theme.buttonLabelLineHeight}
         >
           {label}
         </Paragraph>

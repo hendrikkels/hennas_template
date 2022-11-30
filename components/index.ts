@@ -3,6 +3,7 @@ export * from './HStack';
 export * from './VStack';
 
 export * from './Card';
+export * from './Text';
 export * from './TextInput';
 export * from './SolidButton';
 

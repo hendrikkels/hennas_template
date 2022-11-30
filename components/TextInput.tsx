@@ -19,7 +19,7 @@ export interface TextInputProps extends InputProps {
   label?: string | ReactNode;
   error?: string | ReactNode;
   value?: string;
-  onChange?: (arg0: FormEvent<HTMLElement>) => void;
+  onChange?: (arg0: FormEvent<HTMLInputElement>) => void;
   required?: boolean;
   initAsTouched?: boolean;
   disabled?: boolean;

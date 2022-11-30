@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import { useState } from 'react';
 import { useTheme } from 'styled-components';
 import { backgroundColor } from 'styled-system';
 import {
@@ -23,8 +24,10 @@ import {
 const Home: NextPage = () => {
   const theme = useTheme();
 
+  const [p, setP] = useState('zoe');
+
   return (
-    <Div>
+    <Div width={'100%'}>
       <NavBar title={'Hendrikkels'}></NavBar>
       <ScrollView padding={'28px'}>
         <VStack space={'28px'}>
@@ -87,6 +90,7 @@ const Home: NextPage = () => {
                 <SolidButton
                   label={'Success'}
                   backgroundColor={theme.colors.success}
+                  animateHover={true}
                 ></SolidButton>
                 <SolidButton
                   label={'Info'}

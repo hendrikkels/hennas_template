@@ -1,6 +1,7 @@
 declare module 'styled-components' {
   export interface DefaultTheme {
     fontFamily: string;
+    fontSize: string;
     borderRadius: string;
     cardPadding: string;
     inputHeight: string;
@@ -24,6 +25,7 @@ declare module 'styled-components' {
     buttonBorderWidth: string;
     buttonBorderRadius: string;
     buttonLabelFontSize: string;
+    buttonLabelLineHeight: string;
     buttonLabelFontFamily: string;
     colors: {
       primary: string;
@@ -63,7 +65,9 @@ declare module 'styled-components' {
 
 export const base = {
   fontFamily: 'JetBrains Mono',
-  borderRadius: '4px',
+  fontSize: '14px',
+  lineHeight: '1.75',
+  borderRadius: '6px',
   cardPadding: '40px',
   inputHeight: '42px',
   inputPaddingX: '8px',
@@ -80,12 +84,13 @@ export const base = {
   inputErrorFontFamily: '',
   inputErrorHeight: '18px',
   inputErrorPaddingLeft: '4px',
-  buttonHeight: '42px',
-  buttonPaddingX: '20px',
+  buttonHeight: '48px',
+  buttonPaddingX: '16px',
   buttonPaddingY: '0px',
   buttonBorderWidth: '0px',
-  buttonBorderRadius: '4px',
-  buttonLabelFontSize: '20px',
+  buttonBorderRadius: '6px',
+  buttonLabelFontSize: '16px',
+  buttonLabelLineHeight: '1.75',
   buttonLabelFontFamily: '',
 };
 
@@ -112,7 +117,7 @@ export const light = {
   navbarBackground: '#e1e1e1',
   inputText: '#000000',
   inputTextDisabled: '#757575',
-  inputBackground: '#eeeeee',
+  inputBackground: '#00000010',
   inputBorder: '#5677fc',
   inputLabel: '#888888',
   inputError: '#ff5a5a',
