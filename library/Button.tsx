@@ -15,6 +15,8 @@ import {
   shadow,
   typography,
   TypographyProps,
+  BoxShadowProps,
+  boxShadow,
 } from 'styled-system';
 import styled from 'styled-components';
 
@@ -26,6 +28,7 @@ export interface ButtonProps
     FlexboxProps,
     ColorProps,
     ShadowProps,
+    BoxShadowProps,
     TypographyProps,
     Omit<React.HTMLAttributes<HTMLElement>, 'color'> {
   as?: React.ElementType;
@@ -41,5 +44,6 @@ export const Button = styled.button<ButtonProps>(
   border,
   color,
   shadow,
+  boxShadow,
   typography
 );

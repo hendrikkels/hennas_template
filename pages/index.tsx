@@ -11,6 +11,7 @@ import {
   TextInput,
   VStack,
   SolidButton,
+  DepthButton,
 } from '../components';
 import {
   Paragraph,
@@ -34,7 +35,7 @@ const Home: NextPage = () => {
           <Card title={'Introduction'}>
             <VStack space={'10px'}>
               <Paragraph>
-                This is a proof-of-concept project that I am building as an
+                This is a proof-of-concept project that I am building as a
                 showcase of my software engineering ability and design skills.
                 The project is built using Next.js and React.
               </Paragraph>
@@ -62,6 +63,64 @@ const Home: NextPage = () => {
               <Heading3>Heading 3</Heading3>
               <Paragraph>Paragraph</Paragraph>
               <Anchor>Anchor (Hover me)</Anchor>
+
+              <HStack space={'40px'} width={'100%'}>
+                  <TextInput
+                    label="Input with placeholder"
+                    placeholder={'Email'}
+                  ></TextInput>
+                  <TextInput
+                    label="Example input with error"
+                    initAsTouched={true}
+                    required={true}
+                  ></TextInput>
+                </HStack>
+
+              <HStack space={'20px'}>
+                <SolidButton
+                  label={'Success'}
+                  backgroundColor={theme.colors.success}
+                ></SolidButton>
+                <SolidButton
+                  label={'Info'}
+                  backgroundColor={theme.colors.info}
+                ></SolidButton>
+                <SolidButton
+                  label={'Warning'}
+                  backgroundColor={theme.colors.warning}
+                ></SolidButton>
+                <SolidButton
+                  label={'Error'}
+                  backgroundColor={theme.colors.error}
+                ></SolidButton>
+                <SolidButton
+                  label={'animateHover'}
+                  animateHover={true}
+                  backgroundColor={theme.colors.primary}
+                ></SolidButton>
+              </HStack>
+              <HStack space={'20px'}>
+                <DepthButton
+                  label={'Success'}
+                  backgroundColor={theme.colors.success}
+                />
+                <DepthButton
+                  label={'Info'}
+                  backgroundColor={theme.colors.info}
+                />
+                <DepthButton
+                  label={'Warning'}
+                  backgroundColor={theme.colors.warning}
+                />
+                <DepthButton
+                  label={'Error'}
+                  backgroundColor={theme.colors.error}
+                />
+                <DepthButton
+                  label={'Primary'}
+                  backgroundColor={theme.colors.primary}
+                />
+              </HStack>
               <Card
                 title={'Card'}
                 backgroundColor={theme.colors.primaryBackground}
@@ -86,25 +145,6 @@ const Home: NextPage = () => {
                   ></TextInput>
                 </HStack>
               </Card>
-              <HStack space={'20px'}>
-                <SolidButton
-                  label={'Success'}
-                  backgroundColor={theme.colors.success}
-                  animateHover={true}
-                ></SolidButton>
-                <SolidButton
-                  label={'Info'}
-                  backgroundColor={theme.colors.info}
-                ></SolidButton>
-                <SolidButton
-                  label={'Error'}
-                  backgroundColor={theme.colors.error}
-                ></SolidButton>
-                <SolidButton
-                  label={'Warning'}
-                  backgroundColor={theme.colors.warning}
-                ></SolidButton>
-              </HStack>
             </VStack>
           </Card>
         </VStack>
