@@ -25,8 +25,6 @@ import {
 const Home: NextPage = () => {
   const theme = useTheme();
 
-  const [p, setP] = useState('zoe');
-
   return (
     <Div width={'100%'}>
       <NavBar title={'Hendrikkels'}></NavBar>
