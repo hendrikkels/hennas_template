@@ -10,6 +10,8 @@ import {
   Heading3,
   Paragraph,
 } from '../library';
+import { NavItem } from './NavItem';
+import { useRouter } from 'next/router';
 
 export interface NavBarProps extends DivProps {
   title?: string;
@@ -18,6 +20,7 @@ export interface NavBarProps extends DivProps {
 export const NavBar: React.FC<NavBarProps> = (props) => {
   const { title, ...rest } = props;
   const theme = useTheme();
+  const router = useRouter();
 
   return (
     <Div
@@ -38,23 +41,25 @@ export const NavBar: React.FC<NavBarProps> = (props) => {
           </Heading1>
         </Div>
         <HStack space={'20px'}>
-          <Anchor href={'http://hendrikkels.github.io'} target={'_blank'}>
-            <Paragraph>Resume</Paragraph>
-          </Anchor>
-          <Anchor
+          <NavItem
+            label={'Home'}
+            active={router.pathname == '/'}
             onClick={() => {
-              console.log('clicked portfolio');
+              router.push('/');
             }}
-          >
-            <Paragraph>Portfolio</Paragraph>
-          </Anchor>
-          <Anchor
+          />
+          <NavItem
+            label={'UI Library'}
+            active={router.pathname.includes('/components')}
             onClick={() => {
-              console.log('clicked contact');
+              router.push('/components');
             }}
-          >
-            <Paragraph>Contact</Paragraph>
-          </Anchor>
+          />
+          <NavItem
+            label={'Resume'}
+            href={'http://hendrikkels.github.io'}
+            target={'_blank'}
+          />
         </HStack>
       </HStack>
     </Div>

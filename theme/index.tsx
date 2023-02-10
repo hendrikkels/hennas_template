@@ -48,6 +48,8 @@ declare module 'styled-components' {
       primaryBackground: string;
       secondaryBackground: string;
       navbarBackground: string;
+      navbarItemActive: string;
+      navbarItemInactive: string;
       inputText: string;
       inputTextDisabled: string;
       inputBackground: string;
@@ -115,6 +117,8 @@ export const light = {
   primaryBackground: '#ffffff',
   secondaryBackground: '#f8f8f8',
   navbarBackground: '#e1e1e1',
+  navbarItemActive: '#5677fc',
+  navbarItemInactive: '#000000',
   inputText: '#000000',
   inputTextDisabled: '#757575',
   inputBackground: '#0000000d',
@@ -149,6 +153,8 @@ export const dark = {
   primaryBackground: '#000000',
   secondaryBackground: '#111111',
   navbarBackground: '#1a1a1a',
+  navbarItemActive: '#5677fc',
+  navbarItemInactive: '#ffffff',
   inputText: '#ffffff',
   inputTextDisabled: '#757575',
   inputBackground: '#ffffff40',

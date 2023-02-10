@@ -19,6 +19,9 @@ import {
   space,
   TypographyProps,
   typography,
+  BoxShadowProps,
+  ShadowProps,
+  FlexboxProps,
 } from 'styled-system';
 import styled from 'styled-components';
 
@@ -27,9 +30,16 @@ export interface AnchorProps
     SpaceProps,
     PositionProps,
     BorderProps,
+    FlexboxProps,
     ColorProps,
-    TypographyProps {
-  children: string | ReactNode;
+    ShadowProps,
+    BoxShadowProps,
+    TypographyProps,
+    Omit<React.HTMLAttributes<HTMLElement>, 'color'> {
+  as?: React.ElementType;
+  href?: string;
+  target?: string;
+  children?: React.ReactNode;
 }
 
 export const Anchor = styled.a<AnchorProps>(
