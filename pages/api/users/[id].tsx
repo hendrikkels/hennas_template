@@ -3,7 +3,7 @@ import { PrismaClient, Prisma } from '@prisma/client';
 const prisma = new PrismaClient();
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-type User = Prisma.usersGetPayload<{}> | null;
+type User = Prisma.userGetPayload<{}> | null;
 
 export default async function handler(
   req: NextApiRequest,
@@ -11,7 +11,7 @@ export default async function handler(
 ) {
   try {
     const id = Number(req.query.id);
-    const users = await prisma.users.findUnique({
+    const users = await prisma.user.findUnique({
       where: {
         id: id,
       },
