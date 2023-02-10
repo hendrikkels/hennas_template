@@ -2,6 +2,7 @@
   "name": "hennas",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,14 +10,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^4.10.0",
     "@types/react-native": "^0.66.15",
+    "axios": "^1.3.2",
     "next": "^13.1.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-web": "^0.17.5",
     "styled-components": "^5.3.5",
-    "styled-system": "^5.1.5"
+    "styled-system": "^5.1.5",
+    "swr": "^2.0.3"
   },
   "devDependencies": {
     "@types/node": "18.7.16",
@@ -27,6 +31,7 @@
     "babel-plugin-styled-components": "^2.0.7",
     "eslint": "8.23.1",
     "eslint-config-next": "^13.1.6",
+    "prisma": "^4.10.0",
     "typescript": "4.8.3"
   }
 }
