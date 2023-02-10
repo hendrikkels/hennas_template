@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Hennas</title>
       </Head>
       <main className="main">
-        <Component {...pageProps} />
+          <Component {...pageProps} />
       </main>
     </ThemeProvider>
   );
