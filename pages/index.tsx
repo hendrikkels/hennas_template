@@ -1,3 +1,4 @@
+import React from 'react';
 import type { NextPage } from 'next';
 import { NavBar, ScrollView, Text } from '../components';
 import { Div } from '../library';

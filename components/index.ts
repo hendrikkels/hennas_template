@@ -9,4 +9,5 @@ export * from './SolidButton';
 export * from './DepthButton';
 
 export * from './NavBar';
+export * from './NavItem';
 export * from './ColorPalette';
