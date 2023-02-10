@@ -5,11 +5,13 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 type User = Prisma.usersGetPayload<{}>[]
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<User>
-) {
-  const users = await prisma.users.findMany();
-  console.log(users);
-  res.status(200).json(users)
+export default async function handler(req: NextApiRequest, res: NextApiResponse<User | null>) {
+  try {
+    const id = Number(req.query.id);
+    const users = await prisma.users.findMany();
+    res.status(200).json(users);
+  } catch (e) {
+    res.status(Number(400)).json(null);
+    throw e;
+  }
 }
