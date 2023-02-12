@@ -1,6 +1,8 @@
 export * from './ScrollView';
 export * from './HStack';
 export * from './VStack';
+export * from './Container';
+export * from './View';
 
 export * from './Card';
 export * from './Text';
