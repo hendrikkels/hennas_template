@@ -28,7 +28,7 @@ const Components: NextPage = () => {
 
   return (
     <Container>
-      <NavBar title={'Hendrikkels'}></NavBar>
+      <NavBar></NavBar>
       <ScrollView padding={'28px'}>
         <VStack space={'28px'}>
           <Card title={'Introduction'}>

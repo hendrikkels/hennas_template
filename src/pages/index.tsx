@@ -18,11 +18,13 @@ const Home: NextPage = () => {
   const content = useMemo(() => {
     if (!false) {
       return (
-        <Card>
+        <Card title={'Register'}>
           <VStack>
             <TextInput label={'Email'}></TextInput>
+            <TextInput label={'Username'}></TextInput>
             <TextInput label={'Password'}></TextInput>
           </VStack>
+          <SolidButton animateHover width={'100%'} label={'Register'} />
         </Card>
       );
     } else {
@@ -32,7 +34,7 @@ const Home: NextPage = () => {
 
   return (
     <Container>
-      <NavBar title={'Hendrikkels'}></NavBar>
+      <NavBar></NavBar>
       <ScrollView
         padding={'28px'}
         height={'100%'}

@@ -22,7 +22,7 @@ export const SolidButton: React.FC<SolidButtonProps> = (props) => {
   const [pressing, setPressing] = useState(false);
 
   return (
-    <Div position={'relative'}>
+    <Div position={'relative'} width={props.width} height={props.height}>
       <Button
         borderWidth={theme.buttonBorderWidth}
         borderRadius={theme.buttonBorderRadius}

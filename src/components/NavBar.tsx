@@ -29,7 +29,7 @@ export const NavBar: React.FC<NavBarProps> = (props) => {
       >
         <Div>
           <Heading1 fontFamily={'JetBrains Mono'} fontSize={'32px'}>
-            {title}
+            {title ? title : 'Hendrikkels'}
           </Heading1>
         </Div>
         <HStack space={'20px'}>
