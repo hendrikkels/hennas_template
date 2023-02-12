@@ -9,7 +9,7 @@ import {
   typography,
 } from 'styled-system';
 import styled from 'styled-components';
-import { ParagraphProps } from './.';
+import { ParagraphProps } from '.';
 
 export const Heading2 = styled.h2<ParagraphProps>(
   {

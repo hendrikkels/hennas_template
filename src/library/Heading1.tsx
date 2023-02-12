@@ -1,4 +1,3 @@
-import React, { useCallback, useEffect, useState, useMemo } from 'react';
 import {
   layout,
   position,
@@ -9,12 +8,12 @@ import {
   typography,
 } from 'styled-system';
 import styled from 'styled-components';
-import { ParagraphProps } from './.';
+import { ParagraphProps } from '.';
 
-export const Heading3 = styled.h3<ParagraphProps>(
+export const Heading1 = styled.h1<ParagraphProps>(
   {
-    fontSize: '22px',
-    fontWeight: 'normal',
+    fontSize: '36px',
+    fontWeight: 'bold',
     padding: 0,
     margin: 0,
   },

@@ -2,7 +2,7 @@ import React from 'react';
 import { DefaultTheme, useTheme } from 'styled-components';
 import { HStack } from '.';
 import { Heading1, Div, DivProps } from '../library';
-import { NavItem } from '../components';
+import { NavItem } from '.';
 import { useRouter } from 'next/router';
 
 export interface NavBarProps extends DivProps {

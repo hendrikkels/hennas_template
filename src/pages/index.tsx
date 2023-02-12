@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import { NavBar, ScrollView, Text } from '../components';
 import { Div } from '../library';
 import useSWR from 'swr';
-import fetcher from '../lib/fetcher';
+import fetcher from '../../lib/fetcher';
 
 const Home: NextPage = () => {
   const { data, error, isLoading } = useSWR('/api/users', fetcher);

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import '../styles/globals.css';
+import '../../styles/globals.css';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
-import { base, light, dark } from '../theme';
+import { base, light, dark } from '../../theme';
 import { useThemeDetector } from '../hooks';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Hennas</title>
       </Head>
       <main className="main">
-          <Component {...pageProps} />
+        <Component {...pageProps} />
       </main>
     </ThemeProvider>
   );
