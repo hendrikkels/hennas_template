@@ -2,21 +2,18 @@ import React, {useMemo} from 'react';
 import type { NextPage } from 'next';
 import {
   Card,
+  Container,
   NavBar,
   ScrollView,
   SolidButton,
-  Text,
   TextInput,
   VStack,
 } from '../components';
-import { Div, Input } from '../library';
 import useSWR from 'swr';
 import fetcher from '../../lib/fetcher';
 
 const Home: NextPage = () => {
   const { data, error, isLoading } = useSWR('/api/users', fetcher);
-
-  // const { data: session, status } = useSession();
 
   const content = useMemo(() => {
     if (!false) {
@@ -34,7 +31,7 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <Div>
+    <Container>
       <NavBar title={'Hendrikkels'}></NavBar>
       <ScrollView
         padding={'28px'}
@@ -43,13 +40,11 @@ const Home: NextPage = () => {
         width={'100%'}
         display={'flex'}
         justifyContent={'center'}
-        justifyItems={'center'}
         alignItems={'center'}
-        backgroundColor={'red'}
       >
         {content}
       </ScrollView>
-    </Div>
+    </Container>
   );
 };
 

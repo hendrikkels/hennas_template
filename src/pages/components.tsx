@@ -12,6 +12,7 @@ import {
   VStack,
   SolidButton,
   DepthButton,
+  Container,
 } from '../components';
 import {
   Paragraph,
@@ -26,7 +27,7 @@ const Components: NextPage = () => {
   const theme = useTheme();
 
   return (
-    <Div width={'100%'}>
+    <Container>
       <NavBar title={'Hendrikkels'}></NavBar>
       <ScrollView padding={'28px'}>
         <VStack space={'28px'}>
@@ -147,7 +148,7 @@ const Components: NextPage = () => {
           </Card>
         </VStack>
       </ScrollView>
-    </Div>
+    </Container>
   );
 };
 
