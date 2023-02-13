@@ -8,29 +8,16 @@ import {
   SolidButton,
   TextInput,
   VStack,
+  View,
+  Text,
 } from '../components';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 import useSWR from 'swr';
 import fetcher from '../../lib/fetcher';
 
 const Home: NextPage = () => {
   const { data, error, isLoading } = useSWR('/api/users', fetcher);
-
-  const content = useMemo(() => {
-    if (!false) {
-      return (
-        <Card title={'Register'}>
-          <VStack>
-            <TextInput label={'Email'}></TextInput>
-            <TextInput label={'Username'}></TextInput>
-            <TextInput label={'Password'}></TextInput>
-          </VStack>
-          <SolidButton animateHover width={'100%'} label={'Register'} />
-        </Card>
-      );
-    } else {
-      return <SolidButton label="Logout"></SolidButton>;
-    }
-  }, []);
 
   return (
     <Container>
@@ -44,7 +31,7 @@ const Home: NextPage = () => {
         justifyContent={'center'}
         alignItems={'center'}
       >
-        {content}
+        <Text>{JSON.stringify(data)}</Text>
       </ScrollView>
     </Container>
   );

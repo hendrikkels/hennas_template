@@ -30,6 +30,8 @@ export interface InputProps
     TypographyProps,
     Omit<React.HTMLAttributes<HTMLElement>, 'color'> {
   as?: React.ElementType;
+  name?: string;
+  type?: string;
   children?: React.ReactNode;
 }
 
