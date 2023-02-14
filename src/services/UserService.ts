@@ -26,7 +26,7 @@ export const getUserByEmail = async (email: string) => {
         const user = await prisma.user.findUnique({
             where: {
                 email: email,
-            }
+            },
         });
         return user;
     } catch (e) {
@@ -40,7 +40,7 @@ export const getUserByUsername = async (username: string) => {
         const user = await prisma.user.findUnique({
             where: {
                 username: username,
-            }
+            },
         });
         return user;
     } catch (e) {

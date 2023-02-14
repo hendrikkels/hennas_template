@@ -1,14 +1,14 @@
 import { getUserByEmail, login } from '@/services';
 import { validatePassword } from '@/utils/password';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { createRefreshToken, createAccessToken } from '@/utils/auth';
+import { createRefreshToken, createAccessToken, sendRefreshToken } from '@/utils/auth';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
         const { email, password } = JSON.parse(req.body)
         const user = await getUserByEmail(email);
-        console.log('Logging in');
-        console.log(user);
+        // console.log('Logging in');
+        // console.log(user);
 
         if (!user) return res.status(400).send('A user with this email does not exist!');
 
@@ -20,18 +20,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             updatedAt: user.updatedAt,
         }
 
-        console.log('userForTheClient');
-        console.log(clientUser)
+        // console.log('userForTheClient');
+        // console.log(clientUser)
 
         const valid = await validatePassword(password, user?.password ?? '');
-        console.log('valid');
-        console.log(valid);
+        // console.log('valid');
+        // console.log(valid);
 
         if (valid) {
             const token = createRefreshToken(user)
+            if (!token) return res.status(400).send('Invalid')
             const accessToken = createAccessToken(user)
             console.log('res.send');
             console.log({ user: clientUser, accessToken });
+            sendRefreshToken(res, token)
             res.send({ user: clientUser, accessToken })
         } else {
             res.status(404).send(null)

@@ -3,9 +3,9 @@ import { getUserById } from '@/services';
 import jwt from 'jsonwebtoken';
 import { NextApiRequest } from 'next';
 
-if (!process.env.JWT_SECRET) console.error('Missing JWT_SECRET in .env file!');
-
 export const generateJWT = (payload: any) => {
+    if (!process.env.JWT_SECRET) console.error('Missing JWT_SECRET in .env file!');
+    console.log('ERROR')
     const accessToken = jwt.sign(payload, process.env.JWT_SECRET!);
     console.log(accessToken);
     return accessToken;
