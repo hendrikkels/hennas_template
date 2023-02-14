@@ -39,10 +39,13 @@ export const Card: React.FC<CardProps> = (props) => {
       backgroundColor={theme.colors.secondaryBackground}
       borderRadius={theme.borderRadius}
       padding={theme.cardPadding}
+      display={'flex'}
       {...rest}
     >
       {title && renderTitle}
-      <Div minHeight={'56px'}>{children}</Div>
+      <Div minHeight={'56px'} display={'flex'} width={'100%'}>
+        {children}
+      </Div>
       {footer && renderFooter}
     </Div>
   );

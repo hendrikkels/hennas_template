@@ -1,20 +1,31 @@
-import { PrismaClient, Prisma } from '@prisma/client';
-
-const prisma = new PrismaClient();
-import type { NextApiRequest, NextApiResponse } from 'next'
-
-type User = Prisma.userGetPayload<{}>;
+import { register, getUserByEmail, getUserByUsername } from '@/services';
+import { hashPassword } from '@/utils/password';
+import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<User | null>
+    res: NextApiResponse,
 ) {
-    console.log(req.body);
-    const body = JSON.parse(req.body);
+    const bodyObj = JSON.parse(req.body);
+
+    const { username, email, password } = bodyObj;
+
+    if (!bodyObj.username || !bodyObj.email || !bodyObj.password) {
+        return res.status(400).json({ message: 'Invalid Credentials' });
+    }
+
+    const emailExists = await getUserByEmail(email);
+    if (emailExists) return res.status(403).send({ message: `A User with email ${email} already exists!` });
+
+    const usernameExists = await getUserByUsername(username);
+    if (usernameExists) return res.status(403).send({ message: `A User with username ${username} already exists!` });
+
+    const hashedPassword = await hashPassword(password);
+
     try {
-        const id = Number(req.query.id);
-        const user = await prisma.user.create({ data: body });
-        res.status(200).json(user);
+        const user = await register({ email: email, username: username, password: hashedPassword });
+        console.log(user);
+        return res.status(200).json({ data: user });
     } catch (e) {
         res.status(Number(400)).json(null);
         throw e;

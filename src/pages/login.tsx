@@ -14,40 +14,38 @@ import {
 } from '../components';
 import { Formik } from 'formik';
 import * as Zod from 'zod';
-import { toFormikValidationSchema } from 'zod-formik-adapter';
 import useSWR from 'swr';
 import fetcher from '../utils/fetcher';
+import { toFormikValidationSchema } from 'zod-formik-adapter';
+import { useStore } from '@/store';
 
 const validationSchema = Zod.object({
-  username: Zod.string({ required_error: 'Username is required' }),
   email: Zod.string({ required_error: 'Email is required' }),
   password: Zod.string({ required_error: 'Password is required' }),
 });
 
-const Register: NextPage = () => {
+const Login: NextPage = () => {
   const router = useRouter();
+  const store = useStore();
   const { data, error, isLoading } = useSWR('/api/users', fetcher);
 
   const onSubmit = useCallback(
-    async (
-      values: { username: string; email: string; password: string },
-      actions: any
-    ) => {
+    async (values: { email: string; password: string }, actions: any) => {
       actions.setSubmitting(true);
       try {
-        fetch('http://localhost:3000/api/auth/register', {
+        await fetch('http://localhost:3000/api/auth/login', {
           method: 'POST',
           body: JSON.stringify(values),
-        }).then((res) => {
-          console.log('Lekkor!');
-          console.log(JSON.stringify(res.json, null, 2));
-          if (res.status == 200) {
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log('Lekkor!');
+            console.log(JSON.stringify(data, null, 2));
+            store.setAccessToken(data.accessToken);
+            store.setUser(data.user);
             router.replace('/');
-          }
-          //TODO: Error handling!
-        });
+          });
       } catch (err) {
-        // your error handling here
         console.log(err);
       } finally {
         actions.setSubmitting(false);
@@ -59,14 +57,13 @@ const Register: NextPage = () => {
   const content = useMemo(() => {
     if (!false) {
       return (
-        <Card title={'Register'}>
+        <Card title={'Login'}>
           <Formik
             validationSchema={toFormikValidationSchema(validationSchema)}
             onSubmit={onSubmit}
             initialValues={{
-              username: '',
-              email: '',
-              password: '',
+              email: 'hendrikkels@icloud.com',
+              password: '123456',
             }}
             enableReinitialize
           >
@@ -80,16 +77,6 @@ const Register: NextPage = () => {
               setFieldTouched,
             }) => (
               <VStack>
-                <TextInput
-                  name={'username'}
-                  value={values.username}
-                  handleValueChange={(val) => {
-                    setFieldValue('username', val);
-                    setFieldTouched('username');
-                  }}
-                  error={touched.username ? errors.username : ''}
-                  label={'Username'}
-                ></TextInput>
                 <TextInput
                   name={'email'}
                   value={values.email}
@@ -115,7 +102,7 @@ const Register: NextPage = () => {
                   animateHover
                   onClick={() => handleSubmit()}
                   width={'100%'}
-                  label={'Register'}
+                  label={'Login'}
                 />
                 <View position={'absolute'} bottom={0} left={0}>
                   <Text>{JSON.stringify(values)}</Text>
@@ -151,4 +138,4 @@ const Register: NextPage = () => {
   );
 };
 
-export default Register;
+export default Login;
