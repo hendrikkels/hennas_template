@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import {
   Card,
@@ -6,31 +6,27 @@ import {
   NavBar,
   ScrollView,
   SolidButton,
-  TextInput,
   VStack,
+  Text,
 } from '../components';
 import useSWR from 'swr';
-import fetcher from '../../lib/fetcher';
+import fetcher from '../utils/fetcher';
+import { useRouter } from 'next/router';
+import { useStore } from '@/store';
 
 const Home: NextPage = () => {
   const { data, error, isLoading } = useSWR('/api/users', fetcher);
+  const router = useRouter();
+  const store = useStore();
+  const [auth, setAuth] = useState(false);
 
-  const content = useMemo(() => {
-    if (!false) {
-      return (
-        <Card title={'Register'}>
-          <VStack>
-            <TextInput label={'Email'}></TextInput>
-            <TextInput label={'Username'}></TextInput>
-            <TextInput label={'Password'}></TextInput>
-          </VStack>
-          <SolidButton animateHover width={'100%'} label={'Register'} />
-        </Card>
-      );
+  useEffect(() => {
+    if (store.accessToken !== null) {
+      setAuth(true);
     } else {
-      return <SolidButton label="Logout"></SolidButton>;
+      setAuth(false);
     }
-  }, []);
+  }, [store.accessToken]);
 
   return (
     <Container>
@@ -44,7 +40,34 @@ const Home: NextPage = () => {
         justifyContent={'center'}
         alignItems={'center'}
       >
-        {content}
+        {auth ? (
+          <Card width={'28%'}>
+            <VStack width={'100%'} space={86}>
+              <SolidButton
+                width={'100%'}
+                label={'Logout'}
+                // onClick={() => router.push('/login')}
+              ></SolidButton>
+            </VStack>
+          </Card>
+        ) : (
+          <Card width={'28%'}>
+            <VStack width={'100%'} space={86}>
+              <SolidButton
+                width={'100%'}
+                label={'Login'}
+                onClick={() => router.push('/login')}
+              ></SolidButton>
+              <SolidButton
+                width={'100%'}
+                label={'Register'}
+                onClick={() => router.push('/register')}
+              ></SolidButton>
+            </VStack>
+          </Card>
+        )}
+        <Text>{JSON.stringify(data)}</Text>
+        <Text>{JSON.stringify(store.accessToken)}</Text>
       </ScrollView>
     </Container>
   );

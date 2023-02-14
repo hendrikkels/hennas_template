@@ -14,12 +14,15 @@ import {
   Paragraph,
   ParagraphProps,
 } from '../library';
+import { useField } from 'formik';
 
 export interface TextInputProps extends InputProps {
+  name?: string;
   label?: string | ReactNode;
   error?: string | ReactNode;
   value?: string;
   onChange?: (arg0: FormEvent<HTMLInputElement>) => void;
+  handleValueChange?: (value: string) => void;
   required?: boolean;
   initAsTouched?: boolean;
   disabled?: boolean;
@@ -32,10 +35,12 @@ export interface TextInputProps extends InputProps {
 
 export const TextInput: React.FC<TextInputProps> = (props) => {
   const {
+    name,
     label,
     error,
     value: _value,
     onChange: _onChange,
+    handleValueChange,
     required = false,
     initAsTouched = false,
     disabled = false,
@@ -58,6 +63,9 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
       }
       setTouched(true);
       setValue(event.currentTarget.value);
+      if (handleValueChange) {
+        handleValueChange(event.currentTarget.value);
+      }
     },
     [setValue]
   );
@@ -92,6 +100,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
 
       <Input
         value={value}
+        name={name}
         onChange={onChange}
         disabled={disabled}
         color={
