@@ -1,17 +1,14 @@
-import { PrismaClient, Prisma } from '@prisma/client';
-import { getUserById } from '@/services'
+import { getUser } from '@/services/UserService'
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-type User = Prisma.userGetPayload<{}> | null;
-
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<User>
+  res: NextApiResponse
 ) {
   try {
     const id = Number(req.query.id);
-    const user = await getUserById(id);
+    const user = await getUser(id);
     if (user) {
       res.status(200).json(user);
     } else {

@@ -1,4 +1,4 @@
-import { register, getUserByEmail, getUserByUsername } from '@/services';
+import { register, getUserByEmail, getUserByUsername } from '@/services/AuthService';
 import { hashPassword } from '@/utils/password';
 import { NextApiRequest, NextApiResponse } from 'next'
 

@@ -1,14 +1,10 @@
-import { PrismaClient, Prisma } from '@prisma/client';
-import { getAllUsers } from '@/services';
+import { getAllUsers } from '@/services/UserService';
 
-const prisma = new PrismaClient();
 import type { NextApiRequest, NextApiResponse } from 'next'
-
-type User = Prisma.userGetPayload<{}>[];
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<User | null>
+  res: NextApiResponse
 ) {
   try {
     const users = await getAllUsers();

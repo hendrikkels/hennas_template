@@ -7,17 +7,30 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model user {
-  id        Int      @id @default(autoincrement())
-  username  String   @unique
-  email     String   @unique
+model users {
+  id        Int        @id @default(autoincrement())
+  username  String     @unique
+  email     String     @unique
   password  String
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-  role      Role     @default(USER)
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime   @updatedAt @map("updated_at")
+  role      roles      @default(USER)
+  bookmarks profiles[] @relation("ProfileToUser")
 }
 
-enum Role {
+model profiles {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  title       String
+  description String
+  url         String
+  imageUrl    String
+  category    String
+  users       users[]  @relation("ProfileToUser")
+}
+
+enum roles {
   USER
   ADMIN
 }

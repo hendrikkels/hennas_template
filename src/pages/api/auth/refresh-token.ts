@@ -3,7 +3,7 @@ import { createAccessToken, sendRefreshToken, createRefreshToken } from '@/utils
 import cookie from 'cookie'
 import prisma from '../../../../lib/prisma'
 import { NextApiRequest, NextApiResponse } from 'next'
-
+import { getUserById } from '@/services/AuthService'
 
 export default async function refresh_token(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
@@ -36,17 +36,9 @@ export default async function refresh_token(req: NextApiRequest, res: NextApiRes
                 return res.send({ ok: false, accessToken: '' });
             }
 
-            const user = await prisma.user.findUnique({
-                where: {
-                    id: payload.userId
-                },
-                select: {
-                    id: true,
-                    email: true
-                }
-            })
+            const user = await getUserById(payload.userId);
 
-            if (!user) return res.send({ ok: false, accessToken: '' })
+            if (!user) return res.send({ ok: false, accessToken: '' });
 
             const newRefreshToken = createRefreshToken(user);
 

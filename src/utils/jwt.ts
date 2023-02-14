@@ -1,5 +1,5 @@
 
-import { getUserById } from '@/services';
+import { getUserById } from '@/services/AuthService';
 import jwt from 'jsonwebtoken';
 import { NextApiRequest } from 'next';
 
