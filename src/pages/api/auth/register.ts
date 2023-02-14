@@ -30,7 +30,7 @@ export default async function handler(
             username: user.username,
             role: user.role,
         }
-        return res.status(200).json({ user: user });
+        return res.status(200).json({ user: clientUser });
     } catch (e) {
         res.status(400).json({ error: `Something went wrong` });
         throw e;
