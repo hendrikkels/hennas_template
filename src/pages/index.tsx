@@ -8,6 +8,7 @@ import {
   SolidButton,
   VStack,
   Text,
+  View,
 } from '../components';
 import useSWR from 'swr';
 import fetcher from '../utils/fetcher';
@@ -15,7 +16,6 @@ import { useRouter } from 'next/router';
 import { useStore } from '@/store';
 
 const Home: NextPage = () => {
-  const { data, error, isLoading } = useSWR('/api/users', fetcher);
   const router = useRouter();
   const store = useStore();
   const [auth, setAuth] = useState(false);
@@ -28,13 +28,21 @@ const Home: NextPage = () => {
     }
   }, [store.accessToken]);
 
+  function logOut() {
+    fetch('/api/auth/logout', {
+      method: 'POST',
+      credentials: 'include',
+    }).then(() => {
+      store.setAccessToken(null);
+      store.setUser(null);
+    });
+  }
+
   return (
     <Container>
       <NavBar></NavBar>
       <ScrollView
-        padding={'28px'}
         height={'100%'}
-        overflow={'auto'}
         width={'100%'}
         display={'flex'}
         justifyContent={'center'}
@@ -46,7 +54,7 @@ const Home: NextPage = () => {
               <SolidButton
                 width={'100%'}
                 label={'Logout'}
-                // onClick={() => router.push('/login')}
+                onClick={() => logOut()}
               ></SolidButton>
             </VStack>
           </Card>
@@ -66,8 +74,9 @@ const Home: NextPage = () => {
             </VStack>
           </Card>
         )}
-        <Text>{JSON.stringify(data)}</Text>
-        <Text>{JSON.stringify(store.accessToken)}</Text>
+        <View position={'absolute'} bottom={0} left={0}>
+          <Text>{JSON.stringify(store.accessToken)}</Text>
+        </View>
       </ScrollView>
     </Container>
   );

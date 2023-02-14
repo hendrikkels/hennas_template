@@ -1,7 +1,7 @@
 import { verify } from 'jsonwebtoken'
 import { createAccessToken, sendRefreshToken, createRefreshToken } from '@/utils/auth'
 import cookie from 'cookie'
-import prisma from '../../../lib/prisma'
+import prisma from '../../../../lib/prisma'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 

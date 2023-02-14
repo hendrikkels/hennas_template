@@ -3,7 +3,7 @@ import cookie from 'cookie';
 import { NextApiResponse } from 'next';
 
 export const refreshToken = () => {
-    return fetch('/api/refresh-token', {
+    return fetch('/api/auth/refresh-token', {
         method: "POST",
         credentials: "include"
     }).then(res => res.ok && res.json())

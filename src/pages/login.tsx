@@ -27,7 +27,6 @@ const validationSchema = Zod.object({
 const Login: NextPage = () => {
   const router = useRouter();
   const store = useStore();
-  const { data, error, isLoading } = useSWR('/api/users', fetcher);
 
   const onSubmit = useCallback(
     async (values: { email: string; password: string }, actions: any) => {
@@ -132,7 +131,6 @@ const Login: NextPage = () => {
         alignItems={'center'}
       >
         <View>{content}</View>
-        <Text>{JSON.stringify(data)}</Text>
       </ScrollView>
     </Container>
   );
