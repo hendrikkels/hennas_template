@@ -5,12 +5,12 @@ import { createRefreshToken, createAccessToken, sendRefreshToken } from '@/utils
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
-        const { email, password } = JSON.parse(req.body)
+        const { email, password } = JSON.parse(req.body);
         const user = await getUserByEmail(email);
         // console.log('Logging in');
         // console.log(user);
 
-        if (!user) return res.status(400).send('A user with this email does not exist!');
+        if (!user) return res.status(400).json({ error: 'A user with this email does not exist!' });
 
         const clientUser = {
             id: user.id,
@@ -28,15 +28,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         // console.log(valid);
 
         if (valid) {
-            const token = createRefreshToken(user)
-            if (!token) return res.status(400).send('Invalid')
+            const token = createRefreshToken(user);
+            if (!token) return res.status(400).json({ error: 'Something went wrong!' });
             const accessToken = createAccessToken(user)
             console.log('res.send');
             console.log({ user: clientUser, accessToken });
             sendRefreshToken(res, token)
-            res.send({ user: clientUser, accessToken })
+            res.status(200).json({ user: clientUser, accessToken });
         } else {
-            res.status(404).send(null)
+            res.status(404).json({ error: 'Something went wrong!' });
         }
     }
 }

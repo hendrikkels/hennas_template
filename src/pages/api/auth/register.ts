@@ -15,10 +15,10 @@ export default async function handler(
     }
 
     const emailExists = await getUserByEmail(email);
-    if (emailExists) return res.status(403).send({ message: `A User with email ${email} already exists!` });
+    if (emailExists) return res.status(403).send({ error: `A User with email ${email} already exists!` });
 
     const usernameExists = await getUserByUsername(username);
-    if (usernameExists) return res.status(403).send({ message: `A User with username ${username} already exists!` });
+    if (usernameExists) return res.status(403).send({ error: `A User with username ${username} already exists!` });
 
     const hashedPassword = await hashPassword(password);
 
@@ -27,7 +27,7 @@ export default async function handler(
         console.log(user);
         return res.status(200).json({ data: user });
     } catch (e) {
-        res.status(Number(400)).json(null);
+        res.status(400).json({ error: `Something went wrong` });
         throw e;
     }
 }

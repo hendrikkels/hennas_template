@@ -2,9 +2,8 @@ import { Prisma } from "@prisma/client";
 import prisma from "../../lib/prisma";
 import { generateJWT } from "@/utils/jwt";
 
-type User = Prisma.usersGetPayload<{}>;
 type NewUser = Prisma.usersCreateInput;
-type LoginUser = Pick<Prisma.usersCreateInput, "email" | "password">
+type AuthUser = Prisma.usersGetPayload<{ select: { id: true, email: true, password: true, role: true } }>;
 
 export const getUserById = async (id: number) => {
     try {
@@ -58,7 +57,7 @@ export const register = async (newUser: NewUser) => {
     }
 }
 
-export const login = async (user: User) => {
+export const login = async (user: AuthUser) => {
     try {
         const token = generateJWT({ userId: user.id, userRole: user.role });
         return user;

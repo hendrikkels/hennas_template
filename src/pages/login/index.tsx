@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo, useRef } from 'react';
-import type { NextPage } from 'next';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import type { NextApiResponse, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import {
   Card,
@@ -26,6 +26,8 @@ const Login: NextPage = () => {
   const router = useRouter();
   const store = useStore();
 
+  const [loginError, setLoginError] = useState('');
+
   const onSubmit = useCallback(
     async (values: { email: string; password: string }, actions: any) => {
       actions.setSubmitting(true);
@@ -36,11 +38,15 @@ const Login: NextPage = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log('Lekkor!');
             console.log(JSON.stringify(data, null, 2));
-            store.setAccessToken(data.accessToken);
-            store.setUser(data.user);
-            router.replace('/');
+            if (data && data.accessToken && data.user) {
+              store.setAccessToken(data.accessToken);
+              store.setUser(data.user);
+              router.replace('/');
+            } else if (data && data.error) {
+              console.log(data.error);
+              setLoginError(data.error);
+            }
           });
       } catch (err) {
         console.log(err);
@@ -109,12 +115,17 @@ const Login: NextPage = () => {
               </VStack>
             )}
           </Formik>
+          {loginError && (
+            <View>
+              <Text>{loginError}</Text>
+            </View>
+          )}
         </Card>
       );
     } else {
       return <SolidButton label="Logout"></SolidButton>;
     }
-  }, []);
+  }, [loginError]);
 
   return (
     <Container>

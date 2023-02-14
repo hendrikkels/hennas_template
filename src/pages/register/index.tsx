@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import {
@@ -28,6 +28,8 @@ const Register: NextPage = () => {
   const router = useRouter();
   const { data, error, isLoading } = useSWR('/api/users', fetcher);
 
+  const [registerError, setRegisterError] = useState('');
+
   const onSubmit = useCallback(
     async (
       values: { username: string; email: string; password: string },
@@ -38,14 +40,17 @@ const Register: NextPage = () => {
         fetch('http://localhost:3000/api/auth/register', {
           method: 'POST',
           body: JSON.stringify(values),
-        }).then((res) => {
-          console.log('Lekkor!');
-          console.log(JSON.stringify(res.json, null, 2));
-          if (res.status == 200) {
-            router.replace('/');
-          }
-          //TODO: Error handling!
-        });
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(JSON.stringify(data, null, 2));
+            if (data && data.accessToken && data.user) {
+              router.replace('/');
+            } else if (data && data.error) {
+              console.log(data.error);
+              setRegisterError(data.error);
+            }
+          });
       } catch (err) {
         // your error handling here
         console.log(err);
@@ -125,12 +130,15 @@ const Register: NextPage = () => {
               </VStack>
             )}
           </Formik>
+          <View>
+            <Text>{registerError}</Text>
+          </View>
         </Card>
       );
     } else {
       return <SolidButton label="Logout"></SolidButton>;
     }
-  }, []);
+  }, [registerError]);
 
   return (
     <Container>
