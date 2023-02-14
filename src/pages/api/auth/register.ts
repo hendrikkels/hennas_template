@@ -15,17 +15,22 @@ export default async function handler(
     }
 
     const emailExists = await getUserByEmail(email);
-    if (emailExists) return res.status(403).send({ error: `A User with email ${email} already exists!` });
+    if (emailExists) return res.status(403).json({ error: `A User with email ${email} already exists!` });
 
     const usernameExists = await getUserByUsername(username);
-    if (usernameExists) return res.status(403).send({ error: `A User with username ${username} already exists!` });
+    if (usernameExists) return res.status(403).json({ error: `A User with username ${username} already exists!` });
 
     const hashedPassword = await hashPassword(password);
 
     try {
         const user = await register({ email: email, username: username, password: hashedPassword });
         console.log(user);
-        return res.status(200).json({ data: user });
+        const clientUser = {
+            email: user.email,
+            username: user.username,
+            role: user.role,
+        }
+        return res.status(200).json({ user: user });
     } catch (e) {
         res.status(400).json({ error: `Something went wrong` });
         throw e;

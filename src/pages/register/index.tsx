@@ -44,7 +44,7 @@ const Register: NextPage = () => {
           .then((res) => res.json())
           .then((data) => {
             console.log(JSON.stringify(data, null, 2));
-            if (data && data.accessToken && data.user) {
+            if (data && data.user) {
               router.replace('/');
             } else if (data && data.error) {
               console.log(data.error);
