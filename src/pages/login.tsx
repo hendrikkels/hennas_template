@@ -14,8 +14,6 @@ import {
 } from '../components';
 import { Formik } from 'formik';
 import * as Zod from 'zod';
-import useSWR from 'swr';
-import fetcher from '../utils/fetcher';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
 import { useStore } from '@/store';
 

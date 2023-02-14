@@ -10,8 +10,6 @@ import {
   Text,
   View,
 } from '../components';
-import useSWR from 'swr';
-import fetcher from '../utils/fetcher';
 import { useRouter } from 'next/router';
 import { useStore } from '@/store';
 
