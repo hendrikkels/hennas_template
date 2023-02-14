@@ -1,6 +1,6 @@
 import { PrismaClient, Prisma } from '@prisma/client';
+import { getUserById } from '@/services'
 
-const prisma = new PrismaClient();
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 type User = Prisma.userGetPayload<{}> | null;
@@ -11,15 +11,14 @@ export default async function handler(
 ) {
   try {
     const id = Number(req.query.id);
-    const users = await prisma.user.findUnique({
-      where: {
-        id: id,
-      },
-    });
-    console.log(users);
-    res.status(200).json(users);
+    const user = await getUserById(id);
+    if (user) {
+      res.status(200).json(user);
+    } else {
+      res.status(404).json(null);
+    }
   } catch (e) {
-    res.status(Number(400)).json(null);
+    res.status(400).json(null);
     throw e;
   }
 }

@@ -1,4 +1,5 @@
 import { PrismaClient, Prisma } from '@prisma/client';
+import { getAllUsers } from '@/services';
 
 const prisma = new PrismaClient();
 import type { NextApiRequest, NextApiResponse } from 'next'
@@ -10,9 +11,12 @@ export default async function handler(
   res: NextApiResponse<User | null>
 ) {
   try {
-    const id = Number(req.query.id);
-    const users = await prisma.user.findMany();
-    res.status(200).json(users);
+    const users = await getAllUsers();
+    if (users) {
+      res.status(200).json(users);
+    } else {
+      res.status(404).json(users);
+    }
   } catch (e) {
     res.status(Number(400)).json(null);
     throw e;
