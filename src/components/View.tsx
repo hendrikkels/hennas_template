@@ -1,6 +1,6 @@
-import React, { ReactNode, useMemo } from 'react';
+import React from 'react';
 import { useTheme } from 'styled-components';
-import { Heading1, Div, DivProps } from '../library';
+import { Div, DivProps } from '../library';
 
 export interface ViewProps extends DivProps {}
 
