@@ -11,12 +11,12 @@ import {
   VStack,
   View,
   Text,
-} from '../components';
+} from '../../components';
 import { Formik } from 'formik';
 import * as Zod from 'zod';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
 import useSWR from 'swr';
-import fetcher from '../utils/fetcher';
+import fetcher from '../../utils/fetcher';
 
 const validationSchema = Zod.object({
   username: Zod.string({ required_error: 'Username is required' }),
