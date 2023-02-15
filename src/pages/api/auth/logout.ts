@@ -9,6 +9,6 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
             maxAge: 0,
             path: '/'
         }))
-        res.status(200).json({ message: 'Success' })
+        res.status(200).json({ message: 'Success' });
     }
 }
