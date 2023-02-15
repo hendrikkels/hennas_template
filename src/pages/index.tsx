@@ -16,13 +16,13 @@ import { useStore } from '@/store';
 const Home: NextPage = () => {
   const router = useRouter();
   const store = useStore();
-  const [auth, setAuth] = useState(false);
+  const [authed, setAuthed] = useState(false);
 
   useEffect(() => {
     if (store.accessToken !== null) {
-      setAuth(true);
+      setAuthed(true);
     } else {
-      setAuth(false);
+      setAuthed(false);
     }
   }, [store.accessToken]);
 
@@ -46,7 +46,7 @@ const Home: NextPage = () => {
         justifyContent={'center'}
         alignItems={'center'}
       >
-        {auth ? (
+        {authed ? (
           <Card width={'28%'}>
             <VStack width={'100%'} space={86}>
               <SolidButton
