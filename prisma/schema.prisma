@@ -13,9 +13,14 @@ model users {
   email     String     @unique
   password  String
   role      roles      @default(USER)
-  profile   profiles[] @relation("ProfileToUser")
+  profile   profiles?
   createdAt DateTime   @default(now()) @map("created_at")
   updatedAt DateTime   @updatedAt @map("updated_at")
+}
+
+enum roles {
+  USER
+  ADMIN
 }
 
 model profiles {
@@ -23,12 +28,8 @@ model profiles {
   name      String
   surname   String
   bio       String
-  user      users[]  @relation("ProfileToUser")
+  user      users @relation(fields: [userId], references: [id])
+  userId    Int  @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
-
-enum roles {
-  USER
-  ADMIN
 }
