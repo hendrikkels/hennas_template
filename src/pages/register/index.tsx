@@ -61,83 +61,79 @@ const Register: NextPage = () => {
     []
   );
 
-  const content = useMemo(() => {
-    if (!false) {
-      return (
-        <Card title={'Register'}>
-          <Formik
-            validationSchema={toFormikValidationSchema(validationSchema)}
-            onSubmit={onSubmit}
-            initialValues={{
-              username: '',
-              email: '',
-              password: '',
-            }}
-            enableReinitialize
-          >
-            {({
-              handleSubmit,
-              isSubmitting,
-              errors,
-              touched,
-              values,
-              setFieldValue,
-              setFieldTouched,
-            }) => (
-              <VStack>
-                <TextInput
-                  name={'username'}
-                  value={values.username}
-                  handleValueChange={(val) => {
-                    setFieldValue('username', val);
-                    setFieldTouched('username');
-                  }}
-                  error={touched.username ? errors.username : ''}
-                  label={'Username'}
-                ></TextInput>
-                <TextInput
-                  name={'email'}
-                  value={values.email}
-                  handleValueChange={(val) => {
-                    setFieldValue('email', val);
-                    setFieldTouched('email');
-                  }}
-                  error={touched.email ? errors.email : ''}
-                  label={'Email'}
-                ></TextInput>
-                <TextInput
-                  name={'password'}
-                  type={'password'}
-                  value={values.password}
-                  handleValueChange={(val) => {
-                    setFieldValue('password', val);
-                    setFieldTouched('password');
-                  }}
-                  error={touched.password ? errors.password : ''}
-                  label={'Password'}
-                ></TextInput>
-                <SolidButton
-                  animateHover
-                  onClick={() => handleSubmit()}
-                  width={'100%'}
-                  label={'Register'}
-                />
-                <View position={'absolute'} bottom={0} left={0}>
-                  <Text>{JSON.stringify(values)}</Text>
-                  <Text>{JSON.stringify(touched)}</Text>
-                  <Text>{JSON.stringify(errors)}</Text>
-                </View>
-              </VStack>
-            )}
-          </Formik>
-          <View>
-            <Text>{registerError}</Text>
-          </View>
-        </Card>
-      );
-    } else {
-      return <SolidButton label="Logout"></SolidButton>;
-    }
+  const registerForm = useMemo(() => {
+    return (
+      <Card title={'Register'}>
+        <Formik
+          validationSchema={toFormikValidationSchema(validationSchema)}
+          onSubmit={onSubmit}
+          initialValues={{
+            username: '',
+            email: '',
+            password: '',
+          }}
+          enableReinitialize
+        >
+          {({
+            handleSubmit,
+            isSubmitting,
+            errors,
+            touched,
+            values,
+            setFieldValue,
+            setFieldTouched,
+          }) => (
+            <VStack>
+              <TextInput
+                name={'username'}
+                value={values.username}
+                handleValueChange={(val) => {
+                  setFieldValue('username', val);
+                  setFieldTouched('username');
+                }}
+                error={touched.username ? errors.username : ''}
+                label={'Username'}
+              ></TextInput>
+              <TextInput
+                name={'email'}
+                value={values.email}
+                handleValueChange={(val) => {
+                  setFieldValue('email', val);
+                  setFieldTouched('email');
+                }}
+                error={touched.email ? errors.email : ''}
+                label={'Email'}
+              ></TextInput>
+              <TextInput
+                name={'password'}
+                type={'password'}
+                value={values.password}
+                handleValueChange={(val) => {
+                  setFieldValue('password', val);
+                  setFieldTouched('password');
+                }}
+                error={touched.password ? errors.password : ''}
+                label={'Password'}
+              ></TextInput>
+              <SolidButton
+                animateHover
+                onClick={() => handleSubmit()}
+                width={'100%'}
+                label={'Register'}
+              />
+              {/* <View position={'absolute'} bottom={0} left={0}>
+                <Text>{JSON.stringify(values)}</Text>
+                <Text>{JSON.stringify(touched)}</Text>
+                <Text>{JSON.stringify(errors)}</Text>
+              </View> */}
+            </VStack>
+          )}
+        </Formik>
+        <View>
+          <Text>{registerError}</Text>
+        </View>
+      </Card>
+    );
   }, [registerError]);
 
   return (
@@ -152,8 +148,7 @@ const Register: NextPage = () => {
         justifyContent={'center'}
         alignItems={'center'}
       >
-        <View>{content}</View>
-        <Text>{JSON.stringify(data)}</Text>
+        <View>{registerForm}</View>
       </ScrollView>
     </Container>
   );

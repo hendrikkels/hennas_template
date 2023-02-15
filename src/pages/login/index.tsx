@@ -57,74 +57,70 @@ const Login: NextPage = () => {
     []
   );
 
-  const content = useMemo(() => {
-    if (!false) {
-      return (
-        <Card title={'Login'}>
-          <Formik
-            validationSchema={toFormikValidationSchema(validationSchema)}
-            onSubmit={onSubmit}
-            initialValues={{
-              email: 'hendrikkels@icloud.com',
-              password: '123456',
-            }}
-            enableReinitialize
-          >
-            {({
-              handleSubmit,
-              isSubmitting,
-              errors,
-              touched,
-              values,
-              setFieldValue,
-              setFieldTouched,
-            }) => (
-              <VStack>
-                <TextInput
-                  name={'email'}
-                  value={values.email}
-                  handleValueChange={(val) => {
-                    setFieldValue('email', val);
-                    setFieldTouched('email');
-                  }}
-                  error={touched.email ? errors.email : ''}
-                  label={'Email'}
-                ></TextInput>
-                <TextInput
-                  name={'password'}
-                  type={'password'}
-                  value={values.password}
-                  handleValueChange={(val) => {
-                    setFieldValue('password', val);
-                    setFieldTouched('password');
-                  }}
-                  error={touched.password ? errors.password : ''}
-                  label={'Password'}
-                ></TextInput>
-                <SolidButton
-                  animateHover
-                  onClick={() => handleSubmit()}
-                  width={'100%'}
-                  label={'Login'}
-                />
-                <View position={'absolute'} bottom={0} left={0}>
-                  <Text>{JSON.stringify(values)}</Text>
-                  <Text>{JSON.stringify(touched)}</Text>
-                  <Text>{JSON.stringify(errors)}</Text>
-                </View>
-              </VStack>
-            )}
-          </Formik>
-          {loginError && (
-            <View>
-              <Text>{loginError}</Text>
-            </View>
+  const loginForm = useMemo(() => {
+    return (
+      <Card title={'Login'}>
+        <Formik
+          validationSchema={toFormikValidationSchema(validationSchema)}
+          onSubmit={onSubmit}
+          initialValues={{
+            email: 'hendrikkels@icloud.com',
+            password: '123456',
+          }}
+          enableReinitialize
+        >
+          {({
+            handleSubmit,
+            isSubmitting,
+            errors,
+            touched,
+            values,
+            setFieldValue,
+            setFieldTouched,
+          }) => (
+            <VStack>
+              <TextInput
+                name={'email'}
+                value={values.email}
+                handleValueChange={(val) => {
+                  setFieldValue('email', val);
+                  setFieldTouched('email');
+                }}
+                error={touched.email ? errors.email : ''}
+                label={'Email'}
+              ></TextInput>
+              <TextInput
+                name={'password'}
+                type={'password'}
+                value={values.password}
+                handleValueChange={(val) => {
+                  setFieldValue('password', val);
+                  setFieldTouched('password');
+                }}
+                error={touched.password ? errors.password : ''}
+                label={'Password'}
+              ></TextInput>
+              <SolidButton
+                animateHover
+                onClick={() => handleSubmit()}
+                width={'100%'}
+                label={'Login'}
+              />
+              {/* <View position={'absolute'} bottom={0} left={0}>
+                <Text>{JSON.stringify(values)}</Text>
+                <Text>{JSON.stringify(touched)}</Text>
+                <Text>{JSON.stringify(errors)}</Text>
+              </View> */}
+            </VStack>
           )}
-        </Card>
-      );
-    } else {
-      return <SolidButton label="Logout"></SolidButton>;
-    }
+        </Formik>
+        {loginError && (
+          <View>
+            <Text>{loginError}</Text>
+          </View>
+        )}
+      </Card>
+    );
   }, [loginError]);
 
   return (
@@ -139,7 +135,7 @@ const Login: NextPage = () => {
         justifyContent={'center'}
         alignItems={'center'}
       >
-        <View>{content}</View>
+        <View>{loginForm}</View>
       </ScrollView>
     </Container>
   );
