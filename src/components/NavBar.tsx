@@ -1,5 +1,5 @@
 import React from 'react';
-import { DefaultTheme, useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 import { HStack } from '.';
 import { Heading1, Div, DivProps } from '../elements';
 import { NavItem } from '.';
@@ -30,8 +30,8 @@ export const NavBar: React.FC<NavBarProps> = (props) => {
         paddingX={theme.navbarPaddingX}
       >
         <Div>
-          <Heading1 fontFamily={'JetBrains Mono'} fontSize={'32px'}>
-            {title ? title : theme.navbarHeight}
+          <Heading1 fontFamily={theme.navbarItemFontFamily} fontSize={'32px'}>
+            {title ? title : 'Hendrikkels'}
           </Heading1>
         </Div>
         <HStack space={'20px'}>

@@ -70,7 +70,7 @@ declare module 'styled-components' {
 }
 
 export const base = {
-  fontFamily: 'JetBrains Mono',
+  fontFamily: '',
   fontSize: '14px',
   lineHeight: '1.75',
   borderRadius: '6px',
@@ -78,20 +78,20 @@ export const base = {
   navbarHeight: '82px',
   navbarPaddingX: '42px',
   navbarItemFontSize: '18px',
-  navbarItemFontFamily: 'JetBrains Mono',
+  navbarItemFontFamily: '',
   inputHeight: '42px',
   inputPaddingX: '8px',
   inputPaddingY: '2px',
   inputBorderWidth: '0px',
   inputBorderRadius: '4px',
   inputValueFontSize: '20px',
-  inputValueFontFamily: 'JetBrains Mono',
+  inputValueFontFamily: '',
   inputLabelFontSize: '14px',
   inputLabelFontFamily: '',
   inputLabelHeight: '20px',
   inputLabelPaddingLeft: '2px',
   inputErrorFontSize: '10px',
-  inputErrorFontFamily: 'JetBrains Mono',
+  inputErrorFontFamily: '',
   inputErrorHeight: '18px',
   inputErrorPaddingLeft: '4px',
   buttonHeight: '48px',
@@ -101,7 +101,7 @@ export const base = {
   buttonBorderRadius: '6px',
   buttonLabelFontSize: '16px',
   buttonLabelLineHeight: '1.75',
-  buttonLabelFontFamily: 'JetBrains Mono',
+  buttonLabelFontFamily: '',
 };
 
 export const light = {
