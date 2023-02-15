@@ -1,4 +1,4 @@
-import { register, getUserByEmail, getUserByUsername } from '@/services/AuthService';
+import { register, getUserByEmail, getUserByUsername } from '@/services/auth.service';
 import { hashPassword } from '@/utils/password';
 import { NextApiRequest, NextApiResponse } from 'next'
 
@@ -6,31 +6,26 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse,
 ) {
-    const bodyObj = JSON.parse(req.body);
+    //Convert body to JSON
+    const body = JSON.parse(req.body);
 
-    const { username, email, password } = bodyObj;
-
-    if (!bodyObj.username || !bodyObj.email || !bodyObj.password) {
-        return res.status(400).json({ message: 'Invalid Credentials' });
+    //Check if all fields are present (TODO: replace with zod)
+    if (!body.username || !body.email || !body.password) {
+        return res.status(400).json({ error: 'Invalid Credentials' });
     }
 
-    const emailExists = await getUserByEmail(email);
-    if (emailExists) return res.status(403).json({ error: `A User with email ${email} already exists!` });
+    //Check if email exists
+    const emailExists = await getUserByEmail(body.email);
+    if (emailExists) return res.status(403).json({ error: `Email already in use!` });
 
-    const usernameExists = await getUserByUsername(username);
-    if (usernameExists) return res.status(403).json({ error: `A User with username ${username} already exists!` });
-
-    const hashedPassword = await hashPassword(password);
+    //Check if username exists
+    const usernameExists = await getUserByUsername(body.username);
+    if (usernameExists) return res.status(403).json({ error: `Username already in use!` });
 
     try {
-        const user = await register({ email: email, username: username, password: hashedPassword });
+        const user = await register(body);
         console.log(user);
-        const clientUser = {
-            email: user.email,
-            username: user.username,
-            role: user.role,
-        }
-        return res.status(200).json({ user: clientUser });
+        return res.status(200).json({ user: user });
     } catch (e) {
         res.status(400).json({ error: `Something went wrong` });
         throw e;

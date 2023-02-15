@@ -3,7 +3,7 @@ import { createAccessToken, sendRefreshToken, createRefreshToken } from '@/utils
 import cookie from 'cookie'
 import prisma from '../../../../lib/prisma'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { getUserById } from '@/services/AuthService'
+import { getUserById } from '@/services/auth.service'
 
 //TODO: Possibly fix api routes
 export default async function refresh_token(req: NextApiRequest, res: NextApiResponse) {

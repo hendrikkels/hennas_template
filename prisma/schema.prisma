@@ -12,22 +12,20 @@ model users {
   username  String     @unique
   email     String     @unique
   password  String
+  role      roles      @default(USER)
+  profile   profiles[] @relation("ProfileToUser")
   createdAt DateTime   @default(now()) @map("created_at")
   updatedAt DateTime   @updatedAt @map("updated_at")
-  role      roles      @default(USER)
-  bookmarks profiles[] @relation("ProfileToUser")
 }
 
 model profiles {
-  id          Int      @id @default(autoincrement())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  title       String
-  description String
-  url         String
-  imageUrl    String
-  category    String
-  users       users[]  @relation("ProfileToUser")
+  id        Int      @id @default(autoincrement())
+  name      String
+  surname   String
+  bio       String
+  user      users[]  @relation("ProfileToUser")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 enum roles {

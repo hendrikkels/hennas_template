@@ -1,4 +1,4 @@
-import { getAllUsers } from '@/services/UserService';
+import { getAllUsers } from '@/services/user.service';
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 

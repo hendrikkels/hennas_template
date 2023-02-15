@@ -1,4 +1,4 @@
-import { getUserByEmail } from '@/services/AuthService';
+import { getUserByEmail } from '@/services/auth.service';
 import { validatePassword } from '@/utils/password';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { createRefreshToken, createAccessToken, sendRefreshToken } from '@/utils/auth';

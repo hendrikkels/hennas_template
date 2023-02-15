@@ -2,10 +2,6 @@ import { Prisma } from "@prisma/client";
 import prisma from "../../lib/prisma";
 import { generateJWT } from "@/utils/jwt";
 
-type User = Prisma.usersGetPayload<{}>;
-type NewUser = Prisma.usersCreateInput;
-type LoginUser = Pick<Prisma.usersCreateInput, "email" | "password">
-
 export const getUser = async (id: number) => {
     try {
         const user = await prisma.users.findUnique({
