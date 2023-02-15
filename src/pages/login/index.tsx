@@ -11,6 +11,7 @@ import {
   VStack,
   View,
   Text,
+  DepthButton,
 } from '../../components';
 import { Formik } from 'formik';
 import * as Zod from 'zod';
@@ -32,13 +33,12 @@ const Login: NextPage = () => {
     async (values: { email: string; password: string }, actions: any) => {
       actions.setSubmitting(true);
       try {
-        await fetch('http://localhost:3000/api/auth/login', {
+        await fetch('/api/auth/login', {
           method: 'POST',
           body: JSON.stringify(values),
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(JSON.stringify(data, null, 2));
             if (data && data.accessToken && data.user) {
               store.setAccessToken(data.accessToken);
               store.setUser(data.user);
@@ -100,7 +100,7 @@ const Login: NextPage = () => {
                 error={touched.password ? errors.password : ''}
                 label={'Password'}
               ></TextInput>
-              <SolidButton
+              <DepthButton
                 animateHover
                 onClick={() => handleSubmit()}
                 width={'100%'}

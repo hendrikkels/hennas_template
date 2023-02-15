@@ -31,6 +31,7 @@ export interface ButtonProps
     BoxShadowProps,
     TypographyProps,
     Omit<React.HTMLAttributes<HTMLElement>, 'color'> {
+  type?: string;
   as?: React.ElementType;
   children?: React.ReactNode;
 }

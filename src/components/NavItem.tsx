@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from 'styled-components';
-import { Anchor, Paragraph, AnchorProps } from '../library';
+import { Anchor, Paragraph, AnchorProps } from '../elements';
 
 export interface NavItemProps extends AnchorProps {
   label?: string;

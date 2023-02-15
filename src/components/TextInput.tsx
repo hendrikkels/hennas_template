@@ -13,7 +13,7 @@ import {
   InputProps,
   Paragraph,
   ParagraphProps,
-} from '../library';
+} from '../elements';
 import { useField } from 'formik';
 
 export interface TextInputProps extends InputProps {

@@ -37,7 +37,7 @@ const Register: NextPage = () => {
     ) => {
       actions.setSubmitting(true);
       try {
-        fetch('http://localhost:3000/api/auth/register', {
+        fetch('/api/auth/register', {
           method: 'POST',
           body: JSON.stringify(values),
         })
@@ -116,6 +116,7 @@ const Register: NextPage = () => {
                 label={'Password'}
               ></TextInput>
               <SolidButton
+                type={'submit'}
                 animateHover
                 onClick={() => handleSubmit()}
                 width={'100%'}

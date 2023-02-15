@@ -1,7 +1,7 @@
 import React, { ReactNode, useMemo } from 'react';
 import { render } from 'react-dom';
 import { useTheme } from 'styled-components';
-import { DivProps, Div } from '../library';
+import { DivProps, Div } from '../elements';
 import { HStack } from './HStack';
 
 export const ColorPalette: React.FC<DivProps> = (props) => {

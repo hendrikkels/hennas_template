@@ -1,6 +1,6 @@
 import React, { ReactNode, useMemo, useState } from 'react';
 import { useTheme } from 'styled-components';
-import { Div, Button, ButtonProps, Paragraph } from '../library';
+import { Div, Button, ButtonProps, Paragraph } from '../elements';
 
 export interface DepthButtonProps extends ButtonProps {
   label?: string;
@@ -22,7 +22,7 @@ export const DepthButton: React.FC<DepthButtonProps> = (props) => {
   const [pressing, setPressing] = useState(false);
 
   return (
-    <Div position={'relative'}>
+    <Div position={'relative'} width={props.width} height={props.height}>
       <Button
         borderWidth={theme.buttonBorderWidth}
         borderRadius={theme.buttonBorderRadius}

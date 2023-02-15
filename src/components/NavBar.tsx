@@ -1,7 +1,7 @@
 import React from 'react';
 import { DefaultTheme, useTheme } from 'styled-components';
 import { HStack } from '.';
-import { Heading1, Div, DivProps } from '../library';
+import { Heading1, Div, DivProps } from '../elements';
 import { NavItem } from '.';
 import { useRouter } from 'next/router';
 
