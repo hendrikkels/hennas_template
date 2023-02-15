@@ -17,19 +17,21 @@ export const NavBar: React.FC<NavBarProps> = (props) => {
   return (
     <Div
       width={'100%'}
+      height={theme.navbarHeight}
+      flexShrink={0}
       backgroundColor={theme.colors.navbarBackground}
       {...rest}
     >
       <HStack
         width={'100%'}
+        height={'100%'}
         justifyContent={'space-between'}
         alignItems={'center'}
-        padding={'20px'}
-        paddingX={'28px'}
+        paddingX={theme.navbarPaddingX}
       >
         <Div>
           <Heading1 fontFamily={'JetBrains Mono'} fontSize={'32px'}>
-            {title ? title : 'Hendrikkels'}
+            {title ? title : theme.navbarHeight}
           </Heading1>
         </Div>
         <HStack space={'20px'}>

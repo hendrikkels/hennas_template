@@ -4,6 +4,10 @@ declare module 'styled-components' {
     fontSize: string;
     borderRadius: string;
     cardPadding: string;
+    navbarHeight: string;
+    navbarPaddingX: string;
+    navbarItemFontSize: string;
+    navbarItemFontFamily: string;
     inputHeight: string;
     inputPaddingX: string;
     inputPaddingY: string;
@@ -71,19 +75,23 @@ export const base = {
   lineHeight: '1.75',
   borderRadius: '6px',
   cardPadding: '40px',
+  navbarHeight: '82px',
+  navbarPaddingX: '42px',
+  navbarItemFontSize: '18px',
+  navbarItemFontFamily: 'JetBrains Mono',
   inputHeight: '42px',
   inputPaddingX: '8px',
   inputPaddingY: '2px',
   inputBorderWidth: '0px',
   inputBorderRadius: '4px',
   inputValueFontSize: '20px',
-  inputValueFontFamily: '',
+  inputValueFontFamily: 'JetBrains Mono',
   inputLabelFontSize: '14px',
   inputLabelFontFamily: '',
   inputLabelHeight: '20px',
   inputLabelPaddingLeft: '2px',
   inputErrorFontSize: '10px',
-  inputErrorFontFamily: '',
+  inputErrorFontFamily: 'JetBrains Mono',
   inputErrorHeight: '18px',
   inputErrorPaddingLeft: '4px',
   buttonHeight: '48px',
@@ -93,7 +101,7 @@ export const base = {
   buttonBorderRadius: '6px',
   buttonLabelFontSize: '16px',
   buttonLabelLineHeight: '1.75',
-  buttonLabelFontFamily: '',
+  buttonLabelFontFamily: 'JetBrains Mono',
 };
 
 export const light = {

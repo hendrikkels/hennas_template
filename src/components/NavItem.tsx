@@ -14,6 +14,8 @@ export const NavItem: React.FC<NavItemProps> = (props) => {
   return (
     <Anchor {...rest}>
       <Paragraph
+        fontSize={theme.navbarItemFontSize}
+        fontFamily={theme.navbarItemFontFamily}
         color={
           active
             ? theme.colors.navbarItemActive

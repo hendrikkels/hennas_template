@@ -12,10 +12,12 @@ import {
 } from '../components';
 import { useRouter } from 'next/router';
 import { useStore } from '@/store';
+import { useTheme } from 'styled-components';
 
 const Home: NextPage = () => {
   const router = useRouter();
   const store = useStore();
+  const theme = useTheme();
   const [authed, setAuthed] = useState(false);
 
   useEffect(() => {
@@ -49,6 +51,12 @@ const Home: NextPage = () => {
         {authed ? (
           <Card width={'28%'}>
             <VStack width={'100%'} space={86}>
+              <SolidButton
+                width={'100%'}
+                backgroundColor={theme.colors.green}
+                label={'Profile'}
+                onClick={() => router.push('profile')}
+              ></SolidButton>
               <SolidButton
                 width={'100%'}
                 label={'Logout'}

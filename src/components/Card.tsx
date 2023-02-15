@@ -24,14 +24,22 @@ export const Card: React.FC<CardProps> = (props) => {
     if (_renderTitle) {
       return _renderTitle;
     }
-    return <Heading1 marginBottom={theme.cardPadding}>{title}</Heading1>;
+    return (
+      <Heading1 marginBottom={theme.cardPadding} fontFamily={theme.fontFamily}>
+        {title}
+      </Heading1>
+    );
   }, []);
 
   const renderFooter: ReactNode = useMemo(() => {
     if (_renderFooter) {
       return _renderFooter;
     }
-    return <Heading1 marginTop={theme.cardPadding}>{footer}</Heading1>;
+    return (
+      <Heading1 marginTop={theme.cardPadding} fontFamily={theme.fontFamily}>
+        {footer}
+      </Heading1>
+    );
   }, []);
 
   return (

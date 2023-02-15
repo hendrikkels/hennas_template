@@ -9,7 +9,13 @@ export const Container: React.FC<ContainerProps> = (props) => {
   const theme = useTheme();
 
   return (
-    <Div display={'flex'} height={'100%'} width={'100%'} {...rest}>
+    <Div
+      overflow={'fixed'}
+      display={'flex'}
+      height={'100%'}
+      width={'100%'}
+      {...rest}
+    >
       {children}
     </Div>
   );
