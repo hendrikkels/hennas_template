@@ -1,3 +1,4 @@
+import { createUserProfile } from '@/services/profile.service';
 import { createUser, getUserByEmail, getUserByUsername } from '@/services/user.service';
 import { hashPassword } from '@/utils/password';
 import { NextApiRequest, NextApiResponse } from 'next'
@@ -35,7 +36,8 @@ export default async function handler(
 
     try {
         const user = await createUser(registerUser);
-        return res.status(200).json({ user: user });
+        const profile = await createUserProfile(user.id);
+        return res.status(200).json({ user: { ...user, profile: profile } });
     } catch (e) {
         res.status(400).json({ error: `Something went wrong` });
         throw e;
