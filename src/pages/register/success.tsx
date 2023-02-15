@@ -36,12 +36,18 @@ const RegisterSuccess: NextPage = () => {
         justifyContent={'center'}
         alignItems={'center'}
       >
-        <Card title={'Success!'}>
-          <View>
+        <Card header={'Success!'} width={'28%'}>
+          <VStack space={'40px'}>
             <Text>
-              Your account has been created, please login to your account
+              Your account has been created, please login to your account to
+              continue.
             </Text>
-          </View>
+            <SolidButton
+              width={'100%'}
+              label={'Login'}
+              onClick={() => router.push('/login')}
+            />
+          </VStack>
         </Card>
       </ScrollView>
     </Container>

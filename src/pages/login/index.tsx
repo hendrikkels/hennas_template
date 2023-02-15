@@ -59,7 +59,7 @@ const Login: NextPage = () => {
 
   const loginForm = useMemo(() => {
     return (
-      <Card title={'Login'}>
+      <Card header={'Login'}>
         <Formik
           validationSchema={toFormikValidationSchema(validationSchema)}
           onSubmit={onSubmit}

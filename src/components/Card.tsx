@@ -3,16 +3,16 @@ import { useTheme } from 'styled-components';
 import { Heading1, Div, DivProps } from '../elements';
 
 export interface CardProps extends DivProps {
-  title?: string;
-  renderTitle?: ReactNode;
+  header?: string;
+  renderHeader?: ReactNode;
   footer?: string;
   renderFooter?: ReactNode;
 }
 
 export const Card: React.FC<CardProps> = (props) => {
   const {
-    title,
-    renderTitle: _renderTitle,
+    header,
+    renderHeader: _renderHeader,
     footer,
     renderFooter: _renderFooter,
     children,
@@ -20,13 +20,16 @@ export const Card: React.FC<CardProps> = (props) => {
   } = props;
   const theme = useTheme();
 
-  const renderTitle: ReactNode = useMemo(() => {
-    if (_renderTitle) {
-      return _renderTitle;
+  const renderHeader: ReactNode = useMemo(() => {
+    if (_renderHeader) {
+      return _renderHeader;
     }
     return (
-      <Heading1 marginBottom={theme.cardPadding} fontFamily={theme.fontFamily}>
-        {title}
+      <Heading1
+        marginBottom={theme.cardHeaderMargin}
+        fontFamily={theme.fontFamily}
+      >
+        {header}
       </Heading1>
     );
   }, []);
@@ -36,7 +39,10 @@ export const Card: React.FC<CardProps> = (props) => {
       return _renderFooter;
     }
     return (
-      <Heading1 marginTop={theme.cardPadding} fontFamily={theme.fontFamily}>
+      <Heading1
+        marginTop={theme.cardFooterMargin}
+        fontFamily={theme.fontFamily}
+      >
         {footer}
       </Heading1>
     );
@@ -50,7 +56,7 @@ export const Card: React.FC<CardProps> = (props) => {
       display={'flex'}
       {...rest}
     >
-      {title && renderTitle}
+      {header && renderHeader}
       <Div minHeight={'56px'} display={'flex'} width={'100%'}>
         {children}
       </Div>

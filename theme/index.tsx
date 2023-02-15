@@ -4,6 +4,8 @@ declare module 'styled-components' {
     fontSize: string;
     borderRadius: string;
     cardPadding: string;
+    cardHeaderMargin: string;
+    cardFooterMargin: string;
     navbarHeight: string;
     navbarPaddingX: string;
     navbarItemFontSize: string;
@@ -75,6 +77,8 @@ export const base = {
   lineHeight: '1.75',
   borderRadius: '6px',
   cardPadding: '40px',
+  cardHeaderMargin: '24px',
+  cardFooterMargin: '24px',
   navbarHeight: '82px',
   navbarPaddingX: '42px',
   navbarItemFontSize: '18px',

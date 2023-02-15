@@ -45,7 +45,7 @@ const Register: NextPage = () => {
           .then((data) => {
             console.log(JSON.stringify(data, null, 2));
             if (data && data.user) {
-              router.replace('/');
+              router.push('register/success');
             } else if (data && data.error) {
               console.log(data.error);
               setRegisterError(data.error);
@@ -63,7 +63,7 @@ const Register: NextPage = () => {
 
   const registerForm = useMemo(() => {
     return (
-      <Card title={'Register'}>
+      <Card header={'Register'}>
         <Formik
           validationSchema={toFormikValidationSchema(validationSchema)}
           onSubmit={onSubmit}

@@ -31,7 +31,7 @@ const Components: NextPage = () => {
       <NavBar></NavBar>
       <ScrollView padding={'28px'} width={'100%'}>
         <VStack space={'28px'}>
-          <Card title={'Introduction'}>
+          <Card header={'Introduction'}>
             <VStack space={'10px'}>
               <Paragraph>
                 This is a proof-of-concept project that I am building as a
@@ -52,10 +52,10 @@ const Components: NextPage = () => {
               </Paragraph>
             </VStack>
           </Card>
-          <Card title={'Color Palette'}>
+          <Card header={'Color Palette'}>
             <ColorPalette />
           </Card>
-          <Card title={'Component Library'}>
+          <Card header={'Component Library'}>
             <VStack space={'20px'}>
               <Heading1>Heading 1</Heading1>
               <Heading2>Heading 2</Heading2>
@@ -121,7 +121,7 @@ const Components: NextPage = () => {
                 />
               </HStack>
               <Card
-                title={'Card'}
+                header={'Card'}
                 backgroundColor={theme.colors.primaryBackground}
               >
                 <HStack space={'40px'} width={'100%'}>
