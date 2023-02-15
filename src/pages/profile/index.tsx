@@ -17,10 +17,12 @@ import * as Zod from 'zod';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
 import useSWR from 'swr';
 import fetcher from '../../utils/fetcher';
+import { useStore } from '@/store';
 
 const Profile: NextPage = () => {
   const router = useRouter();
-  const { data, error, isLoading } = useSWR('/api/users', fetcher);
+  const store = useStore();
+  const { data, error, isLoading } = useSWR('/api/user/all', fetcher);
 
   return (
     <Container>

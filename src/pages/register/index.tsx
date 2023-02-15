@@ -26,7 +26,6 @@ const validationSchema = Zod.object({
 
 const Register: NextPage = () => {
   const router = useRouter();
-  const { data, error, isLoading } = useSWR('/api/users', fetcher);
 
   const [registerError, setRegisterError] = useState('');
 

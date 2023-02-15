@@ -20,9 +20,6 @@ import fetcher from '../../utils/fetcher';
 
 const RegisterSuccess: NextPage = () => {
   const router = useRouter();
-  const { data, error, isLoading } = useSWR('/api/users', fetcher);
-
-  const [registerError, setRegisterError] = useState('');
 
   return (
     <Container>
