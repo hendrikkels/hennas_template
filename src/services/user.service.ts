@@ -1,6 +1,15 @@
-import { Prisma } from "@prisma/client";
 import prisma from "../../lib/prisma";
-import { generateJWT } from "@/utils/jwt";
+import { RegisterUser } from "@/types";
+
+function exclude<User, Key extends keyof User>(
+    user: User,
+    keys: Key[]
+): Omit<User, Key> {
+    for (let key of keys) {
+        delete user[key];
+    }
+    return user;
+}
 
 export const getUser = async (id: number) => {
     try {
@@ -10,8 +19,99 @@ export const getUser = async (id: number) => {
             },
             select: {
                 id: true,
+                username: true,
                 email: true,
                 role: true,
+                profile: true,
+                updatedAt: true,
+                createdAt: true,
+            },
+        });
+        return user;
+    } catch (e) {
+        console.log(`Error: ${e}`);
+        throw e;
+    }
+};
+
+export const getUserById = async (id: number) => {
+    try {
+        const user = await prisma.users.findUnique({
+            where: {
+                id: id,
+            },
+            select: {
+                id: true,
+                username: true,
+                email: true,
+                role: true,
+                profile: true,
+                updatedAt: true,
+                createdAt: true,
+            },
+        });
+        return user;
+    } catch (e) {
+        console.log(`Error: ${e}`);
+        throw e;
+    }
+};
+
+export const getUserByUsername = async (username: string) => {
+    try {
+        const user = await prisma.users.findUnique({
+            where: {
+                username: username,
+            },
+            select: {
+                id: true,
+                username: true,
+                email: true,
+                role: true,
+                profile: true,
+                updatedAt: true,
+                createdAt: true,
+            },
+        });
+        return user;
+    } catch (e) {
+        console.log(`Error: ${e}`);
+        throw e;
+    }
+};
+
+export const getUserByEmail = async (username: string) => {
+    try {
+        const user = await prisma.users.findUnique({
+            where: {
+                username: username,
+            },
+            select: {
+                id: true,
+                username: true,
+                email: true,
+                role: true,
+                profile: true,
+                updatedAt: true,
+                createdAt: true,
+            },
+        });
+        return user;
+    } catch (e) {
+        console.log(`Error: ${e}`);
+        throw e;
+    }
+};
+
+export const getAllUsers = async () => {
+    try {
+        const user = await prisma.users.findMany({
+            select: {
+                id: true,
+                username: true,
+                email: true,
+                role: true,
+                profile: true,
                 updatedAt: true,
                 createdAt: true,
             },
@@ -23,20 +123,12 @@ export const getUser = async (id: number) => {
     }
 }
 
-export const getAllUsers = async () => {
+export const createUser = async (registerUser: RegisterUser) => {
     try {
-        const user = await prisma.users.findMany({
-            select: {
-                id: true,
-                email: true,
-                role: true,
-                updatedAt: true,
-                createdAt: true,
-            },
-        });
-        return user;
+        const user = await prisma.users.create({ data: registerUser });
+        return exclude(user, ['password']);
     } catch (e) {
         console.log(`Error: ${e}`);
-        throw e;
+        throw (e);
     }
-}
+};

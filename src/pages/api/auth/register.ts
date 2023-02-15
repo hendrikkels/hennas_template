@@ -1,4 +1,4 @@
-import { register, getUserByEmail, getUserByUsername } from '@/services/auth.service';
+import { createUser, getUserByEmail, getUserByUsername } from '@/services/user.service';
 import { hashPassword } from '@/utils/password';
 import { NextApiRequest, NextApiResponse } from 'next'
 
@@ -22,9 +22,19 @@ export default async function handler(
     const usernameExists = await getUserByUsername(body.username);
     if (usernameExists) return res.status(403).json({ error: `Username already in use!` });
 
+    //Hash the password
+    const hashedPassword = await hashPassword(body.password);
+    console.log(hashedPassword);
+
+    const registerUser = {
+        ...body,
+        username: body.username,
+        email: body.email,
+        password: hashedPassword,
+    };
+
     try {
-        const user = await register(body);
-        console.log(user);
+        const user = await createUser(registerUser);
         return res.status(200).json({ user: user });
     } catch (e) {
         res.status(400).json({ error: `Something went wrong` });
