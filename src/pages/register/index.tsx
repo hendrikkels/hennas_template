@@ -17,6 +17,7 @@ import * as Zod from 'zod';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
 import useSWR from 'swr';
 import fetcher from '../../utils/fetcher';
+import axiosInstance from '../../../lib/axios';
 
 const validationSchema = Zod.object({
   username: Zod.string({ required_error: 'Username is required' }),
@@ -35,27 +36,20 @@ const Register: NextPage = () => {
       actions: any
     ) => {
       actions.setSubmitting(true);
-      try {
-        fetch('/api/auth/register', {
-          method: 'POST',
-          body: JSON.stringify(values),
+      axiosInstance
+        .post('api/auth/register', { ...values })
+        .then((res) => {
+          if (res.data && res.data.user) {
+            router.replace('/register/success');
+          }
         })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(JSON.stringify(data, null, 2));
-            if (data && data.user) {
-              router.push('register/success');
-            } else if (data && data.error) {
-              console.log(data.error);
-              setRegisterError(data.error);
-            }
-          });
-      } catch (err) {
-        // your error handling here
-        console.log(err);
-      } finally {
-        actions.setSubmitting(false);
-      }
+        .catch((err) => {
+          console.log(err.message);
+          setRegisterError(err.response.data);
+        })
+        .finally(() => {
+          actions.setSubmitting(false);
+        });
     },
     []
   );

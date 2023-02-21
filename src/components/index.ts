@@ -7,6 +7,7 @@ export * from './View';
 export * from './Card';
 export * from './Text';
 export * from './TextInput';
+export * from './TextAreaInput';
 export * from './SolidButton';
 export * from './DepthButton';
 

@@ -8,27 +8,26 @@ export default async function handler(
     res: NextApiResponse,
 ) {
     //Convert body to JSON
-    const body = JSON.parse(req.body);
+    const body = req.body;
 
     //Check if all fields are present (TODO: replace with zod)
     if (!body.username || !body.email || !body.password) {
-        return res.status(400).json({ error: 'Invalid Credentials' });
+        return res.status(400).send('Invalid Credentials');
     }
 
     //Check if email exists
     const emailExists = await getUserByEmail(body.email);
-    if (emailExists) return res.status(403).json({ error: `Email already in use` });
+    if (emailExists) return res.status(403).send('Email already in use');
 
     //Check if username exists
     const usernameExists = await getUserByUsername(body.username);
-    if (usernameExists) return res.status(403).json({ error: `Username already in use` });
+    if (usernameExists) return res.status(403).send('Username already in use');
 
     //Hash the password
     const hashedPassword = await hashPassword(body.password);
     console.log(hashedPassword);
 
     const registerUser = {
-        ...body,
         username: body.username,
         email: body.email,
         password: hashedPassword,
@@ -39,7 +38,7 @@ export default async function handler(
         const profile = await createUserProfile(user.id);
         return res.status(200).json({ user: { ...user, profile: profile } });
     } catch (e) {
-        res.status(400).json({ error: `Something went wrong` });
+        res.status(400).send('Something went wrong');
         throw e;
     }
 }

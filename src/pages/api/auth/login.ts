@@ -6,11 +6,12 @@ import { getUser } from '@/services/user.service';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
-        const body = JSON.parse(req.body);
+        // const body = JSON.parse(req.body);
+        const body = req.body;
 
         // Check if body contains both email and password
         if (!body.email || !body.password) {
-            return res.status(400).json({ error: 'Invalid Credentials' });
+            return res.status(400).send('Invalid Credentials');
         }
 
         const { email, password } = body;
@@ -18,20 +19,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         // Get only the password and id of the user
         const loginUser = await loginUserByEmail(email);
 
-        if (!loginUser) return res.status(400).json({ error: 'Email not found' });
+        if (!loginUser) return res.status(401).send('Email not found');
 
         // Validate the password
         const valid = await validatePassword(password, loginUser?.password ?? '');
 
         if (valid) {
             const token = createRefreshToken(loginUser);
-            if (!token) return res.status(400).json({ error: 'Something went wrong' });
+            if (!token) return res.status(400).send('Something went wrong');
             const accessToken = createAccessToken(loginUser)
             sendRefreshToken(res, token)
             const user = await getUser(loginUser.id);
             res.status(200).json({ user: user, accessToken });
         } else {
-            res.status(404).json({ error: 'Incorrect Password' });
+            res.status(404).send('Incorrect Password');
         }
     }
 }

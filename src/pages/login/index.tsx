@@ -17,6 +17,8 @@ import { Formik } from 'formik';
 import * as Zod from 'zod';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
 import { useStore } from '@/store';
+import axiosInstance from '../../../lib/axios';
+import { AxiosError } from 'axios';
 
 const validationSchema = Zod.object({
   email: Zod.string({ required_error: 'Email is required' }),
@@ -32,27 +34,23 @@ const Login: NextPage = () => {
   const onSubmit = useCallback(
     async (values: { email: string; password: string }, actions: any) => {
       actions.setSubmitting(true);
-      try {
-        await fetch('/api/auth/login', {
-          method: 'POST',
-          body: JSON.stringify(values),
+
+      axiosInstance
+        .post('api/auth/login', values)
+        .then((res) => {
+          if (res.data && res.data.accessToken && res.data.user) {
+            store.setAccessToken(res.data.accessToken);
+            store.setUser(res.data.user);
+            router.replace('/');
+          }
         })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data && data.accessToken && data.user) {
-              store.setAccessToken(data.accessToken);
-              store.setUser(data.user);
-              router.replace('/');
-            } else if (data && data.error) {
-              console.log(data.error);
-              setLoginError(data.error);
-            }
-          });
-      } catch (err) {
-        console.log(err);
-      } finally {
-        actions.setSubmitting(false);
-      }
+        .catch((err) => {
+          console.log(err.message);
+          setLoginError(err.response.data);
+        })
+        .finally(() => {
+          actions.setSubmitting(false);
+        });
     },
     []
   );

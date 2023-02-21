@@ -122,8 +122,6 @@ export const getAllUsers = async () => {
 export const createUser = async (registerUser: RegisterUser) => {
     try {
         const user = await prisma.users.create({ data: { ...registerUser } });
-        // Don't create the profile yet, rather create it from the route
-        // createUserProfile(user.id);
         return exclude(user, ['password']);
     } catch (e) {
         console.log(`Error: ${e}`);

@@ -6,17 +6,11 @@ import React, {
   useState,
 } from 'react';
 import { useTheme } from 'styled-components';
-import {
-  Div,
-  DivProps,
-  Input,
-  InputProps,
-  Paragraph,
-  ParagraphProps,
-} from '../elements';
+import { Div, DivProps, Paragraph, ParagraphProps } from '../elements';
 import { useField } from 'formik';
+import { TextArea, TextAreaProps } from '@/elements/TextArea';
 
-export interface TextInputProps extends InputProps {
+export interface TextAreaInputProps extends TextAreaProps {
   name?: string;
   label?: string | ReactNode;
   error?: string | ReactNode;
@@ -33,11 +27,13 @@ export interface TextInputProps extends InputProps {
   _errorStyle?: ParagraphProps;
 }
 
-export const TextInput: React.FC<TextInputProps> = (props) => {
+export const TextAreaInput: React.FC<TextAreaInputProps> = (props) => {
   const {
     name,
     label,
     error,
+    rows,
+    cols,
     value: _value,
     onChange: _onChange,
     handleValueChange,
@@ -100,9 +96,11 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
         </Paragraph>
       </Div>
 
-      <Input
+      <TextArea
         width={'100%'}
         value={value}
+        rows={rows}
+        cols={cols}
         name={name}
         onChange={onChange}
         disabled={disabled}
@@ -119,7 +117,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
         paddingY={theme.inputPaddingY}
         backgroundColor={theme.colors.inputBackground}
         {...rest}
-      ></Input>
+      ></TextArea>
       <Div
         justifyContent={'flex-end'}
         height={theme.inputErrorHeight}

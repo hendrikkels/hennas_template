@@ -1,5 +1,6 @@
 import { RegisterUser, User } from "@/types";
 import prisma from "../../lib/prisma";
+import { UpdateProfile } from "@/types/profile";
 
 export const getUserProfile = async (id: number) => {
   try {
@@ -37,6 +38,23 @@ export const createUserProfile = async (userId: number) => {
           },
         },
       }
+    });
+    return userProfile;
+  } catch (e) {
+    console.log(`Error: ${e}`);
+    throw e;
+  }
+};
+
+export const updateUserProfile = async (profileId: number, data: UpdateProfile) => {
+  try {
+    const userProfile = await prisma.profiles.update({
+      where: {
+        id: profileId,
+      },
+      data: {
+        ...data
+      },
     });
     return userProfile;
   } catch (e) {

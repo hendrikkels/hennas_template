@@ -13,6 +13,7 @@ import {
 import { useRouter } from 'next/router';
 import { useStore } from '@/store';
 import { useTheme } from 'styled-components';
+import axiosInstance from '../../lib/axios';
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -29,13 +30,16 @@ const Home: NextPage = () => {
   }, [store.accessToken]);
 
   function logOut() {
-    fetch('/api/auth/logout', {
-      method: 'POST',
-      credentials: 'include',
-    }).then(() => {
-      store.setAccessToken(null);
-      store.setUser(null);
-    });
+    axiosInstance
+      .post('api/auth/logout')
+      .then((res) => {})
+      .catch((err) => {
+        console.log(err.message);
+      })
+      .finally(() => {
+        store.setAccessToken(null);
+        store.setUser(null);
+      });
   }
 
   return (
@@ -55,7 +59,7 @@ const Home: NextPage = () => {
                 width={'100%'}
                 backgroundColor={theme.colors.green}
                 label={'Profile'}
-                onClick={() => router.push('profile')}
+                onClick={() => router.push(`profile/${store.user.id}`)}
               ></SolidButton>
               <SolidButton
                 width={'100%'}
