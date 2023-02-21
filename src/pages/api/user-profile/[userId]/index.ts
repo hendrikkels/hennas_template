@@ -7,6 +7,8 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
+
+
     const userId = Number(req.query.userId);
     const userProfile = await getUserProfile(userId);
     if (userProfile) {
