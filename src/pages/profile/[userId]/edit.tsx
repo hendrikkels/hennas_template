@@ -27,7 +27,7 @@ import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 import { useStore } from '@/store';
 import { useTheme } from 'styled-components';
-import { axiosClient } from '../../../services/axiosClient';
+import { axiosInstance } from '@/axios';
 
 const validationSchema = Zod.object({
   name: Zod.string({}),
@@ -88,7 +88,7 @@ const EditProfile: NextPage = () => {
       actions: any
     ) => {
       actions.setSubmitting(true);
-      axiosClient
+      axiosInstance
         .post(`/api/user-profile/${userId}/update`, {
           id: data.profile.id,
           name: values.name,

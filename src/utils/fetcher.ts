@@ -1,5 +1,5 @@
-import { axiosClient } from "../services/axiosClient";
+import { axiosInstance } from "@/axios";
 
-const fetcher = (url: string) => axiosClient.get(url).then(res => res.data)
+const fetcher = (url: string) => axiosInstance.get(url).then(res => res.data)
 
 export default fetcher;

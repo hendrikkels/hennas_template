@@ -1,5 +1,5 @@
 import { refreshToken } from "@/utils/auth";
-import { createAxiosClient } from "../../lib/axios";
+import { createAxiosClient } from "@/axios/client";
 import { useStore } from "../store";
 import { User } from "@/types";
 
@@ -23,7 +23,7 @@ async function logout() {
   console.log('logout...');
 }
 
-export const axiosClient = createAxiosClient({
+export const axiosInstance = createAxiosClient({
   options: {
     baseURL: BASE_URL,
     timeout: 300000,
