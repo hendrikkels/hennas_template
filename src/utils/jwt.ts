@@ -1,5 +1,5 @@
 
-import { getUserById } from '@/services/auth.service';
+import { getUserById } from '@/controllers/user';
 import jwt from 'jsonwebtoken';
 import { NextApiRequest } from 'next';
 

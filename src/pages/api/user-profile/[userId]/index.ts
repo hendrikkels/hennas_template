@@ -1,14 +1,13 @@
-import { getUserProfile } from '@/services/profile.service';
+import { getUserProfile } from '@/controllers/profile';
 
 import type { NextApiRequest, NextApiResponse } from 'next';
+import checkAuth from '../../middleware/checkAuth';
 
-export default async function handler(
+async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   try {
-
-
     const userId = Number(req.query.userId);
     const userProfile = await getUserProfile(userId);
     if (userProfile) {
@@ -21,3 +20,5 @@ export default async function handler(
     throw e;
   }
 }
+
+export default checkAuth(handler);

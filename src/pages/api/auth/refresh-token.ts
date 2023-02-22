@@ -3,7 +3,7 @@ import { createAccessToken, sendRefreshToken, createRefreshToken } from '@/utils
 import cookie from 'cookie'
 import prisma from '../../../../lib/prisma'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { getUserById } from '@/services/user.service'
+import { getUserById } from '@/controllers/user'
 
 //TODO: Possibly fix api routes
 export default async function refresh_token(req: NextApiRequest, res: NextApiResponse) {
@@ -36,7 +36,7 @@ export default async function refresh_token(req: NextApiRequest, res: NextApiRes
             if (newRefreshToken) sendRefreshToken(res, newRefreshToken);
             const accessToken = createAccessToken(user);
 
-            return res.status(200).json({ ok: true, accessToken, user });
+            return res.status(200).json({ ok: true, accessToken: accessToken, user });
         } catch (e) {
             console.log(e)
             return res.status(400).json({ ok: false, accessToken: '' })

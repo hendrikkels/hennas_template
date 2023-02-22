@@ -27,33 +27,13 @@ import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
 import { useStore } from '@/store';
 import { useTheme } from 'styled-components';
-import axiosInstance from '../../../../lib/axios';
+import { axiosClient } from '../../../services/axiosClient';
 
 const validationSchema = Zod.object({
   name: Zod.string({}),
   surname: Zod.string({}),
   bio: Zod.string({}),
 });
-
-// async function updateUser(url: string, { args }: any) {
-//   console.log('UPDATE USER');
-//   console.log(url);
-//   console.log(args);
-//   //   axiosInstance
-//   // .post(url, { ...values, role: 'ADMIN' })
-//   // .then((res) => {
-//   //   if (res.data && res.data.user) {
-//   //     router.replace('/register/success');
-//   //   }
-//   // })
-//   // .catch((err) => {
-//   //   console.log(err.message);
-//   //   setRegisterError(err.response.data);
-//   // })
-//   // .finally(() => {
-//   //   actions.setSubmitting(false);
-//   // });
-// }
 
 const EditProfile: NextPage = () => {
   const router = useRouter();
@@ -108,7 +88,7 @@ const EditProfile: NextPage = () => {
       actions: any
     ) => {
       actions.setSubmitting(true);
-      axiosInstance
+      axiosClient
         .post(`/api/user-profile/${userId}/update`, {
           id: data.profile.id,
           name: values.name,

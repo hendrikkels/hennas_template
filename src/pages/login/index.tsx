@@ -17,8 +17,9 @@ import { Formik } from 'formik';
 import * as Zod from 'zod';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
 import { useStore } from '@/store';
-import axiosInstance from '../../../lib/axios';
+// import axiosInstance from '../../../lib/axios';
 import { AxiosError } from 'axios';
+import { axiosClient } from '../../services/axiosClient';
 
 const validationSchema = Zod.object({
   email: Zod.string({ required_error: 'Email is required' }),
@@ -35,7 +36,7 @@ const Login: NextPage = () => {
     async (values: { email: string; password: string }, actions: any) => {
       actions.setSubmitting(true);
 
-      axiosInstance
+      axiosClient
         .post('api/auth/login', values)
         .then((res) => {
           if (res.data && res.data.accessToken && res.data.user) {

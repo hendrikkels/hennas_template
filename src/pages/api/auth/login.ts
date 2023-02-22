@@ -1,8 +1,8 @@
-import { loginUserByEmail } from '@/services/auth.service';
+import { loginUserByEmail } from '@/controllers/auth';
 import { validatePassword } from '@/utils/password';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { createRefreshToken, createAccessToken, sendRefreshToken } from '@/utils/auth';
-import { getUser } from '@/services/user.service';
+import { getUser } from '@/controllers/user';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
@@ -30,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             const accessToken = createAccessToken(loginUser)
             sendRefreshToken(res, token)
             const user = await getUser(loginUser.id);
-            res.status(200).json({ user: user, accessToken });
+            res.status(200).json({ user: user, accessToken: accessToken });
         } else {
             res.status(404).send('Incorrect Password');
         }

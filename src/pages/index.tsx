@@ -13,7 +13,7 @@ import {
 import { useRouter } from 'next/router';
 import { useStore } from '@/store';
 import { useTheme } from 'styled-components';
-import axiosInstance from '../../lib/axios';
+import { axiosClient } from '../services/axiosClient';
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -30,7 +30,7 @@ const Home: NextPage = () => {
   }, [store.accessToken]);
 
   function logOut() {
-    axiosInstance
+    axiosClient
       .post('api/auth/logout')
       .then((res) => {})
       .catch((err) => {

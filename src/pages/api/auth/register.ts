@@ -1,5 +1,5 @@
-import { createUserProfile } from '@/services/profile.service';
-import { createUser, getUserByEmail, getUserByUsername } from '@/services/user.service';
+import { createUserProfile } from '@/controllers/profile';
+import { createUser, getUserByEmail, getUserByUsername } from '@/controllers/user';
 import { hashPassword } from '@/utils/password';
 import { NextApiRequest, NextApiResponse } from 'next'
 

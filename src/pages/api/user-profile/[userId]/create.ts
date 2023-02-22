@@ -1,9 +1,10 @@
-import { createUserProfile, getUserProfile } from '@/services/profile.service';
-import { getUserById } from '@/services/user.service';
+import { createUserProfile, getUserProfile } from '@/controllers/profile';
+import { getUserById } from '@/controllers/user';
 
 import type { NextApiRequest, NextApiResponse } from 'next';
+import checkAuth from '../../middleware/checkAuth';
 
-export default async function handler(
+async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -28,3 +29,5 @@ export default async function handler(
     throw e;
   }
 }
+
+export default checkAuth(handler);

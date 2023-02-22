@@ -26,16 +26,21 @@ function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     //initial funciton
     refreshToken().then((data) => {
+      console.log('Performed refresh access token');
       if (data.ok) {
+        console.log('Setting access token');
         store.setAccessToken(data.accessToken);
         store.setUser(data.user);
+        console.log('Current access Token is: ');
+        console.log(useStore.getState().accessToken);
       }
       setLoading(false);
     });
 
-    //starts silent refreshes countdown
+    //starts silent refreshes
     setInterval(() => {
       refreshToken().then((data) => {
+        console.log('Performed silent refresh access token');
         if (data.ok) {
           store.setAccessToken(data.accessToken);
           store.setUser(data.user);

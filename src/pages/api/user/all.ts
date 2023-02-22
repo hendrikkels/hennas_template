@@ -1,8 +1,9 @@
-import { getAllUsers } from '@/services/user.service';
+import { getAllUsers } from '@/controllers/user';
 
 import type { NextApiRequest, NextApiResponse } from 'next'
+import checkAuth from '../middleware/checkAuth';
 
-export default async function handler(
+async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -18,3 +19,5 @@ export default async function handler(
     throw e;
   }
 }
+
+export default checkAuth(handler);

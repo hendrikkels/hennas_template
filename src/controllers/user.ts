@@ -1,6 +1,6 @@
 import prisma from "../../lib/prisma";
 import { RegisterUser } from "@/types";
-import { createUserProfile } from "./profile.service";
+import { createUserProfile } from "./profile";
 
 function exclude<User, Key extends keyof User>(
     user: User,
@@ -117,7 +117,7 @@ export const getAllUsers = async () => {
         console.log(`Error: ${e}`);
         throw e;
     }
-}
+};
 
 export const createUser = async (registerUser: RegisterUser) => {
     try {
