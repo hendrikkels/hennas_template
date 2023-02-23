@@ -4,6 +4,7 @@ import { HStack } from '.';
 import { Heading1, Div, DivProps } from './elements';
 import { NavItem } from '.';
 import { useRouter } from 'next/router';
+import { useStore } from '@/store';
 
 export interface NavBarProps extends DivProps {
   title?: string;
@@ -13,6 +14,7 @@ export const NavBar: React.FC<NavBarProps> = (props) => {
   const { title, ...rest } = props;
   const theme = useTheme();
   const router = useRouter();
+  const store = useStore();
 
   return (
     <Div
