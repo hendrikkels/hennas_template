@@ -21,7 +21,7 @@ import {
   Heading2,
   Heading3,
   Anchor,
-} from '../elements';
+} from '../components/elements';
 
 const Components: NextPage = () => {
   const theme = useTheme();

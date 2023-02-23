@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from 'styled-components';
-import { Div, DivProps } from '../elements';
+import { Div, DivProps } from './elements';
 
 export interface ViewProps extends DivProps {}
 

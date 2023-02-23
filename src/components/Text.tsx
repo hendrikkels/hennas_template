@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from 'styled-components';
-import { ParagraphProps, Paragraph } from '../elements';
+import { ParagraphProps, Paragraph } from './elements';
 
 export interface TextProps extends ParagraphProps {}
 
