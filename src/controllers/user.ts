@@ -1,4 +1,4 @@
-import prisma from "../../lib/prisma";
+import prisma from "@/utils/prisma";
 import { RegisterUser } from "@/types";
 
 function exclude<User, Key extends keyof User>(
@@ -116,11 +116,11 @@ export const getAllUsers = async () => {
         console.log(`Error: ${e}`);
         throw e;
     }
-}
+};
 
 export const createUser = async (registerUser: RegisterUser) => {
     try {
-        const user = await prisma.users.create({ data: registerUser });
+        const user = await prisma.users.create({ data: { ...registerUser } });
         return exclude(user, ['password']);
     } catch (e) {
         console.log(`Error: ${e}`);

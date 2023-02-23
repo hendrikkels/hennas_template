@@ -6,3 +6,4 @@ export * from './Paragraph';
 export * from './Anchor';
 export * from './Button';
 export * from './Input';
+export * from './TextArea';

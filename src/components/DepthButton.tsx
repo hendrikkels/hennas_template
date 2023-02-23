@@ -1,6 +1,6 @@
 import React, { ReactNode, useMemo, useState } from 'react';
 import { useTheme } from 'styled-components';
-import { Div, Button, ButtonProps, Paragraph } from '../elements';
+import { Div, Button, ButtonProps, Paragraph } from './elements';
 
 export interface DepthButtonProps extends ButtonProps {
   label?: string;

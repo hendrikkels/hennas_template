@@ -11,12 +11,11 @@ import {
   VStack,
   View,
   Text,
-} from '../../components';
+} from '@/components';
 import { Formik } from 'formik';
 import * as Zod from 'zod';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
-import useSWR from 'swr';
-import fetcher from '../../utils/fetcher';
+import { axiosInstance } from '@/axios';
 
 const validationSchema = Zod.object({
   username: Zod.string({ required_error: 'Username is required' }),
@@ -26,7 +25,6 @@ const validationSchema = Zod.object({
 
 const Register: NextPage = () => {
   const router = useRouter();
-  const { data, error, isLoading } = useSWR('/api/users', fetcher);
 
   const [registerError, setRegisterError] = useState('');
 
@@ -36,27 +34,24 @@ const Register: NextPage = () => {
       actions: any
     ) => {
       actions.setSubmitting(true);
-      try {
-        fetch('/api/auth/register', {
-          method: 'POST',
-          body: JSON.stringify(values),
+      axiosInstance
+        .post(
+          'api/auth/register',
+          { ...values },
+          { headers: { Authorization: false } }
+        )
+        .then((res) => {
+          if (res.data && res.data.user) {
+            router.replace('/register/success');
+          }
         })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(JSON.stringify(data, null, 2));
-            if (data && data.user) {
-              router.push('register/success');
-            } else if (data && data.error) {
-              console.log(data.error);
-              setRegisterError(data.error);
-            }
-          });
-      } catch (err) {
-        // your error handling here
-        console.log(err);
-      } finally {
-        actions.setSubmitting(false);
-      }
+        .catch((err) => {
+          console.log(err);
+          setRegisterError(err.data);
+        })
+        .finally(() => {
+          actions.setSubmitting(false);
+        });
     },
     []
   );

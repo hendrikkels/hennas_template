@@ -1,6 +1,6 @@
 import React, { ReactNode, useMemo } from 'react';
 import { useTheme } from 'styled-components';
-import { Heading1, Div, DivProps } from '../elements';
+import { Heading1, Div, DivProps } from './elements';
 
 export interface CardProps extends DivProps {
   header?: string;
@@ -21,9 +21,7 @@ export const Card: React.FC<CardProps> = (props) => {
   const theme = useTheme();
 
   const renderHeader: ReactNode = useMemo(() => {
-    if (_renderHeader) {
-      return _renderHeader;
-    }
+    if (_renderHeader) return _renderHeader;
     return (
       <Heading1
         marginBottom={theme.cardHeaderMargin}
@@ -32,7 +30,7 @@ export const Card: React.FC<CardProps> = (props) => {
         {header}
       </Heading1>
     );
-  }, []);
+  }, [header, _renderHeader, theme]);
 
   const renderFooter: ReactNode = useMemo(() => {
     if (_renderFooter) {
@@ -46,7 +44,7 @@ export const Card: React.FC<CardProps> = (props) => {
         {footer}
       </Heading1>
     );
-  }, []);
+  }, [footer, _renderFooter, theme]);
 
   return (
     <Div
@@ -56,11 +54,11 @@ export const Card: React.FC<CardProps> = (props) => {
       display={'flex'}
       {...rest}
     >
-      {header && renderHeader}
+      {renderHeader}
       <Div minHeight={'56px'} display={'flex'} width={'100%'}>
         {children}
       </Div>
-      {footer && renderFooter}
+      {renderFooter}
     </Div>
   );
 };

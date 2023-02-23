@@ -13,15 +13,14 @@ import {
   SolidButton,
   DepthButton,
   Container,
-} from '../components';
+} from '@/components';
 import {
   Paragraph,
-  Div,
   Heading1,
   Heading2,
   Heading3,
   Anchor,
-} from '../elements';
+} from '@/components/elements';
 
 const Components: NextPage = () => {
   const theme = useTheme();
