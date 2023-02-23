@@ -1,4 +1,4 @@
-import prisma from "../../lib/prisma";
+import prisma from "../utils/prisma";
 import { RegisterUser } from "@/types";
 import { createUserProfile } from "./profile";
 
