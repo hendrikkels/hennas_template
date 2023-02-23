@@ -37,8 +37,9 @@ const Login: NextPage = () => {
       actions.setSubmitting(true);
 
       axiosInstance
-        .post('api/auth/login', values)
+        .post('api/auth/login', values, { headers: { Authorization: false } })
         .then((res) => {
+          console.log('in the then');
           if (res.data && res.data.accessToken && res.data.user) {
             store.setAccessToken(res.data.accessToken);
             store.setUser(res.data.user);
@@ -46,8 +47,10 @@ const Login: NextPage = () => {
           }
         })
         .catch((err) => {
-          console.log(err.message);
-          setLoginError(err.response.data);
+          console.log('in the catch');
+
+          console.log(err);
+          setLoginError(err.data);
         })
         .finally(() => {
           actions.setSubmitting(false);

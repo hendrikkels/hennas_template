@@ -1,21 +1,18 @@
-import { refreshToken } from "@/utils/auth";
+import { refreshToken } from "@/utils/jwt";
 import { createAxiosClient } from "@/axios/client";
 import { useStore } from "../store";
 import { User } from "@/types";
 
-const REFRESH_TOKEN_URL = 'http://localhost:3000/api/auth/refreshToken';
+const REFRESH_TOKEN_URL = '/api/auth/refreshToken';
 const BASE_URL = 'http://localhost:3000';
 
 function getCurrentAccessToken() {
   // this is how you access the zustand store outside of React.
-  console.log('GET CURRENT ACCESS TOKEN');
-
   return useStore.getState().accessToken;
 }
 
 
 function setRefreshedAccessToken(token: string, user: User) {
-  console.log('set tokens...');
   return useStore.setState((state) => ({ ...state, accessToken: token, user: user }));
 }
 

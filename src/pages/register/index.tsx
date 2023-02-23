@@ -37,7 +37,11 @@ const Register: NextPage = () => {
     ) => {
       actions.setSubmitting(true);
       axiosInstance
-        .post('api/auth/register', { ...values })
+        .post(
+          'api/auth/register',
+          { ...values },
+          { headers: { Authorization: false } }
+        )
         .then((res) => {
           if (res.data && res.data.user) {
             router.replace('/register/success');

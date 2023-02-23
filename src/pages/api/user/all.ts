@@ -1,7 +1,7 @@
 import { getAllUsers } from '@/controllers/user';
 
 import type { NextApiRequest, NextApiResponse } from 'next'
-import checkAuth from '../middleware/checkAuth';
+import isAuthenticated from '../middleware/isAuthenticated';
 
 async function handler(
   req: NextApiRequest,
@@ -20,4 +20,4 @@ async function handler(
   }
 }
 
-export default checkAuth(handler);
+export default isAuthenticated(handler);

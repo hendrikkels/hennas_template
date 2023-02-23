@@ -12,7 +12,7 @@ export default async function handler(
 
     //Check if all fields are present (TODO: replace with zod)
     if (!body.username || !body.email || !body.password) {
-        return res.status(400).send('Invalid Credentials');
+        return res.status(400).send('Bad request');
     }
 
     //Check if email exists
