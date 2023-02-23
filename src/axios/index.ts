@@ -2,6 +2,7 @@ import { refreshToken } from "@/utils/jwt";
 import { createAxiosClient } from "@/axios/client";
 import { useStore } from "../store";
 import { User } from "@/types";
+import Router from 'next/router'
 
 const REFRESH_TOKEN_URL = '/api/auth/refreshToken';
 const BASE_URL = 'http://localhost:3000';
@@ -18,6 +19,8 @@ function setRefreshedAccessToken(token: string, user: User) {
 
 async function logout() {
   console.log('logout...');
+  useStore.setState((state) => ({ ...state, accessToken: null, user: null }));
+  return Router.push('/');
 }
 
 export const axiosInstance = createAxiosClient({

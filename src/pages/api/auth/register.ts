@@ -25,7 +25,6 @@ export default async function handler(
 
     //Hash the password
     const hashedPassword = await hashPassword(body.password);
-    console.log(hashedPassword);
 
     const registerUser = {
         username: body.username,

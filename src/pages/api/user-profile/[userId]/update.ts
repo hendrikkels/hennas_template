@@ -10,8 +10,6 @@ async function handler(
   res: NextApiResponse
 ) {
   try {
-    console.log('route hit');
-
     const userId = Number(req.query.userId);
 
     //Convert body to JSON

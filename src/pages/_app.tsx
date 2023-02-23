@@ -28,7 +28,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     //initial funciton
     setLoading(true);
     refreshToken().then((res) => {
-      console.log('in the then');
       if (res.status == 200 && res.data.accessToken && res.data.user) {
         store.setAccessToken(res.data.accessToken);
         store.setUser(res.data.user);

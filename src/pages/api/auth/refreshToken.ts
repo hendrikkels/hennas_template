@@ -37,8 +37,8 @@ export default async function refreshToken(req: NextApiRequest, res: NextApiResp
             const accessToken = createAccessToken(user);
 
             return res.status(200).json({ ok: true, accessToken: accessToken, user });
-        } catch (e) {
-            console.log(e);
+        } catch (err) {
+            console.log(err);
             return res.status(401).send('Unauthorised');
         }
 

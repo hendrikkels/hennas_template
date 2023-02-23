@@ -52,28 +52,6 @@ const EditProfile: NextPage = () => {
     }
   }, [store.accessToken]);
 
-  // async function updateUser(url: string, { args }: any) {
-  //   console.log('UPDATE USER');
-  //   console.log(url);
-  //   console.log(args);
-  //   //   axiosInstance
-  //   // .post(url, { ...values, role: 'ADMIN' })
-  //   // .then((res) => {
-  //   //   if (res.data && res.data.user) {
-  //   //     router.replace('/register/success');
-  //   //   }
-  //   // })
-  //   // .catch((err) => {
-  //   //   console.log(err.message);
-  //   //   setRegisterError(err.response.data);
-  //   // })
-  //   // .finally(() => {
-  //   //   actions.setSubmitting(false);
-  //   // });
-  // }
-
-  // const { trigger } = useSWRMutation('/api/user', updateUser, 'updateUser');
-
   // Fetch user and their profile
   const { data, error, isLoading } = useSWR(
     userId ? `/api/user-profile/${userId}` : '',
@@ -101,8 +79,8 @@ const EditProfile: NextPage = () => {
           }
         })
         .catch((err) => {
-          console.log(err.message);
-          setRegisterError(err.response.data);
+          console.log(err);
+          setRegisterError(err.data);
         })
         .finally(() => {
           actions.setSubmitting(false);

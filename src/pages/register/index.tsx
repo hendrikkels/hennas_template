@@ -48,8 +48,8 @@ const Register: NextPage = () => {
           }
         })
         .catch((err) => {
-          console.log(err.message);
-          setRegisterError(err.response.data);
+          console.log(err);
+          setRegisterError(err.data);
         })
         .finally(() => {
           actions.setSubmitting(false);

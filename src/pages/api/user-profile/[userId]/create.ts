@@ -9,16 +9,13 @@ async function handler(
   res: NextApiResponse
 ) {
   try {
-    console.log('route hit');
     const userId = Number(req.query.userId);
     if (!userId) return res.status(403).json({ error: `Invalid user` });
     const user = await getUserById(userId);
     if (!user) {
       return res.status(403).json({ error: `Invalid user` });
     }
-    console.log('user Found');
     const profile = await createUserProfile(user.id);
-    console.log({ ...user, profile: profile });
     if (profile) {
       res.status(200).json({ ...user, profile: profile });
     } else {
