@@ -2,8 +2,7 @@ import { createUserProfile, getUserProfile, updateUserProfile } from '@/controll
 import { getUserById } from '@/controllers/user';
 
 import type { NextApiRequest, NextApiResponse } from 'next';
-import checkAuth from '../../middleware/isAuthenticated';
-import isAuthenticated from '../../middleware/isAuthenticated';
+import isAuthenticated from '@/pages/api/middleware/isAuthenticated';
 
 async function handler(
   req: NextApiRequest,

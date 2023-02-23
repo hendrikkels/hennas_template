@@ -1,6 +1,5 @@
-import prisma from "../utils/prisma";
+import prisma from "@/utils/prisma";
 import { RegisterUser } from "@/types";
-import { createUserProfile } from "./profile";
 
 function exclude<User, Key extends keyof User>(
     user: User,

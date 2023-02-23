@@ -1,5 +1,4 @@
-import { RegisterUser, User } from "@/types";
-import prisma from "../utils/prisma";
+import prisma from "@/utils/prisma";
 import { UpdateProfile } from "@/types/profile";
 
 export const getUserProfile = async (id: number) => {

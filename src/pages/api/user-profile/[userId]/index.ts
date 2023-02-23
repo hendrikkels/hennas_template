@@ -1,7 +1,7 @@
 import { getUserProfile } from '@/controllers/profile';
 
 import type { NextApiRequest, NextApiResponse } from 'next';
-import isAuthenticated from '../../middleware/isAuthenticated';
+import isAuthenticated from '@/pages/api/middleware/isAuthenticated';
 
 async function handler(
   req: NextApiRequest,

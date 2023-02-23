@@ -4,7 +4,7 @@ import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 import { base, light, dark } from '../../theme';
-import { useThemeDetector } from '../hooks';
+import { useThemeDetector } from '@/hooks';
 import { refreshToken } from '@/utils/jwt';
 import { useStore } from '@/store';
 

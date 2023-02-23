@@ -9,7 +9,7 @@ import {
   VStack,
   Text,
   View,
-} from '../components';
+} from '@/components';
 import { useRouter } from 'next/router';
 import { useStore } from '@/store';
 import { useTheme } from 'styled-components';

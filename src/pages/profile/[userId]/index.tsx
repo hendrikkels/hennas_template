@@ -11,9 +11,9 @@ import {
   VStack,
   View,
   Text,
-} from '../../../components';
+} from '@/components';
 import useSWR from 'swr';
-import fetcher from '../../../utils/fetcher';
+import fetcher from '@/utils/fetcher';
 import { useStore } from '@/store';
 import { useTheme } from 'styled-components';
 

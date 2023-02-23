@@ -1,6 +1,6 @@
 import { refreshToken } from "@/utils/jwt";
 import { createAxiosClient } from "@/axios/client";
-import { useStore } from "../store";
+import { useStore } from "@/store";
 import { User } from "@/types";
 import Router from 'next/router'
 

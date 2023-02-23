@@ -11,12 +11,10 @@ import {
   VStack,
   View,
   Text,
-} from '../../components';
+} from '@/components';
 import { Formik } from 'formik';
 import * as Zod from 'zod';
 import { toFormikValidationSchema } from 'zod-formik-adapter';
-import useSWR from 'swr';
-import fetcher from '../../utils/fetcher';
 import { axiosInstance } from '@/axios';
 
 const validationSchema = Zod.object({

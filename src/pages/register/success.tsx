@@ -11,12 +11,7 @@ import {
   VStack,
   View,
   Text,
-} from '../../components';
-import { Formik } from 'formik';
-import * as Zod from 'zod';
-import { toFormikValidationSchema } from 'zod-formik-adapter';
-import useSWR from 'swr';
-import fetcher from '../../utils/fetcher';
+} from '@/components';
 
 const RegisterSuccess: NextPage = () => {
   const router = useRouter();
