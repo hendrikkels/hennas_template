@@ -1,12 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a full-stack [Next.js](https://nextjs.org/) project with [Prisma](https://www.prisma.io/) and [MySQL](https://www.mysql.com/) bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
+First, create the database, create a copy of the .env.example file and add correct environment variables
+
+Push the database schema:
 
 ```bash
-npm run dev
-# or
+yarn db:push
+```
+
+Run the development server:
+
+```bash
 yarn dev
 ```
 
