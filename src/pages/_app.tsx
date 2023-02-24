@@ -15,13 +15,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(false);
   const [theme, setTheme] = useState({ ...base, colors: light });
 
-  // useEffect(() => {
-  //   if (isDarkTheme) {
-  //     setTheme({ ...base, colors: dark });
-  //   } else {
-  //     setTheme({ ...base, colors: light });
-  //   }
-  // }, [isDarkTheme]);
+  useEffect(() => {
+    if (isDarkTheme) {
+      setTheme({ ...base, colors: dark });
+    } else {
+      setTheme({ ...base, colors: light });
+    }
+  }, [isDarkTheme]);
 
   // //This refreshes the access token on a page refresh, this can probably be removed later on
   // useEffect(() => {
