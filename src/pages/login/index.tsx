@@ -61,8 +61,8 @@ const Login: NextPage = () => {
         validationSchema={toFormikValidationSchema(validationSchema)}
         onSubmit={onSubmit}
         initialValues={{
-          email: 'hendrikkels@icloud.com',
-          password: '123456',
+          email: '',
+          password: '',
         }}
         enableReinitialize
       >

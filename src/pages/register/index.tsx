@@ -58,27 +58,40 @@ const Register: NextPage = () => {
 
   const registerForm = useMemo(() => {
     return (
-      <Card header={'Register'}>
-        <Formik
-          validationSchema={toFormikValidationSchema(validationSchema)}
-          onSubmit={onSubmit}
-          initialValues={{
-            username: '',
-            email: '',
-            password: '',
-          }}
-          enableReinitialize
-        >
-          {({
-            handleSubmit,
-            isSubmitting,
-            errors,
-            touched,
-            values,
-            setFieldValue,
-            setFieldTouched,
-          }) => (
-            <VStack>
+      <Formik
+        validationSchema={toFormikValidationSchema(validationSchema)}
+        onSubmit={onSubmit}
+        initialValues={{
+          username: '',
+          email: '',
+          password: '',
+        }}
+        enableReinitialize
+      >
+        {({
+          handleSubmit,
+          isSubmitting,
+          errors,
+          touched,
+          values,
+          setFieldValue,
+          setFieldTouched,
+        }) => (
+          <Card
+            header={'Register'}
+            renderFooter={
+              <SolidButton
+                type={'submit'}
+                animateHover
+                onClick={() => handleSubmit()}
+                width={'100%'}
+                label={'Register'}
+              />
+            }
+            width={'60%'}
+            maxWidth={'420px'}
+          >
+            <VStack width={'100%'}>
               <TextInput
                 name={'username'}
                 value={values.username}
@@ -110,25 +123,18 @@ const Register: NextPage = () => {
                 error={touched.password ? errors.password : ''}
                 label={'Password'}
               ></TextInput>
-              <SolidButton
-                type={'submit'}
-                animateHover
-                onClick={() => handleSubmit()}
-                width={'100%'}
-                label={'Register'}
-              />
               {/* <View position={'absolute'} bottom={0} left={0}>
                 <Text>{JSON.stringify(values)}</Text>
                 <Text>{JSON.stringify(touched)}</Text>
                 <Text>{JSON.stringify(errors)}</Text>
               </View> */}
             </VStack>
-          )}
-        </Formik>
-        <View>
-          <Text>{registerError}</Text>
-        </View>
-      </Card>
+            <View>
+              <Text>{registerError}</Text>
+            </View>
+          </Card>
+        )}
+      </Formik>
     );
   }, [registerError]);
 
@@ -144,7 +150,7 @@ const Register: NextPage = () => {
         justifyContent={'center'}
         alignItems={'center'}
       >
-        <View>{registerForm}</View>
+        {registerForm}
       </ScrollView>
     </Container>
   );
