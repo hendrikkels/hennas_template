@@ -5,7 +5,8 @@ import { User } from "@/types";
 import Router from 'next/router'
 
 const REFRESH_TOKEN_URL = '/api/auth/refreshToken';
-const BASE_URL = 'http://localhost:3000';
+
+const BASE_URL = process.env.BASE_URL;
 
 function getCurrentAccessToken() {
   // this is how you access the zustand store outside of React.
