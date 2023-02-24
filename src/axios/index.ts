@@ -6,7 +6,7 @@ import Router from 'next/router'
 
 const REFRESH_TOKEN_URL = '/api/auth/refreshToken';
 
-const BASE_URL = process.env.BASE_URL;
+const BASE_URL = process.env.APP_URL;
 
 function getCurrentAccessToken() {
   // this is how you access the zustand store outside of React.
