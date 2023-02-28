@@ -80,7 +80,6 @@ body {
 }
 
 #__next {
-  /* height: 100%; */
   position: absolute;
   top: 0;
   bottom: 0;
@@ -114,6 +113,8 @@ button {
 input:focus, textarea:focus, select:focus{
   outline: none;
 }
+
+
 
 @media (prefers-color-scheme: dark) {
   html {
