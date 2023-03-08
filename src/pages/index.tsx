@@ -19,6 +19,9 @@ import {
   Heading2,
   Heading3,
   Anchor,
+  Button,
+  Input,
+  TextArea,
 } from '@/components/elements';
 
 const Home: NextPage = () => {
@@ -28,13 +31,26 @@ const Home: NextPage = () => {
     <Container>
       <NavBar></NavBar>
       <ScrollView overflow={'scroll'} width={'100%'} height={'100%'}>
-        <VStack padding={'28px'} space={'28px'}>
+        <VStack padding={'28px'} space={'28px'} minWidth={'565px'}>
           <Card header={'Introduction'}>
             <VStack space={'10px'}>
               <Text>
                 This is a proof-of-concept project that I am building as a
                 showcase of my software engineering ability and design skills.
-                The project is built using Next.js and React.
+                The project is built using React Next.js and Prisma to create a
+                monolith full-stack web application that can be used on a
+                plug-and-play basis for scaffolding future projects.
+              </Text>
+              <Text>
+                The idea is to create 'Elements' which are React components of
+                all exisiting HTML tags with a one-to-one ratio of each property
+                that exitsts on each tag. These Elements will then be used to
+                create custom react components which extend the elements but
+                with added custom functionality to esentially build a custom
+                extensive UI component library that stays true to the HTML
+                convention with design properties that are easily mutable by
+                changing the values in the theme.tsx file, to fit the
+                user's/designer's needs.
               </Text>
               <Text>
                 All the components that can be seen in the project are React
@@ -42,18 +58,10 @@ const Home: NextPage = () => {
                 adaptable for different projects that use this project as a
                 base.
               </Text>
-              <Text>
-                The idea is to build this out into a extensive UI component
-                library with design properties that are easily mutable by
-                changing the values in the theme.tsx file, to fit the
-                user's/designer's needs.
-              </Text>
             </VStack>
           </Card>
-          <Card header={'Color Palette'}>
-            <ColorPalette />
-          </Card>
-          <Card header={'Component Library'}>
+
+          <Card header={'Elements'}>
             <VStack space={'20px'}>
               <Heading1>Heading 1</Heading1>
               <Heading2>Heading 2</Heading2>
@@ -61,7 +69,15 @@ const Home: NextPage = () => {
               <Paragraph>Paragraph</Paragraph>
               <Anchor>Anchor (Hover me)</Anchor>
 
-              <HStack space={'40px'} width={'100%'}>
+              <Button>Button</Button>
+              <Input placeholder="Input"></Input>
+              <TextArea placeholder="Input"></TextArea>
+            </VStack>
+          </Card>
+
+          <Card header={'Component Library'}>
+            <VStack space={'20px'} width={'100%'}>
+              <HStack space={'40px'} width={'100%'} wrap={true}>
                 <TextInput
                   label="Input with placeholder"
                   placeholder={'Email'}
@@ -73,7 +89,7 @@ const Home: NextPage = () => {
                 ></TextInput>
               </HStack>
 
-              <HStack space={'20px'}>
+              <HStack space={'20px'} wrap={true}>
                 <SolidButton
                   label={'Success'}
                   backgroundColor={theme.colors.success}
@@ -96,7 +112,7 @@ const Home: NextPage = () => {
                   backgroundColor={theme.colors.primary}
                 ></SolidButton>
               </HStack>
-              <HStack space={'20px'}>
+              <HStack space={'20px'} wrap={true}>
                 <DepthButton
                   label={'Success'}
                   backgroundColor={theme.colors.success}
@@ -122,7 +138,7 @@ const Home: NextPage = () => {
                 header={'Card'}
                 backgroundColor={theme.colors.primaryBackground}
               >
-                <HStack space={'40px'} width={'100%'}>
+                <HStack space={'40px'} width={'100%'} wrap={true}>
                   <TextInput label="Example input"></TextInput>
                   <TextInput
                     label="Example disabled input"
@@ -130,7 +146,7 @@ const Home: NextPage = () => {
                     disabled={true}
                   ></TextInput>
                 </HStack>
-                <HStack space={'40px'} width={'100%'}>
+                <HStack space={'40px'} width={'100%'} wrap={true}>
                   <TextInput
                     label="Input with placeholder"
                     placeholder={'Email'}
@@ -143,6 +159,9 @@ const Home: NextPage = () => {
                 </HStack>
               </Card>
             </VStack>
+          </Card>
+          <Card header={'Color Palette'}>
+            <ColorPalette />
           </Card>
         </VStack>
       </ScrollView>

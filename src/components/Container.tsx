@@ -14,6 +14,7 @@ export const Container: React.FC<ContainerProps> = (props) => {
       display={'flex'}
       height={'100vh'}
       width={'100vw'}
+      backgroundColor={theme.colors.primaryBackground}
       {...rest}
     >
       {children}
