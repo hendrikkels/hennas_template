@@ -12,6 +12,7 @@ import {
   DepthButton,
   Container,
   Text,
+  TextAreaInput,
 } from '@/components';
 import {
   Paragraph,
@@ -60,92 +61,27 @@ const Home: NextPage = () => {
               </Text>
             </VStack>
           </Card>
+          <HStack space={'28px'} width={'100%'} wrap={true}>
+            <Card header={'Elements'} flex={'1 0.1 300px'} width={'100%'}>
+              <VStack space={'20px'}>
+                <Heading1>Heading 1</Heading1>
+                <Heading2>Heading 2</Heading2>
+                <Heading3>Heading 3</Heading3>
+                <Paragraph>Paragraph</Paragraph>
+                <Anchor>Anchor (Hover me)</Anchor>
 
-          <Card header={'Elements'}>
-            <VStack space={'20px'}>
-              <Heading1>Heading 1</Heading1>
-              <Heading2>Heading 2</Heading2>
-              <Heading3>Heading 3</Heading3>
-              <Paragraph>Paragraph</Paragraph>
-              <Anchor>Anchor (Hover me)</Anchor>
+                <Button>Button</Button>
+                <Input placeholder="Input"></Input>
+                <TextArea placeholder="Input"></TextArea>
+              </VStack>
+            </Card>
 
-              <Button>Button</Button>
-              <Input placeholder="Input"></Input>
-              <TextArea placeholder="Input"></TextArea>
-            </VStack>
-          </Card>
-
-          <Card header={'Component Library'}>
-            <VStack space={'20px'} width={'100%'}>
-              <HStack space={'40px'} width={'100%'} wrap={true}>
-                <TextInput
-                  label="Input with placeholder"
-                  placeholder={'Email'}
-                ></TextInput>
-                <TextInput
-                  label="Example input with error"
-                  initAsTouched={true}
-                  required={true}
-                ></TextInput>
-              </HStack>
-
-              <HStack space={'20px'} wrap={true}>
-                <SolidButton
-                  label={'Success'}
-                  backgroundColor={theme.colors.success}
-                ></SolidButton>
-                <SolidButton
-                  label={'Info'}
-                  backgroundColor={theme.colors.info}
-                ></SolidButton>
-                <SolidButton
-                  label={'Warning'}
-                  backgroundColor={theme.colors.warning}
-                ></SolidButton>
-                <SolidButton
-                  label={'Error'}
-                  backgroundColor={theme.colors.error}
-                ></SolidButton>
-                <SolidButton
-                  label={'animateHover'}
-                  animateHover={true}
-                  backgroundColor={theme.colors.primary}
-                ></SolidButton>
-              </HStack>
-              <HStack space={'20px'} wrap={true}>
-                <DepthButton
-                  label={'Success'}
-                  backgroundColor={theme.colors.success}
-                />
-                <DepthButton
-                  label={'Info'}
-                  backgroundColor={theme.colors.info}
-                />
-                <DepthButton
-                  label={'Warning'}
-                  backgroundColor={theme.colors.warning}
-                />
-                <DepthButton
-                  label={'Error'}
-                  backgroundColor={theme.colors.error}
-                />
-                <DepthButton
-                  label={'Primary'}
-                  backgroundColor={theme.colors.primary}
-                />
-              </HStack>
-              <Card
-                header={'Card'}
-                backgroundColor={theme.colors.primaryBackground}
-              >
-                <HStack space={'40px'} width={'100%'} wrap={true}>
-                  <TextInput label="Example input"></TextInput>
-                  <TextInput
-                    label="Example disabled input"
-                    value={'Disabled text'}
-                    disabled={true}
-                  ></TextInput>
-                </HStack>
+            <Card
+              header={'Component Library'}
+              flex={'1 0.9 600px'}
+              width={'100%'}
+            >
+              <VStack space={'20px'} width={'100%'}>
                 <HStack space={'40px'} width={'100%'} wrap={true}>
                   <TextInput
                     label="Input with placeholder"
@@ -157,10 +93,85 @@ const Home: NextPage = () => {
                     required={true}
                   ></TextInput>
                 </HStack>
-              </Card>
-            </VStack>
-          </Card>
-          <Card header={'Color Palette'}>
+
+                <HStack space={'20px'} wrap={true}>
+                  <SolidButton
+                    label={'Success'}
+                    backgroundColor={theme.colors.success}
+                  ></SolidButton>
+                  <SolidButton
+                    label={'Info'}
+                    backgroundColor={theme.colors.info}
+                  ></SolidButton>
+                  <SolidButton
+                    label={'Warning'}
+                    backgroundColor={theme.colors.warning}
+                  ></SolidButton>
+                  <SolidButton
+                    label={'Error'}
+                    backgroundColor={theme.colors.error}
+                  ></SolidButton>
+                  <SolidButton
+                    label={'animateHover'}
+                    animateHover={true}
+                    backgroundColor={theme.colors.primary}
+                  ></SolidButton>
+                </HStack>
+                <HStack space={'20px'} wrap={true}>
+                  <DepthButton
+                    label={'Success'}
+                    backgroundColor={theme.colors.success}
+                  />
+                  <DepthButton
+                    label={'Info'}
+                    backgroundColor={theme.colors.info}
+                  />
+                  <DepthButton
+                    label={'Warning'}
+                    backgroundColor={theme.colors.warning}
+                  />
+                  <DepthButton
+                    label={'Error'}
+                    backgroundColor={theme.colors.error}
+                  />
+                  <DepthButton
+                    label={'Primary'}
+                    backgroundColor={theme.colors.primary}
+                  />
+                </HStack>
+                <Card
+                  header={'Card'}
+                  backgroundColor={theme.colors.primaryBackground}
+                >
+                  <HStack space={'40px'} width={'100%'} wrap={true}>
+                    <TextInput label="Example input"></TextInput>
+                    <TextInput
+                      label="Example disabled input"
+                      value={'Disabled text'}
+                      disabled={true}
+                    ></TextInput>
+                  </HStack>
+                  <HStack space={'40px'} width={'100%'} wrap={true}>
+                    <TextInput
+                      label="Input with placeholder"
+                      placeholder={'Email'}
+                    ></TextInput>
+                    <TextInput
+                      label="Example input with error"
+                      initAsTouched={true}
+                      required={true}
+                    ></TextInput>
+                  </HStack>
+                  <TextAreaInput
+                    label="Example text area input"
+                    height="120px"
+                  ></TextAreaInput>
+                </Card>
+              </VStack>
+            </Card>
+          </HStack>
+
+          <Card header={'Color Palette'} width={'100%'}>
             <ColorPalette />
           </Card>
         </VStack>

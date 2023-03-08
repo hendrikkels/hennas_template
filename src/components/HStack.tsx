@@ -8,7 +8,7 @@ export interface HStackProps extends DivProps {
 }
 
 export const HStack: React.FC<HStackProps> = (props) => {
-  const { space = 0, wrap = false, children, ...rest } = props;
+  const { space = '0', wrap = false, children, ...rest } = props;
   const theme = useTheme();
 
   return (
