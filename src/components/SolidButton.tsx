@@ -9,13 +9,7 @@ export interface SolidButtonProps extends ButtonProps {
 }
 
 export const SolidButton: React.FC<SolidButtonProps> = (props) => {
-  const {
-    label,
-    animateHover = false,
-    animatePress = true,
-    children,
-    ...rest
-  } = props;
+  const { label, animateHover = false, animatePress = true, ...rest } = props;
   const theme = useTheme();
 
   const [hovering, setHovering] = useState(false);
@@ -32,6 +26,7 @@ export const SolidButton: React.FC<SolidButtonProps> = (props) => {
         height={theme.buttonHeight}
         paddingX={theme.buttonPaddingX}
         paddingY={theme.buttonPaddingY}
+        fontSize={theme.buttonLabelFontSize}
         onPointerEnter={() => setHovering(true)}
         onPointerLeave={() => setHovering(false)}
         onPointerDown={() => setPressing(true)}

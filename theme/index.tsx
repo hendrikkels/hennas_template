@@ -4,7 +4,9 @@ declare module 'styled-components' {
     borderRadius: string;
     cardPadding: string;
     cardHeaderMargin: string;
+    cardHeaderFontSize: string;
     cardFooterMargin: string;
+    cardFooterFontSize: string;
     navbarHeight: string;
     navbarPaddingX: string;
     navbarItemFontSize: string;
@@ -75,25 +77,27 @@ declare module 'styled-components' {
 }
 
 export const base = {
-  fontSize: '14px',
+  fontSize: '1em',
   lineHeight: '1.75',
   borderRadius: '6px',
   cardPadding: '40px',
   cardHeaderMargin: '24px',
+  cardHeaderFontSize: '2em',
   cardFooterMargin: '24px',
+  cardFooterFontSize: '2em',
   navbarHeight: '82px',
   navbarPaddingX: '42px',
-  navbarItemFontSize: '18px',
+  navbarItemFontSize: '1.125em',
   inputHeight: '42px',
   inputPaddingX: '8px',
   inputPaddingY: '2px',
   inputBorderWidth: '0px',
   inputBorderRadius: '4px',
-  inputValueFontSize: '20px',
-  inputLabelFontSize: '14px',
+  inputValueFontSize: '1.25em',
+  inputLabelFontSize: '0.875em',
   inputLabelHeight: '20px',
   inputLabelPaddingLeft: '2px',
-  inputErrorFontSize: '10px',
+  inputErrorFontSize: '0.625em',
   inputErrorHeight: '18px',
   inputErrorPaddingLeft: '4px',
   buttonHeight: '48px',
@@ -101,7 +105,7 @@ export const base = {
   buttonPaddingY: '0px',
   buttonBorderWidth: '0px',
   buttonBorderRadius: '6px',
-  buttonLabelFontSize: '16px',
+  buttonLabelFontSize: '1em',
   buttonLabelLineHeight: '1.75',
 
   fontFamily: '',

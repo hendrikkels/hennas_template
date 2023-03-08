@@ -1,6 +1,6 @@
 import React, { ReactNode, useMemo } from 'react';
 import { useTheme } from 'styled-components';
-import { Heading1, Div, DivProps } from './elements';
+import { Heading1, Div, DivProps, Paragraph } from './elements';
 
 export interface CardProps extends DivProps {
   header?: string;
@@ -23,12 +23,14 @@ export const Card: React.FC<CardProps> = (props) => {
   const renderHeader: ReactNode = useMemo(() => {
     if (_renderHeader) return _renderHeader;
     return (
-      <Heading1
+      <Paragraph
         marginBottom={theme.cardHeaderMargin}
+        fontSize={theme.cardHeaderFontSize}
+        fontWeight={600}
         fontFamily={theme.fontFamily}
       >
         {header}
-      </Heading1>
+      </Paragraph>
     );
   }, [header, _renderHeader, theme]);
 
@@ -37,12 +39,14 @@ export const Card: React.FC<CardProps> = (props) => {
       return _renderFooter;
     }
     return (
-      <Heading1
+      <Paragraph
         marginTop={theme.cardFooterMargin}
+        fontSize={theme.cardFooterFontSize}
+        fontWeight={600}
         fontFamily={theme.fontFamily}
       >
         {footer}
-      </Heading1>
+      </Paragraph>
     );
   }, [footer, _renderFooter, theme]);
 
