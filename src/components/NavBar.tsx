@@ -117,8 +117,12 @@ export const NavBar: React.FC<NavBarProps> = (props) => {
         alignItems={'center'}
       >
         <Div>
-          <Text fontFamily={theme.navbarItemFontFamily} fontSize={'32px'}>
-            {title ? title : 'Hendrikkels'}
+          <Text
+            fontFamily={'JetBrains Mono'}
+            fontWeight={600}
+            fontSize={'32px'}
+          >
+            {title ? title : 'hennas_template'}
           </Text>
         </Div>
         {renderNavItems}
