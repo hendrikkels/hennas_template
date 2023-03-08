@@ -123,26 +123,6 @@ export const NavBar: React.FC<NavBarProps> = (props) => {
         </Div>
         {renderNavItems}
       </HStack>
-
-      {/* <HStack
-        backgroundColor={'#f3c3e2'}
-        width={'100%'}
-        height={'100%'}
-        justifyContent={'space-between'}
-        alignItems={'center'}
-        paddingX={theme.navbarPaddingX}
-      >
-        <Div backgroundColor={'red'}>
-          <Text
-            backgroundColor={'warning'}
-            fontFamily={theme.navbarItemFontFamily}
-            fontSize={'32px'}
-          >
-            {title ? title : 'Hendrikkels'}
-          </Text>
-        </Div>
-        {renderNavItems}
-      </HStack> */}
     </Div>
   );
 };
