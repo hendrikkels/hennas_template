@@ -8,7 +8,7 @@ export interface VStackProps extends DivProps {
 }
 
 export const VStack: React.FC<VStackProps> = (props) => {
-  const { space = 0, wrap = false, children, ...rest } = props;
+  const { space, wrap = false, children, ...rest } = props;
   const theme = useTheme();
 
   return (
