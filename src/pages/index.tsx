@@ -1,7 +1,5 @@
 import type { NextPage } from 'next';
-import { useState } from 'react';
 import { useTheme } from 'styled-components';
-import { backgroundColor } from 'styled-system';
 import {
   Card,
   ColorPalette,
@@ -13,6 +11,7 @@ import {
   SolidButton,
   DepthButton,
   Container,
+  Text,
 } from '@/components';
 import {
   Paragraph,
@@ -22,33 +21,33 @@ import {
   Anchor,
 } from '@/components/elements';
 
-const Components: NextPage = () => {
+const Home: NextPage = () => {
   const theme = useTheme();
 
   return (
     <Container>
       <NavBar></NavBar>
-      <ScrollView padding={'28px'} width={'100%'}>
-        <VStack space={'28px'}>
+      <ScrollView overflow={'scroll'} width={'100%'} height={'100%'}>
+        <VStack padding={'28px'} space={'28px'}>
           <Card header={'Introduction'}>
             <VStack space={'10px'}>
-              <Paragraph>
+              <Text>
                 This is a proof-of-concept project that I am building as a
                 showcase of my software engineering ability and design skills.
                 The project is built using Next.js and React.
-              </Paragraph>
-              <Paragraph>
+              </Text>
+              <Text>
                 All the components that can be seen in the project are React
                 components built and designed by me to be easily mutable and
                 adaptable for different projects that use this project as a
                 base.
-              </Paragraph>
-              <Paragraph>
+              </Text>
+              <Text>
                 The idea is to build this out into a extensive UI component
                 library with design properties that are easily mutable by
                 changing the values in the theme.tsx file, to fit the
                 user's/designer's needs.
-              </Paragraph>
+              </Text>
             </VStack>
           </Card>
           <Card header={'Color Palette'}>
@@ -151,4 +150,4 @@ const Components: NextPage = () => {
   );
 };
 
-export default Components;
+export default Home;

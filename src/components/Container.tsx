@@ -10,10 +10,10 @@ export const Container: React.FC<ContainerProps> = (props) => {
 
   return (
     <Div
-      overflow={'fixed'}
+      overflow={'hidden'}
       display={'flex'}
-      height={'100%'}
-      width={'100%'}
+      height={'100vh'}
+      width={'100vw'}
       {...rest}
     >
       {children}

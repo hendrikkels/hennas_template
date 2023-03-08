@@ -108,16 +108,18 @@ export const NavBar: React.FC<NavBarProps> = (props) => {
       {...rest}
     >
       <HStack
+        paddingX={theme.navbarPaddingX}
+        overflowX={'auto'}
+        space={'20px'}
         width={'100%'}
         height={'100%'}
         justifyContent={'space-between'}
         alignItems={'center'}
-        paddingX={theme.navbarPaddingX}
       >
         <Div>
-          <Heading1 fontFamily={theme.navbarItemFontFamily} fontSize={'32px'}>
+          <Text fontFamily={theme.navbarItemFontFamily} fontSize={'32px'}>
             {title ? title : 'Hendrikkels'}
-          </Heading1>
+          </Text>
         </Div>
         {renderNavItems}
       </HStack>
