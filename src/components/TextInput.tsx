@@ -88,6 +88,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
       <Div
         height={theme.inputLabelHeight}
         paddingLeft={theme.inputLabelPaddingLeft}
+        overflow={'hidden'}
         {..._labelContainerStyle}
       >
         <Paragraph
@@ -124,6 +125,7 @@ export const TextInput: React.FC<TextInputProps> = (props) => {
         justifyContent={'flex-end'}
         height={theme.inputErrorHeight}
         paddingLeft={theme.inputErrorPaddingLeft}
+        overflow={'hidden'}
         {..._errorContainerStyle}
       >
         <Paragraph

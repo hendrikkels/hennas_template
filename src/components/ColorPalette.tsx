@@ -35,7 +35,7 @@ export const ColorPalette: React.FC<DivProps> = (props) => {
         colors.gray,
       ];
       return (
-        <HStack space={'10px'} justifyContent={'center'}>
+        <HStack space={'10px'} justifyContent={'center'} wrap={true}>
           {arr.map((item, index) => renderColor(item, index))}
         </HStack>
       );

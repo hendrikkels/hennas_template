@@ -76,7 +76,6 @@ export const TextAreaInput: React.FC<TextAreaInputProps> = (props) => {
     <Div
       display={'flex'}
       flex={1}
-      // backgroundColor={'red'}
       width={'100%'}
       flexDirection={'column'}
       {..._containerStyle}
@@ -84,6 +83,7 @@ export const TextAreaInput: React.FC<TextAreaInputProps> = (props) => {
       <Div
         height={theme.inputLabelHeight}
         paddingLeft={theme.inputLabelPaddingLeft}
+        overflow={'hidden'}
         {..._labelContainerStyle}
       >
         <Paragraph
@@ -122,6 +122,7 @@ export const TextAreaInput: React.FC<TextAreaInputProps> = (props) => {
         justifyContent={'flex-end'}
         height={theme.inputErrorHeight}
         paddingLeft={theme.inputErrorPaddingLeft}
+        overflow={'hidden'}
         {..._errorContainerStyle}
       >
         <Paragraph

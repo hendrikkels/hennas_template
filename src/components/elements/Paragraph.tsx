@@ -41,6 +41,8 @@ export const Paragraph = styled.p<ParagraphProps>(
     fontWeight: 'normal',
     padding: 0,
     margin: 0,
+    textAlign: 'start',
+    textOverflow: 'ellipsis',
   },
   layout,
   space,

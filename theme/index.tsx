@@ -1,6 +1,5 @@
 declare module 'styled-components' {
   export interface DefaultTheme {
-    fontFamily: string;
     fontSize: string;
     borderRadius: string;
     cardPadding: string;
@@ -9,20 +8,16 @@ declare module 'styled-components' {
     navbarHeight: string;
     navbarPaddingX: string;
     navbarItemFontSize: string;
-    navbarItemFontFamily: string;
     inputHeight: string;
     inputPaddingX: string;
     inputPaddingY: string;
     inputBorderWidth: string;
     inputBorderRadius: string;
     inputValueFontSize: string;
-    inputValueFontFamily: string;
     inputLabelFontSize: string;
-    inputLabelFontFamily: string;
     inputLabelHeight: string;
     inputLabelPaddingLeft: string;
     inputErrorFontSize: string;
-    inputErrorFontFamily: string;
     inputErrorHeight: string;
     inputErrorPaddingLeft: string;
     buttonHeight: string;
@@ -32,7 +27,14 @@ declare module 'styled-components' {
     buttonBorderRadius: string;
     buttonLabelFontSize: string;
     buttonLabelLineHeight: string;
+
+    fontFamily: string;
+    navbarItemFontFamily: string;
+    inputValueFontFamily: string;
+    inputLabelFontFamily: string;
+    inputErrorFontFamily: string;
     buttonLabelFontFamily: string;
+
     colors: {
       primary: string;
       secondary: string;
@@ -51,6 +53,7 @@ declare module 'styled-components' {
       gray: string;
       white: string;
       black: string;
+      text: string;
       primaryBackground: string;
       secondaryBackground: string;
       navbarBackground: string;
@@ -72,7 +75,6 @@ declare module 'styled-components' {
 }
 
 export const base = {
-  fontFamily: 'Arial',
   fontSize: '14px',
   lineHeight: '1.75',
   borderRadius: '6px',
@@ -82,20 +84,16 @@ export const base = {
   navbarHeight: '82px',
   navbarPaddingX: '42px',
   navbarItemFontSize: '18px',
-  navbarItemFontFamily: 'Arial',
   inputHeight: '42px',
   inputPaddingX: '8px',
   inputPaddingY: '2px',
   inputBorderWidth: '0px',
   inputBorderRadius: '4px',
   inputValueFontSize: '20px',
-  inputValueFontFamily: 'Arial',
   inputLabelFontSize: '14px',
-  inputLabelFontFamily: 'Arial',
   inputLabelHeight: '20px',
   inputLabelPaddingLeft: '2px',
   inputErrorFontSize: '10px',
-  inputErrorFontFamily: 'Arial',
   inputErrorHeight: '18px',
   inputErrorPaddingLeft: '4px',
   buttonHeight: '48px',
@@ -105,7 +103,13 @@ export const base = {
   buttonBorderRadius: '6px',
   buttonLabelFontSize: '16px',
   buttonLabelLineHeight: '1.75',
-  buttonLabelFontFamily: 'Arial',
+
+  fontFamily: '',
+  navbarItemFontFamily: '',
+  inputValueFontFamily: '',
+  inputLabelFontFamily: '',
+  inputErrorFontFamily: '',
+  buttonLabelFontFamily: '',
 };
 
 export const light = {
@@ -126,6 +130,7 @@ export const light = {
   gray: '#888888',
   white: '#ffffff',
   black: '#000000',
+  text: '#000000',
   primaryBackground: '#ffffff',
   secondaryBackground: '#f8f8f8',
   navbarBackground: '#e1e1e1',
@@ -162,6 +167,7 @@ export const dark = {
   gray: '#cccccc',
   white: '#ffffff',
   black: '#000000',
+  text: '#ffffff',
   primaryBackground: '#000000',
   secondaryBackground: '#111111',
   navbarBackground: '#1a1a1a',
